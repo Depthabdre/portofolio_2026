@@ -6,11 +6,6 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { MagneticLink } from "@/components/hero/MagneticLink";
 import { heroContent, socialLinks } from "@/lib/content/hero";
 
-const CustomCursor = dynamic(
-  () => import("@/components/hero/CustomCursor").then((mod) => mod.CustomCursor),
-  { ssr: false },
-);
-
 const HeroScene = dynamic(() => import("@/components/hero/HeroScene"), {
   ssr: false,
   loading: () => <div className="h-[420px] w-full rounded-3xl bg-white/[0.04]" />,
@@ -40,8 +35,7 @@ export function HeroSection() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section className="hero-shell relative isolate min-h-screen overflow-hidden px-6 py-10 md:px-12 md:py-12 lg:px-20">
-      <CustomCursor />
+    <section className="hero-shell relative min-h-screen overflow-hidden px-6 py-10 md:px-12 md:py-12 lg:px-20">
       <div className="hero-grid relative z-20 mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <motion.div
           variants={container}

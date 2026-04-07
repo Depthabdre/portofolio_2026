@@ -13,25 +13,27 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-space-grotesk);
+  --font-sans: var(--font-manrope);
   --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-space-grotesk), sans-serif;
+  font-family: var(--font-manrope), sans-serif;
   text-rendering: optimizeLegibility;
 }
 
-.hero-shell {
+.page-shell,
+.section-shell {
   background:
     radial-gradient(circle at 8% 14%, rgba(96, 195, 255, 0.16), transparent 36%),
     radial-gradient(circle at 86% 19%, rgba(184, 255, 108, 0.12), transparent 38%),
     linear-gradient(160deg, #05080f 0%, #070b12 48%, #080e17 100%);
 }
 
-.hero-shell::before {
+.page-shell::before,
+.section-shell::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -44,7 +46,8 @@ body {
   mask-image: radial-gradient(circle at 32% 38%, black, transparent 72%);
 }
 
-.hero-shell::after {
+.page-shell::after,
+.section-shell::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -64,14 +67,14 @@ body {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .hero-shell {
+  .cursor-shell {
     cursor: none;
   }
 }
 
 @media (max-width: 768px) {
-  .hero-shell::before,
-  .hero-shell::after {
+  .section-shell::before,
+  .section-shell::after {
     opacity: 0.2;
   }
 }
