@@ -1,5 +1,6 @@
 import { CustomCursor } from "@/components/hero/CustomCursor";
 import { HeroSection } from "@/components/hero/HeroSection";
+import { FeaturedProjects } from "@/components/projects/FeaturedProjects";
 import { QuickStatsBento } from "@/components/stats/QuickStatsBento";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
       <CustomCursor />
       <HeroSection />
       <QuickStatsBento />
+      <FeaturedProjects />
     </main>
   );
 }
