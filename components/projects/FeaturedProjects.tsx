@@ -11,6 +11,13 @@ import {
 } from "react-icons/si";
 import { MdAccountTree, MdLayers, MdLock } from "react-icons/md";
 
+// Custom Flutter BLoC Icon based on the official bloclibrary.dev logo structure
+const BlocIcon = (props: React.ComponentProps<"svg">) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-3H8v-3h3v-3h3v3h3v3h-3v3h-3z" />
+  </svg>
+);
+
 type TechIcon = {
   id: string;
   label: string;
@@ -26,6 +33,7 @@ type Project = {
   techIcons: TechIcon[];
   buttonLabel: string;
   buttonHref: string;
+  onButtonClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
   railTone: "cyan" | "lime";
 };
 
@@ -36,7 +44,7 @@ const projects: Project[] = [
     description:
       "i built this with a backend friend for a tutorial agency. i mostly focused on keeping learning content secure while still keeping the app simple for students.",
     bullets: [
-      "serving 200+ active university students.",
+      "serving 2K+ active university students.",
       "added live mcq contests with real-time updates.",
       "uses offline drm with kernel-uptime checks and single-device access.",
     ],
@@ -45,7 +53,7 @@ const projects: Project[] = [
       {
         id: "bloc",
         label: "flutter bloc",
-        icon: MdAccountTree,
+        icon: BlocIcon,
         iconClass: "text-[#bd8cff]",
       },
       {
@@ -63,6 +71,10 @@ const projects: Project[] = [
     ],
     buttonLabel: "[ private repo ]",
     buttonHref: "#",
+    onButtonClick: (e) => {
+      e.preventDefault();
+      alert("This is a private repo for client's privacy.");
+    },
     railTone: "cyan",
   },
   {
@@ -103,7 +115,7 @@ const projects: Project[] = [
       },
     ],
     buttonLabel: "[ view code ]",
-    buttonHref: "#",
+    buttonHref: "https://github.com/Depthabdre/real_english",
     railTone: "lime",
   },
 ];
@@ -244,6 +256,9 @@ function ProjectCard({
         >
           <a
             href={project.buttonHref}
+            onClick={project.onButtonClick}
+            target={project.buttonHref !== "#" ? "_blank" : undefined}
+            rel={project.buttonHref !== "#" ? "noopener noreferrer" : undefined}
             className="inline-flex w-fit items-center rounded-full border border-white/24 bg-white/7 px-4.5 py-2.5 text-sm tracking-[0.11em] text-white/84 lowercase transition-colors duration-300 hover:border-[var(--hero-accent)] hover:text-[var(--hero-accent)]"
           >
             {project.buttonLabel}
