@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/hero/HeroSection";
 import { FeaturedProjects } from "@/components/projects/FeaturedProjects";
 import { QuickStatsBento } from "@/components/stats/QuickStatsBento";
 import { ExperienceTimeline } from "@/components/experience/ExperienceTimeline";
+import { FooterSection } from "@/components/footer/FooterSection";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <QuickStatsBento />
       <FeaturedProjects />
       <ExperienceTimeline />
+      <FooterSection />
     </main>
   );
 }
