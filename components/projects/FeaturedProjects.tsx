@@ -1,21 +1,28 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion, useReducedMotion, AnimatePresence, type Variants } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import type { IconType } from "react-icons";
 import {
   SiExpress,
   SiFlutter,
   SiNodedotjs,
-  SiOpenai,
+  SiGooglegemini,
+  SiGithub,
 } from "react-icons/si";
-import { MdAccountTree, MdLayers, MdLock } from "react-icons/md";
+import { MdLayers, MdLock } from "react-icons/md";
+import type { IconBaseProps } from "react-icons";
+import Image from "next/image";
 
-// Custom Flutter BLoC Icon based on the official bloclibrary.dev logo structure
-const BlocIcon = (props: React.ComponentProps<"svg">) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-3H8v-3h3v-3h3v3h3v3h-3v3h-3z" />
-  </svg>
+// Custom Flutter BLoC Icon using the provided official image
+const BlocIcon = (props: IconBaseProps) => (
+  /* eslint-disable-next-line @next/next/no-img-element */
+  <img 
+    src="https://plugins.jetbrains.com/files/12129/953327/icon/default.png" 
+    alt="flutter bloc" 
+    className={props.className} 
+    style={{ display: "inline-block", ...props.style }}
+  />
 );
 
 type TechIcon = {
@@ -25,15 +32,20 @@ type TechIcon = {
   iconClass: string;
 };
 
+type ProjectLink = {
+  label: string;
+  href: string;
+  isPrivate?: boolean;
+};
+
 type Project = {
   id: string;
   title: string;
   description: string;
   bullets: string[];
   techIcons: TechIcon[];
-  buttonLabel: string;
-  buttonHref: string;
-  onButtonClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  links: ProjectLink[];
+  uiImages: string[];
   railTone: "cyan" | "lime";
 };
 
@@ -69,12 +81,25 @@ const projects: Project[] = [
         iconClass: "text-[#c9efff]",
       },
     ],
-    buttonLabel: "[ private repo ]",
-    buttonHref: "#",
-    onButtonClick: (e) => {
-      e.preventDefault();
-      alert("This is a private repo for client's privacy.");
-    },
+    links: [
+      {
+        label: "mobile app",
+        href: "https://github.com/Depthabdre/a_plus_tutorial_app",
+        isPrivate: true,
+      },
+    ],
+    uiImages: [
+      "/APlus/Screenshot_20260413-170535.jpg",
+      "/APlus/Screenshot_20260413-170611.jpg",
+      "/APlus/Screenshot_20260413-170625.jpg",
+      "/APlus/Screenshot_20260413-170650.jpg",
+      "/APlus/Screenshot_20260413-170657.jpg",
+      "/APlus/Screenshot_20260413-170708.jpg",
+      "/APlus/Screenshot_20260413-170718.jpg",
+      "/APlus/Screenshot_20260413-170732.jpg",
+      "/APlus/Screenshot_20260413-170744.jpg",
+      "/APlus/Screenshot_20260413-170751.jpg",
+    ],
     railTone: "cyan",
   },
   {
@@ -109,13 +134,34 @@ const projects: Project[] = [
       },
       {
         id: "ai-integration",
-        label: "ai integration",
-        icon: SiOpenai,
+        label: "gemini api",
+        icon: SiGooglegemini,
         iconClass: "text-[#b9f0cf]",
       },
     ],
-    buttonLabel: "[ view code ]",
-    buttonHref: "https://github.com/Depthabdre/real_english",
+    links: [
+      {
+        label: "mobile app",
+        href: "https://github.com/Depthabdre/real_english",
+      },
+      {
+        label: "backend api",
+        href: "https://github.com/Depthabdre/RealEnglish",
+      },
+    ],
+    uiImages: [
+      "/RealEnglish/photo_2026-01-01_10-25-52.jpg",
+      "/RealEnglish/photo_2026-01-01_10-27-09.jpg",
+      "/RealEnglish/photo_2026-01-01_10-27-15.jpg",
+      "/RealEnglish/photo_2026-01-01_10-27-39.jpg",
+      "/RealEnglish/photo_2026-01-01_10-27-48.jpg",
+      "/RealEnglish/photo_2026-01-01_10-27-53.jpg",
+      "/RealEnglish/photo_2026-01-01_10-28-02.jpg",
+      "/RealEnglish/photo_2026-01-01_10-28-07.jpg",
+      "/RealEnglish/Screenshot_20260412-171012.jpg",
+      "/RealEnglish/Screenshot_20260412-171020.jpg",
+      "/RealEnglish/Screenshot_20260412-171031.jpg",
+    ],
     railTone: "lime",
   },
 ];
@@ -132,7 +178,7 @@ const sectionVariants: Variants = {
   },
 };
 
-function UiRail({ tone }: { tone: "cyan" | "lime" }) {
+function UiRail({ images, tone }: { images: string[]; tone: "cyan" | "lime" }) {
   const reducedMotion = useReducedMotion();
   const palette =
     tone === "cyan"
@@ -165,41 +211,39 @@ function UiRail({ tone }: { tone: "cyan" | "lime" }) {
               }
         }
       >
-        {[...Array(6)].map((_, index) => {
+        {images.map((src, index) => {
           const toneClass = palette[index % palette.length];
 
           return (
             <div
               key={`screen-${index}`}
-              className={`relative h-[220px] w-[132px] shrink-0 rounded-2xl border border-white/12 bg-gradient-to-b ${toneClass} p-3 shadow-[0_16px_35px_rgba(2,8,15,0.4)]`}
+              className={`relative flex h-[220px] w-[132px] shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/12 bg-gradient-to-b ${toneClass} shadow-[0_16px_35px_rgba(2,8,15,0.4)]`}
             >
-              <div className="h-3 w-16 rounded-full bg-white/20" />
-              <div className="mt-3 h-16 rounded-xl bg-white/8" />
-              <div className="mt-3 h-3 w-10/12 rounded-full bg-white/18" />
-              <div className="mt-2 h-3 w-8/12 rounded-full bg-white/12" />
-              <div className="mt-3 grid grid-cols-2 gap-2">
-                <div className="h-10 rounded-lg bg-white/10" />
-                <div className="h-10 rounded-lg bg-white/10" />
-              </div>
+              <Image 
+                src={src}
+                alt="Product Preview"
+                fill
+                className="object-cover object-top"
+                sizes="132px"
+              />
             </div>
           );
         })}
-        {[...Array(6)].map((_, index) => {
+        {images.map((src, index) => {
           const toneClass = palette[index % palette.length];
 
           return (
             <div
               key={`screen-dup-${index}`}
-              className={`relative h-[220px] w-[132px] shrink-0 rounded-2xl border border-white/12 bg-gradient-to-b ${toneClass} p-3 shadow-[0_16px_35px_rgba(2,8,15,0.4)]`}
+              className={`relative flex h-[220px] w-[132px] shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/12 bg-gradient-to-b ${toneClass} shadow-[0_16px_35px_rgba(2,8,15,0.4)]`}
             >
-              <div className="h-3 w-16 rounded-full bg-white/20" />
-              <div className="mt-3 h-16 rounded-xl bg-white/8" />
-              <div className="mt-3 h-3 w-10/12 rounded-full bg-white/18" />
-              <div className="mt-2 h-3 w-8/12 rounded-full bg-white/12" />
-              <div className="mt-3 grid grid-cols-2 gap-2">
-                <div className="h-10 rounded-lg bg-white/10" />
-                <div className="h-10 rounded-lg bg-white/10" />
-              </div>
+              <Image 
+                src={src}
+                alt="Product Preview"
+                fill
+                className="object-cover object-top"
+                sizes="132px"
+              />
             </div>
           );
         })}
@@ -213,6 +257,8 @@ function ProjectCard({
 }: {
   project: Project;
 }) {
+  const [showPrivateModal, setShowPrivateModal] = useState(false);
+
   return (
     <motion.article
       variants={sectionVariants}
@@ -252,17 +298,33 @@ function ProjectCard({
 
         <div
           data-align="meta"
-          className="mt-5 grid grid-cols-1 gap-3 border-y border-white/10 py-3 md:grid-cols-[auto_1fr] md:items-center md:gap-4"
+          className="mt-5 flex flex-col justify-between gap-4 border-y border-white/10 py-4 md:flex-row md:items-center"
         >
-          <a
-            href={project.buttonHref}
-            onClick={project.onButtonClick}
-            target={project.buttonHref !== "#" ? "_blank" : undefined}
-            rel={project.buttonHref !== "#" ? "noopener noreferrer" : undefined}
-            className="inline-flex w-fit items-center rounded-full border border-white/24 bg-white/7 px-4.5 py-2.5 text-sm tracking-[0.11em] text-white/84 lowercase transition-colors duration-300 hover:border-[var(--hero-accent)] hover:text-[var(--hero-accent)]"
-          >
-            {project.buttonLabel}
-          </a>
+          <div className="flex flex-wrap items-center gap-3">
+            {project.links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target={!link.isPrivate ? "_blank" : undefined}
+                rel={!link.isPrivate ? "noopener noreferrer" : undefined}
+                onClick={
+                  link.isPrivate
+                    ? (e) => {
+                        e.preventDefault();
+                        setShowPrivateModal(true);
+                      }
+                    : undefined
+                }
+                className="group flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-2 text-[0.85rem] tracking-wide text-white/80 transition-all hover:border-white/25 hover:bg-white/10 hover:text-white"
+              >
+                <SiGithub className="h-4 w-4 opacity-80" />
+                <span className="lowercase">{link.label}</span>
+                {link.isPrivate && (
+                  <MdLock className="ml-0.5 h-3.5 w-3.5 text-white/40 transition-colors group-hover:text-white/70" />
+                )}
+              </a>
+            ))}
+          </div>
 
           <div className="flex flex-wrap items-center gap-2 md:justify-end" role="list" aria-label="technology used">
             {project.techIcons.map((tech) => {
@@ -287,15 +349,47 @@ function ProjectCard({
             <span className="text-[0.72rem] tracking-[0.17em] text-white/52 lowercase">
               product ui preview rail
             </span>
-            <span className="text-[0.72rem] tracking-[0.17em] text-white/45 lowercase">
-              replaceable with real screenshots later
-            </span>
           </div>
           <div className="flex-1">
-            <UiRail tone={project.railTone} />
+            <UiRail images={project.uiImages} tone={project.railTone} />
           </div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {showPrivateModal && (
+          <motion.div
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(8px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            className="absolute inset-0 z-20 flex flex-col items-center justify-center rounded-[1.75rem] bg-black/75 p-6 text-center sm:p-8"
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 10, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.9, y: 10, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25, delay: 0.05 }}
+              className="flex flex-col items-center"
+            >
+              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-white/5 shadow-xl">
+                <MdLock className="h-6 w-6 text-white/70" />
+              </div>
+              <h4 className="text-xl font-semibold tracking-[-0.01em] text-white">
+                Proprietary Codebase
+              </h4>
+              <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/70">
+                This repository is strictly private to protect client intellectual property and the application&apos;s subscription-based DRM architecture.
+              </p>
+              <button
+                onClick={() => setShowPrivateModal(false)}
+                className="mt-8 rounded-full bg-white px-7 py-2.5 text-sm font-medium tracking-wide text-black transition-transform hover:scale-105 active:scale-95"
+              >
+                Understood
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.article>
   );
 }
