@@ -6,7 +6,7 @@ export const heroContent = {
         "i spend most of my time building, experimenting, and refining my craft in mobile development. i care about software that is secure, reliable, and genuinely useful in the real world. more than anything, i'm someone who keeps learning and improving every single day.",
     primaryCta: {
         label: "view my work",
-        href: "#work",
+        href: "#projects",
     },
     secondaryCta: {
         label: "grab resume",

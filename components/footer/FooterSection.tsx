@@ -47,12 +47,15 @@ export function FooterSection() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <footer id="contact" className="relative flex flex-col pt-16 md:pt-24 z-10 w-full overflow-hidden bg-black text-white/80">
+    <footer id="contact" className="relative flex flex-col pt-16 md:pt-24 z-10 w-full overflow-hidden text-[var(--hero-text)]">
       {/* 1. The Tech Marquee (Infinite Scroll) */}
-      <div className="relative flex w-full flex-col overflow-hidden border-y border-white/5 bg-white/[0.02] py-5">
-        <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-24 bg-gradient-to-r from-black to-transparent" />
-        <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-24 bg-gradient-to-l from-black to-transparent" />
-        
+      <div 
+        className="relative flex w-full flex-col overflow-hidden border-y border-white/5 bg-white/[0.02] py-5"
+        style={{
+          maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+          WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
+        }}
+      >
         <motion.div
           className="flex w-max items-center gap-6 md:gap-12"
           animate={reducedMotion ? undefined : { x: ["0%", "-50%"] }}
@@ -79,7 +82,7 @@ export function FooterSection() {
       </div>
 
       {/* Main Content Layout */}
-      <div className="mx-auto w-full max-w-[82rem] px-6 pb-20 pt-20 md:px-12 lg:px-20 md:pt-32">
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-24 md:px-12 lg:px-20">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-8">
           
           {/* 2. Offline / Personal Life (Text Block) */}
@@ -90,10 +93,11 @@ export function FooterSection() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-5"
           >
-            <h2 className="text-2xl font-medium tracking-tight text-white lowercase sm:text-3xl">
+            <p className="text-xs tracking-[0.26em] text-white/65 uppercase mb-3">personal life</p>
+            <h2 className="max-w-2xl text-3xl font-semibold tracking-[-0.02em] text-[var(--hero-text)] sm:text-4xl">
               offline
             </h2>
-            <div className="mt-6 space-y-4 text-[0.95rem] leading-[1.8] text-[#aeb6c2] lowercase sm:text-base">
+            <div className="mt-6 space-y-4 text-base leading-8 text-[var(--hero-muted)] sm:text-lg">
               <p>
                 when i&apos;m away from the keyboard, i spend a lot of time at the gym. lifting weights helps me clear my mind, builds my physical discipline, and gives me the energy to focus when i&apos;m coding.
               </p>
@@ -113,10 +117,11 @@ export function FooterSection() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             className="flex flex-col lg:col-span-5 lg:items-end lg:text-right"
           >
-            <h2 className="text-2xl font-medium tracking-tight text-white lowercase sm:text-3xl">
+            <p className="text-xs tracking-[0.26em] text-white/65 uppercase mb-3">contact</p>
+            <h2 className="max-w-2xl text-3xl font-semibold tracking-[-0.02em] text-[var(--hero-text)] sm:text-4xl">
               let&apos;s connect
             </h2>
-            <p className="mt-4 max-w-sm text-[0.95rem] leading-[1.7] text-[#aeb6c2] lowercase sm:text-base lg:max-w-[19rem]">
+            <p className="mt-4 max-w-sm text-base leading-8 text-[var(--hero-muted)] sm:text-lg lg:max-w-[19rem]">
               always down to chat about mobile dev, problem solving, or the weekend&apos;s football match.
             </p>
 

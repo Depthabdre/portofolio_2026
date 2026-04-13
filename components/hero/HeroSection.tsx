@@ -59,11 +59,9 @@ export function HeroSection() {
 
           <motion.p
             variants={item}
-            className="max-w-xl text-sm tracking-[0.08em] text-[var(--hero-muted)] sm:text-base"
-          >
-            {heroContent.subtitle}
-          </motion.p>
-
+              className="max-w-xl text-sm tracking-[0.08em] text-[var(--hero-muted)] sm:text-base leading-relaxed"
+            >
+              <strong className="font-semibold text-white">SWE @ AASTU</strong> | <strong className="font-semibold text-[var(--hero-accent)]">a2sv graduate</strong> | <strong className="font-semibold text-[#54c5f8]">flutter developer</strong></motion.p>
           <motion.p
             variants={item}
             className="max-w-2xl text-base leading-8 text-white/82 sm:text-lg"
@@ -134,11 +132,11 @@ export function HeroSection() {
       </div>
 
       <div className="pointer-events-none absolute inset-x-0 bottom-8 z-20 flex justify-center">
-        <div className="flex flex-col items-center gap-2 text-white/45">
-          <span className="text-xs tracking-[0.18em] lowercase">scroll</span>
-          <span className="h-10 w-px animate-pulse bg-gradient-to-b from-transparent via-white/70 to-transparent" />
+          <a href="#projects" className="pointer-events-auto flex flex-col items-center gap-2 text-white/45 hover:text-white transition-colors duration-300">
+            <span className="text-xs tracking-[0.18em] lowercase">scroll</span>
+            <span className="h-10 w-px animate-pulse bg-gradient-to-b from-transparent via-white/70 to-transparent" />
+          </a>
         </div>
-      </div>
 
       <div className="pointer-events-none absolute left-6 top-10 z-10 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(95,198,255,0.22),rgba(95,198,255,0)_70%)] md:left-10" />
       <div className="pointer-events-none absolute right-10 top-28 z-10 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(193,243,111,0.14),rgba(193,243,111,0)_72%)]" />
@@ -148,3 +146,4 @@ export function HeroSection() {
     </section>
   );
 }
+

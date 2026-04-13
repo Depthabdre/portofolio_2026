@@ -453,24 +453,26 @@ export function FeaturedProjects() {
   }, []);
 
   return (
-    <section id="projects" className="relative px-6 pb-20 pt-6 md:px-12 lg:px-20">
-      <div className="relative mx-auto w-full max-w-[82rem]">
+    <section id="projects" className="relative overflow-hidden px-6 py-24 md:px-12 lg:px-20">
+      <div className="relative mx-auto w-full max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="space-y-3"
-        >
-          <p className="text-xs tracking-[0.26em] text-white/60 lowercase">featured projects</p>
-          <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--hero-text)] lowercase sm:text-4xl">
-            stuff i&apos;ve built
-          </h2>
-        </motion.div>
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-12 flex flex-col items-center justify-center space-y-3 text-center sm:mb-16"
+          >
+            <p className="text-[var(--hero-muted)] text-xs tracking-[0.26em] uppercase">
+              featured projects
+            </p>
+            <h2 className="max-w-2xl text-3xl font-semibold tracking-[-0.02em] text-[var(--hero-text)] sm:text-4xl lg:text-5xl">
+              stuff i&apos;ve built
+            </h2>
+          </motion.div>
 
         <div
           ref={cardsRef}
-          className="relative mt-10 grid grid-cols-1 gap-6 lg:auto-rows-fr lg:grid-cols-2 lg:items-stretch"
+          className="relative grid grid-cols-1 gap-6 lg:auto-rows-fr lg:grid-cols-2 lg:items-stretch"
         >
           {projects.map((project) => (
             <motion.div
@@ -488,3 +490,4 @@ export function FeaturedProjects() {
     </section>
   );
 }
+

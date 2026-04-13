@@ -64,21 +64,21 @@ export function ExperienceTimeline() {
   return (
     <section
       id="experience"
-      className="relative px-6 pb-24 pt-20 md:px-12 lg:px-20"
+      className="relative overflow-hidden px-6 py-24 md:px-12 lg:px-20"
     >
-      <div className="mx-auto w-full max-w-[56rem]">
+      <div className="relative mx-auto w-full max-w-4xl">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-16 space-y-3 md:mb-20 text-center sm:text-left"
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-12 flex flex-col items-center justify-center space-y-3 text-center sm:mb-16"
         >
-          <p className="text-xs tracking-[0.26em] text-white/60 lowercase">
+          <p className="text-xs tracking-[0.26em] uppercase text-[var(--hero-muted)]">
             experience
           </p>
-          <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--hero-text)] lowercase sm:text-4xl">
+          <h2 className="max-w-2xl text-3xl font-semibold tracking-[-0.02em] text-[var(--hero-text)] sm:text-4xl lg:text-5xl">
             my journey
           </h2>
         </motion.div>
@@ -110,7 +110,7 @@ export function ExperienceTimeline() {
                 }}
               >
                 {/* Glowing Dot on the Line */}
-                <div className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full border-[1.5px] border-white/20 bg-black outline outline-4 outline-black lg:-left-[6px]" />
+                <div className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full border-[1.5px] border-white/20 bg-[#070b12] outline outline-4 outline-[#070b12] lg:-left-[6px]" />
 
                 <div className="flex flex-col gap-1.5">
                   <div className="flex items-center gap-3">

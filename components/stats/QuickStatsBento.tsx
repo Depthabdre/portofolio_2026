@@ -90,22 +90,22 @@ export function QuickStatsBento() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="space-y-3"
-        >
-          <p className="text-xs tracking-[0.26em] text-white/60 lowercase">
-            quick stats
-          </p>
-          <h2 className="max-w-2xl text-3xl font-semibold tracking-[-0.02em] text-[var(--hero-text)] sm:text-4xl">
-            a few numbers from my journey so far
-          </h2>
-        </motion.div>
+            className="mb-12 flex flex-col items-center justify-center space-y-3 text-center sm:mb-16"
+          >
+            <p className="text-xs tracking-[0.26em] uppercase text-[var(--hero-muted)]">
+              quick stats
+            </p>
+            <h2 className="max-w-2xl text-3xl font-semibold tracking-[-0.02em] text-[var(--hero-text)] sm:text-4xl lg:text-5xl">
+              a few numbers from my journey so far
+            </h2>
+          </motion.div>
 
         <motion.div
           variants={gridVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="group relative mt-10"
+          className="group relative"
           onMouseMove={(event) => {
             const bounds = event.currentTarget.getBoundingClientRect();
             mouseX.set(event.clientX - bounds.left);
@@ -148,3 +148,4 @@ export function QuickStatsBento() {
     </section>
   );
 }
+
