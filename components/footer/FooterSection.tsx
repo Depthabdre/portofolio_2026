@@ -93,18 +93,28 @@ export function FooterSection() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-5"
           >
-            <p className="text-xs tracking-[0.26em] text-white/65 uppercase mb-3">personal life</p>
+            <p className="text-[var(--hero-muted)] mb-3 text-xs tracking-[0.26em] uppercase">
+              personal life
+            </p>
             <h2 className="max-w-2xl text-3xl font-semibold tracking-[-0.02em] text-[var(--hero-text)] sm:text-4xl">
               offline
             </h2>
-            <div className="mt-6 space-y-4 text-base leading-8 text-[var(--hero-muted)] sm:text-lg">
-              <p>
-                when i&apos;m away from the keyboard, i spend a lot of time at the gym. lifting weights helps me clear my mind, builds my physical discipline, and gives me the energy to focus when i&apos;m coding.
-              </p>
-              <p>
-                i also read a lot of philosophy and self-help books to keep growing as a person. on weekends, i&apos;m usually watching football—massive liverpool fan (ynwa).
-              </p>
+            
+            <div className="mt-8 flex w-full items-center gap-2 overflow-x-auto pb-2 sm:gap-3 sm:overflow-visible sm:pb-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              <div className="flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[0.7rem] text-[var(--hero-text)] shadow-sm backdrop-blur-md transition-colors hover:border-white/20 sm:gap-2.5 sm:px-4 sm:py-2 sm:text-sm">
+                <span className="text-[var(--hero-accent)] text-xs sm:text-base">🏋️‍♂️</span> <span className="whitespace-nowrap">lifting weights</span>
+              </div>
+              <div className="flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[0.7rem] text-[var(--hero-text)] shadow-sm backdrop-blur-md transition-colors hover:border-white/20 sm:gap-2.5 sm:px-4 sm:py-2 sm:text-sm">
+                <span className="text-[#54c5f8] text-xs sm:text-base">📚</span> <span className="whitespace-nowrap">philosophy & self-help</span>
+              </div>
+              <div className="flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-[rgba(200,60,60,0.5)] bg-red-500/10 px-3 py-1.5 text-[0.7rem] text-[var(--hero-text)] shadow-sm backdrop-blur-md transition-colors hover:border-[rgba(200,60,60,0.8)] sm:gap-2.5 sm:px-4 sm:py-2 sm:text-sm">
+                <span className="text-red-400 text-xs sm:text-base">⚽</span> <span className="whitespace-nowrap">liverpool fc</span>
+              </div>
             </div>
+
+            <p className="mt-8 max-w-lg text-base leading-8 text-[var(--hero-muted)] sm:text-lg">
+              working on my physical side creates real balance with my mind, boosting both my energy and confidence. i also read constantly to gain new perspectives, and on weekends, you&apos;ll find me supporting the reds in full voice. a balanced life is everything.
+            </p>
           </motion.div>
 
           <div className="hidden lg:col-span-2 lg:block"></div>

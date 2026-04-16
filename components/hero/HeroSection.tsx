@@ -43,13 +43,6 @@ export function HeroSection() {
           animate="show"
           className="space-y-7"
         >
-          <motion.p
-            variants={item}
-            className="text-xs tracking-[0.26em] text-white/65 uppercase"
-          >
-            portfolio 2026
-          </motion.p>
-
           <motion.h1
             variants={item}
             className="text-balance text-4xl font-semibold tracking-[-0.03em] text-[var(--hero-text)] sm:text-5xl lg:text-7xl"
