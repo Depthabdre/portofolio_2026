@@ -57,7 +57,7 @@ const projects: Project[] = [
       "i built this with a backend friend for a tutorial agency. i mostly focused on keeping learning content secure while still keeping the app simple for students.",
     bullets: [
       "serving 2K+ active university students.",
-      "added live mcq contests with real-time updates.",
+      "offers subscription-based access to courses packed with videos, notes, PDFs, and quizzes.",
       "uses offline drm with kernel-uptime checks and single-device access.",
     ],
     techIcons: [
