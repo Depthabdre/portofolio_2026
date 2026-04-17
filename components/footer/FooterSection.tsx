@@ -41,6 +41,11 @@ const socialLinks: SocialLink[] = [
     username: "abdellaabdre@gmail.com",
     href: "mailto:abdellaabdre@gmail.com",
   },
+  {
+    label: "youtube",
+    username: "@remedialAbdre",
+    href: "https://www.youtube.com/@remedialAbdre",
+  },
 ];
 
 export function FooterSection() {
