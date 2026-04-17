@@ -3,6 +3,8 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { MagneticLink } from "@/components/hero/MagneticLink";
 import { FiArrowUpRight } from "react-icons/fi";
+import { FaTelegramPlane, FaLinkedinIn, FaYoutube, FaEnvelope } from "react-icons/fa";
+import { IconType } from "react-icons";
 
 const techStack = [
   "flutter",
@@ -22,29 +24,34 @@ const techStack = [
 type SocialLink = {
   label: string;
   href: string;
-  username: string;
+  icon: IconType;
+  colorClass: string;
 };
 
 const socialLinks: SocialLink[] = [
   {
     label: "telegram",
-    username: "@DepthAbdre",
     href: "https://t.me/DepthAbdre",
+    icon: FaTelegramPlane,
+    colorClass: "text-[#24A1DE]",
   },
   {
     label: "linkedin",
-    username: "abdrehim-misbah",
     href: "https://linkedin.com/in/abdrehim-misbah",
+    icon: FaLinkedinIn,
+    colorClass: "text-[#0A66C2]",
   },
   {
     label: "email",
-    username: "abdellaabdre@gmail.com",
-    href: "mailto:abdellaabdre@gmail.com",
+    href: "mailto:abdrehimmisbah@gmail.com",
+    icon: FaEnvelope,
+    colorClass: "text-[#10B981]",
   },
   {
     label: "youtube",
-    username: "@remedialAbdre",
     href: "https://www.youtube.com/@remedialAbdre",
+    icon: FaYoutube,
+    colorClass: "text-[#FF0000]",
   },
 ];
 
@@ -140,14 +147,15 @@ export function FooterSection() {
               always down to chat about mobile dev, problem solving, or the weekend&apos;s football match.
             </p>
 
-            <ul className="mt-8 flex flex-col items-start gap-4 lg:items-end">
+            <ul className="mt-8 flex items-center justify-start gap-4 sm:gap-6 lg:justify-end">
               {socialLinks.map((link) => (
                 <li key={link.label}>
                   <MagneticLink href={link.href} target="_blank" rel="noopener noreferrer">
-                    <span className="flex items-center gap-2">
-                      <span className="text-white/50">{link.label}:</span>
-                      <span className="text-[var(--hero-text)]">{link.username}</span>
-                      <FiArrowUpRight className="h-3.5 w-3.5 opacity-60 ml-0.5" />
+                    <span 
+                      className={`flex items-center justify-center transition-all duration-300 hover:scale-110 hover:opacity-80 ${link.colorClass}`}
+                      aria-label={link.label}
+                    >
+                      <link.icon className="h-7 w-7 drop-shadow-sm" />
                     </span>
                   </MagneticLink>
                 </li>
