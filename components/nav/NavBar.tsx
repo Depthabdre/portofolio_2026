@@ -38,18 +38,19 @@ export function NavBar() {
   ];
 
   return (
-    <nav className="fixed pointer-events-none z-[100] left-0 right-0 top-6 flex justify-center px-4">
+    <nav className="fixed pointer-events-none z-[100] left-0 right-0 top-4 sm:top-6 flex justify-center px-4">
       <motion.div 
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
-        className="pointer-events-auto flex items-center gap-1 rounded-full border border-white/10 bg-[#070b12]/60 p-1.5 backdrop-blur-xl shadow-lg shadow-black/40"
+        className="pointer-events-auto flex items-center justify-center max-w-full overflow-x-auto gap-0.5 sm:gap-1 rounded-full border border-white/10 bg-[#070b12]/60 p-1 sm:p-1.5 backdrop-blur-xl shadow-lg shadow-black/40"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {navItems.map((item) => (
           <Link
             key={item.id}
             href={`#${item.id}`}
-            className="group relative px-4 py-1.5 text-sm font-medium transition-all"
+            className="group relative shrink-0 px-2.5 sm:px-4 py-1.5 sm:py-2 text-[0.7rem] sm:text-sm tracking-wide sm:tracking-normal font-medium transition-all"
             onClick={(e) => {
               e.preventDefault();
               document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
