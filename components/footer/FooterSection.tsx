@@ -132,7 +132,7 @@ export function FooterSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5"
+            className="lg:col-span-5 flex flex-col items-center text-center lg:items-start lg:text-left"
           >
             <p className="text-[var(--hero-muted)] mb-3 text-xs tracking-[0.26em] uppercase">
               personal life
@@ -141,19 +141,19 @@ export function FooterSection() {
               offline
             </h2>
             
-            <div className="mt-8 flex w-full items-center gap-2 overflow-x-auto pb-2 sm:gap-3 sm:overflow-visible sm:pb-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-              <div className="flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[0.7rem] text-[var(--hero-text)] shadow-sm backdrop-blur-md transition-colors hover:border-white/20 sm:gap-2.5 sm:px-4 sm:py-2 sm:text-sm">
+            <div className="mt-8 flex w-full items-center justify-start lg:justify-start gap-2 overflow-x-auto pb-2 sm:gap-3 sm:overflow-visible sm:pb-0 px-2 lg:px-0 scroll-smooth snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              <div className="snap-start flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[0.7rem] text-[var(--hero-text)] shadow-sm backdrop-blur-md transition-colors hover:border-white/20 sm:gap-2.5 sm:px-4 sm:py-2 sm:text-sm">
                 <span className="text-[var(--hero-accent)] text-xs sm:text-base">🏋️‍♂️</span> <span className="whitespace-nowrap">lifting weights</span>
               </div>
-              <div className="flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[0.7rem] text-[var(--hero-text)] shadow-sm backdrop-blur-md transition-colors hover:border-white/20 sm:gap-2.5 sm:px-4 sm:py-2 sm:text-sm">
+              <div className="snap-start flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[0.7rem] text-[var(--hero-text)] shadow-sm backdrop-blur-md transition-colors hover:border-white/20 sm:gap-2.5 sm:px-4 sm:py-2 sm:text-sm">
                 <span className="text-[#54c5f8] text-xs sm:text-base">📚</span> <span className="whitespace-nowrap">philosophy & self-help</span>
               </div>
-              <div className="flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-[rgba(200,60,60,0.5)] bg-red-500/10 px-3 py-1.5 text-[0.7rem] text-[var(--hero-text)] shadow-sm backdrop-blur-md transition-colors hover:border-[rgba(200,60,60,0.8)] sm:gap-2.5 sm:px-4 sm:py-2 sm:text-sm">
+              <div className="snap-start flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-[rgba(200,60,60,0.5)] bg-red-500/10 px-3 py-1.5 text-[0.7rem] text-[var(--hero-text)] shadow-sm backdrop-blur-md transition-colors hover:border-[rgba(200,60,60,0.8)] sm:gap-2.5 sm:px-4 sm:py-2 sm:text-sm">
                 <span className="text-red-400 text-xs sm:text-base">⚽</span> <span className="whitespace-nowrap">liverpool fc</span>
               </div>
             </div>
 
-            <p className="mt-8 max-w-lg text-base leading-8 text-[var(--hero-muted)] sm:text-lg">
+            <p className="mt-6 sm:mt-8 max-w-lg text-[0.95rem] leading-7 sm:text-base sm:leading-8 text-[var(--hero-muted)] sm:text-lg">
               working on my physical side creates real balance with my mind, boosting both my energy and confidence. i also read constantly to gain new perspectives, and on weekends, you&apos;ll find me supporting the reds in full voice. a balanced life is everything.
             </p>
           </motion.div>
@@ -166,24 +166,24 @@ export function FooterSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="flex flex-col lg:col-span-5 lg:items-end lg:text-right"
+            className="flex flex-col lg:col-span-5 items-center text-center lg:items-end lg:text-right"
           >
             <p className="text-xs tracking-[0.26em] text-white/65 uppercase mb-3">contact</p>
             <h2 className="max-w-2xl text-3xl font-semibold tracking-[-0.02em] text-[var(--hero-text)] sm:text-4xl">
               let&apos;s connect
             </h2>
-            <p className="mt-4 max-w-sm text-base leading-8 text-[var(--hero-muted)] sm:text-lg lg:max-w-[19rem]">
+            <p className="mt-4 max-w-sm text-[0.95rem] sm:text-base leading-7 sm:leading-8 text-[var(--hero-muted)] sm:text-lg lg:max-w-[19rem]">
               always down to chat about mobile dev, problem solving, or the weekend&apos;s football match.
             </p>
 
-            <div className="mt-8 flex items-center justify-start gap-4 sm:gap-6 lg:justify-end">
+            <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-end gap-4 sm:gap-6">
               {socialLinks.map((link) => (
                 <MagneticLink key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
                   <span 
-                    className={`flex items-center justify-center transition-all duration-300 hover:scale-110 hover:opacity-80 ${link.colorClass}`}
+                    className={`group flex items-center justify-center rounded-3xl sm:rounded-full border border-white/5 bg-white/[0.01] sm:bg-transparent shadow-lg sm:shadow-none p-3 sm:p-0 transition-all duration-300 hover:scale-110 hover:opacity-80 hover:bg-white/[0.03] ${link.colorClass}`}
                     aria-label={link.label}
                   >
-                    <link.icon className="h-7 w-7 drop-shadow-sm" />
+                    <link.icon className="h-6 w-6 sm:h-7 sm:w-7 drop-shadow-sm transition-transform duration-300 group-hover:-translate-y-1" />
                   </span>
                 </MagneticLink>
               ))}

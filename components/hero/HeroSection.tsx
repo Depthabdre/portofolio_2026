@@ -35,13 +35,13 @@ export function HeroSection() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section id="hero" className="hero-shell relative min-h-screen overflow-hidden px-6 pt-28 pb-10 md:px-12 md:pt-32 md:pb-12 lg:px-20">
-      <div className="hero-grid relative z-20 mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+    <section id="hero" className="hero-shell relative min-h-[100svh] overflow-hidden px-5 pt-28 pb-16 sm:px-6 sm:pt-32 sm:pb-10 md:px-12 md:pb-12 lg:px-20 flex flex-col justify-center">
+      <div className="hero-grid relative z-20 mx-auto grid w-full max-w-7xl gap-8 sm:gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="space-y-7"
+          className="space-y-6 sm:space-y-7 order-last lg:order-first text-center lg:text-left flex flex-col items-center lg:items-start"
         >
           <motion.h1
             variants={item}
@@ -52,17 +52,17 @@ export function HeroSection() {
 
           <motion.p
             variants={item}
-              className="max-w-xl text-sm tracking-[0.08em] text-[var(--hero-muted)] sm:text-base leading-relaxed"
+              className="max-w-xl text-xs sm:text-sm tracking-[0.05em] sm:tracking-[0.08em] text-[var(--hero-muted)] leading-relaxed"
             >
               <strong className="font-semibold text-white">SWE @ AASTU</strong> | <strong className="font-semibold text-[var(--hero-accent)]">a2sv graduate</strong> | <strong className="font-semibold text-[#54c5f8]">flutter developer</strong></motion.p>
           <motion.p
             variants={item}
-            className="max-w-2xl text-base leading-8 text-white/82 sm:text-lg"
+            className="max-w-2xl text-[0.95rem] leading-7 sm:text-base sm:leading-8 text-white/82 sm:text-lg"
           >
             {heroContent.intro}
           </motion.p>
 
-          <motion.div variants={item} className="flex flex-wrap gap-4 pt-1">
+          <motion.div variants={item} className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
             <MagneticLink href={heroContent.primaryCta.href} variant="primary">
               {heroContent.primaryCta.label}
             </MagneticLink>
@@ -76,7 +76,7 @@ export function HeroSection() {
             </MagneticLink>
           </motion.div>
 
-          <motion.div variants={item} className="flex items-center gap-4 pt-4">
+          <motion.div variants={item} className="flex justify-center lg:justify-start items-center gap-4 sm:gap-6 pt-4">
             {socialLinks.map((link) => (
               <a
                 key={link.label}
@@ -102,22 +102,22 @@ export function HeroSection() {
             ease: [0.22, 1, 0.36, 1],
             delay: 0.2,
           }}
-          className="relative"
+          className="relative order-first lg:order-last mb-8 lg:mb-0"
         >
           <div className="hero-glow absolute inset-8 -z-10 rounded-full blur-3xl" />
-          <div className="hero-frame relative h-[420px] overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] shadow-[0_30px_120px_rgba(6,20,32,0.58)] lg:h-[520px]">
+          <div className="hero-frame relative h-[320px] sm:h-[420px] overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] shadow-[0_20px_80px_rgba(6,20,32,0.4)] lg:h-[520px]">
             <HeroScene reducedMotion={Boolean(reducedMotion)} />
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(255,255,255,0.16),transparent_56%)]" />
           </div>
-          <div className="mt-5 flex items-center gap-4 rounded-2xl border border-white/10 bg-black/35 p-3 backdrop-blur-md">
+          <div className="mt-5 flex flex-col sm:flex-row items-center gap-4 rounded-2xl border border-white/10 bg-black/35 p-4 sm:p-3 backdrop-blur-md text-center sm:text-left">
             <Image
               src={heroContent.profileImage}
               alt="abdrehim profile"
               width={56}
               height={56}
-              className="h-14 w-14 rounded-xl border border-white/20 object-cover"
+              className="h-12 w-12 sm:h-14 sm:w-14 rounded-xl border border-white/20 object-cover shrink-0"
             />
-            <p className="text-sm leading-6 text-white/72">
+            <p className="text-[0.85rem] sm:text-sm leading-6 text-white/72">
               always down to chat about mobile systems, clean architecture, and building things that actually help people.
             </p>
           </div>
