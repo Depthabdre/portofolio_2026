@@ -141,15 +141,18 @@ export function FooterSection() {
               offline
             </h2>
             
-            <div className="mt-8 flex w-full items-center justify-start lg:justify-start gap-2 overflow-x-auto pb-2 sm:gap-3 sm:overflow-visible sm:pb-0 px-2 lg:px-0 scroll-smooth snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-              <div className="snap-start flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[0.7rem] text-[var(--hero-text)] shadow-sm backdrop-blur-md transition-colors hover:border-white/20 sm:gap-2.5 sm:px-4 sm:py-2 sm:text-sm">
-                <span className="text-[var(--hero-accent)] text-xs sm:text-base">🏋️‍♂️</span> <span className="whitespace-nowrap">lifting weights</span>
+            <div className="mt-8 grid w-full grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:items-center sm:justify-start sm:gap-3">
+              <div className="group col-span-1 flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-white/10 bg-[linear-gradient(140deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] px-3 py-2 text-[0.75rem] text-[var(--hero-text)] shadow-[0_8px_22px_rgba(3,10,22,0.32)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 sm:min-h-0 sm:w-fit sm:rounded-full sm:px-4 sm:py-2 sm:text-sm">
+                <span className="text-[var(--hero-accent)] text-sm sm:text-base">🏋️‍♂️</span>
+                <span className="whitespace-nowrap">lifting weights</span>
               </div>
-              <div className="snap-start flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[0.7rem] text-[var(--hero-text)] shadow-sm backdrop-blur-md transition-colors hover:border-white/20 sm:gap-2.5 sm:px-4 sm:py-2 sm:text-sm">
-                <span className="text-[#54c5f8] text-xs sm:text-base">📚</span> <span className="whitespace-nowrap">philosophy & self-help</span>
+              <div className="group col-span-1 flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-white/10 bg-[linear-gradient(140deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] px-3 py-2 text-[0.75rem] text-[var(--hero-text)] shadow-[0_8px_22px_rgba(3,10,22,0.32)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 sm:min-h-0 sm:w-fit sm:rounded-full sm:px-4 sm:py-2 sm:text-sm">
+                <span className="text-[#54c5f8] text-sm sm:text-base">📚</span>
+                <span className="whitespace-nowrap">philosophy & self-help</span>
               </div>
-              <div className="snap-start flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-[rgba(200,60,60,0.5)] bg-red-500/10 px-3 py-1.5 text-[0.7rem] text-[var(--hero-text)] shadow-sm backdrop-blur-md transition-colors hover:border-[rgba(200,60,60,0.8)] sm:gap-2.5 sm:px-4 sm:py-2 sm:text-sm">
-                <span className="text-red-400 text-xs sm:text-base">⚽</span> <span className="whitespace-nowrap">liverpool fc</span>
+              <div className="group col-span-2 flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-[rgba(200,60,60,0.55)] bg-[linear-gradient(140deg,rgba(239,68,68,0.2),rgba(239,68,68,0.08))] px-3 py-2 text-[0.75rem] text-[var(--hero-text)] shadow-[0_8px_22px_rgba(35,8,10,0.32)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(200,60,60,0.8)] sm:min-h-0 sm:w-fit sm:rounded-full sm:px-4 sm:py-2 sm:text-sm">
+                <span className="text-red-400 text-sm sm:text-base">⚽</span>
+                <span className="whitespace-nowrap">liverpool fc</span>
               </div>
             </div>
 

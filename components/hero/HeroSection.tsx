@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { MagneticLink } from "@/components/hero/MagneticLink";
 import { heroContent, socialLinks } from "@/lib/content/hero";
@@ -102,40 +101,18 @@ export function HeroSection() {
             ease: [0.22, 1, 0.36, 1],
             delay: 0.2,
           }}
-          className="relative mt-8 lg:mt-0"
+          className="relative hidden md:block mt-8 lg:mt-0"
         >
           <div className="hero-glow absolute inset-8 -z-10 rounded-full blur-3xl" />
-          <div className="hero-frame relative h-[320px] sm:h-[420px] overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] shadow-[0_20px_80px_rgba(6,20,32,0.4)] lg:h-[520px]">
+          <div className="hero-frame relative h-[420px] overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] shadow-[0_20px_80px_rgba(6,20,32,0.4)] lg:h-[520px]">
             <HeroScene reducedMotion={Boolean(reducedMotion)} />
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(255,255,255,0.16),transparent_56%)]" />
-          </div>
-          <div className="mt-5 flex flex-col sm:flex-row items-center gap-4 rounded-2xl border border-white/10 bg-black/35 p-4 sm:p-3 backdrop-blur-md text-center sm:text-left">
-            <Image
-              src={heroContent.profileImage}
-              alt="abdrehim profile"
-              width={56}
-              height={56}
-              className="h-12 w-12 sm:h-14 sm:w-14 rounded-xl border border-white/20 object-cover shrink-0"
-            />
-            <p className="text-[0.85rem] sm:text-sm leading-6 text-white/72">
-              always down to chat about mobile systems, clean architecture, and building things that actually help people.
-            </p>
           </div>
         </motion.div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-8 z-20 flex justify-center">
-          <a href="#projects" className="pointer-events-auto flex flex-col items-center gap-2 text-white/45 hover:text-white transition-colors duration-300">
-            <span className="text-xs tracking-[0.18em] lowercase">scroll</span>
-            <span className="h-10 w-px animate-pulse bg-gradient-to-b from-transparent via-white/70 to-transparent" />
-          </a>
-        </div>
-
       <div className="pointer-events-none absolute left-6 top-10 z-10 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(95,198,255,0.22),rgba(95,198,255,0)_70%)] md:left-10" />
       <div className="pointer-events-none absolute right-10 top-28 z-10 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(193,243,111,0.14),rgba(193,243,111,0)_72%)]" />
-      <p className="pointer-events-none absolute bottom-5 left-6 z-20 text-xs tracking-[0.13em] text-white/45 lowercase md:left-12">
-        {heroContent.quote}
-      </p>
     </section>
   );
 }
