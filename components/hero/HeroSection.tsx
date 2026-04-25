@@ -41,7 +41,7 @@ export function HeroSection() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="space-y-6 sm:space-y-7 order-last lg:order-first text-center lg:text-left flex flex-col items-center lg:items-start"
+          className="space-y-6 sm:space-y-7 text-center lg:text-left flex flex-col items-center lg:items-start"
         >
           <motion.h1
             variants={item}
@@ -102,7 +102,7 @@ export function HeroSection() {
             ease: [0.22, 1, 0.36, 1],
             delay: 0.2,
           }}
-          className="relative order-first lg:order-last mb-8 lg:mb-0"
+          className="relative mt-8 lg:mt-0"
         >
           <div className="hero-glow absolute inset-8 -z-10 rounded-full blur-3xl" />
           <div className="hero-frame relative h-[320px] sm:h-[420px] overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] shadow-[0_20px_80px_rgba(6,20,32,0.4)] lg:h-[520px]">
