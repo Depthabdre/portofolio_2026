@@ -35,7 +35,7 @@ export function HeroSection() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section className="hero-shell relative min-h-screen overflow-hidden px-6 py-10 md:px-12 md:py-12 lg:px-20">
+    <section id="hero" className="hero-shell relative min-h-screen overflow-hidden px-6 py-10 md:px-12 md:py-12 lg:px-20">
       <div className="hero-grid relative z-20 mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <motion.div
           variants={container}

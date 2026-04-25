@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Manrope } from "next/font/google";
+import { NavBar } from "@/components/nav/NavBar";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -29,7 +30,8 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${manrope.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
-      <body suppressHydrationWarning className="min-h-full flex flex-col">
+      <body suppressHydrationWarning className="min-h-full flex flex-col relative">
+        <NavBar />
         {children}
       </body>
     </html>

@@ -30,12 +30,13 @@ body {
     radial-gradient(circle at 8% 14%, rgba(96, 195, 255, 0.16), transparent 36%),
     radial-gradient(circle at 86% 19%, rgba(184, 255, 108, 0.12), transparent 38%),
     linear-gradient(160deg, #05080f 0%, #070b12 48%, #080e17 100%);
+  background-attachment: fixed;
 }
 
 .page-shell::before,
 .section-shell::before {
   content: "";
-  position: absolute;
+  position: fixed;
   inset: 0;
   pointer-events: none;
   opacity: 0.38;
@@ -44,18 +45,20 @@ body {
     linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
   background-size: 62px 62px;
   mask-image: radial-gradient(circle at 32% 38%, black, transparent 72%);
+  z-index: -1;
 }
 
 .page-shell::after,
 .section-shell::after {
   content: "";
-  position: absolute;
+  position: fixed;
   inset: 0;
   pointer-events: none;
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
   background-size: 3px 3px;
   mix-blend-mode: soft-light;
   opacity: 0.06;
+  z-index: -1;
 }
 
 .hero-glow {

@@ -2,23 +2,44 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { MagneticLink } from "@/components/hero/MagneticLink";
-import { FiArrowUpRight } from "react-icons/fi";
 import { FaTelegramPlane, FaLinkedinIn, FaYoutube, FaEnvelope } from "react-icons/fa";
 import { IconType } from "react-icons";
+import {
+  SiFlutter,
+  SiNodedotjs,
+  SiExpress,
+  SiPostgresql,
+  SiReact,
+  SiCplusplus,
+  SiPython,
+  SiDart,
+} from "react-icons/si";
+import { MdLayers, MdCloudOff, MdArchitecture } from "react-icons/md";
+
+// Custom Flutter BLoC Icon
+const BlocIcon = (props: any) => (
+  // eslint-disable-next-line @next/next/no-img-element
+  <img 
+    src="https://plugins.jetbrains.com/files/12129/953327/icon/default.png" 
+    alt="flutter bloc" 
+    className={props.className} 
+    style={{ ...props.style }}
+  />
+);
 
 const techStack = [
-  "flutter",
-  "clean architecture",
-  "bloc",
-  "node.js",
-  "express",
-  "postgresql",
-  "react",
-  "c++",
-  "python",
-  "dart",
-  "system design",
-  "offline-first",
+  { name: "flutter", icon: SiFlutter, color: "text-[#54C5F8]", glow: "shadow-[#54C5F8]/20" },
+  { name: "clean architecture", icon: MdLayers, color: "text-[#8BE8F4]", glow: "shadow-[#8BE8F4]/20" },
+  { name: "bloc", icon: BlocIcon, color: "text-[#BD8CFF]", glow: "shadow-[#BD8CFF]/20" },
+  { name: "node.js", icon: SiNodedotjs, color: "text-[#8AF07D]", glow: "shadow-[#8AF07D]/20" },
+  { name: "express", icon: SiExpress, color: "text-[#D6E2F5]", glow: "shadow-[#D6E2F5]/20" },
+  { name: "postgresql", icon: SiPostgresql, color: "text-[#336791]", glow: "shadow-[#336791]/20" },
+  { name: "react", icon: SiReact, color: "text-[#61DAFB]", glow: "shadow-[#61DAFB]/20" },
+  { name: "c++", icon: SiCplusplus, color: "text-[#00599C]", glow: "shadow-[#00599C]/20" },
+  { name: "python", icon: SiPython, color: "text-[#3776AB]", glow: "shadow-[#3776AB]/20" },
+  { name: "dart", icon: SiDart, color: "text-[#0175C2]", glow: "shadow-[#0175C2]/20" },
+  { name: "system design", icon: MdArchitecture, color: "text-[#A6B5CB]", glow: "shadow-[#A6B5CB]/20" },
+  { name: "offline-first", icon: MdCloudOff, color: "text-[#FF9E9E]", glow: "shadow-[#FF9E9E]/20" },
 ];
 
 type SocialLink = {
@@ -62,14 +83,14 @@ export function FooterSection() {
     <footer id="contact" className="relative flex flex-col pt-16 md:pt-24 z-10 w-full overflow-hidden text-[var(--hero-text)]">
       {/* 1. The Tech Marquee (Infinite Scroll) */}
       <div 
-        className="relative flex w-full flex-col overflow-hidden border-y border-white/5 bg-white/[0.02] py-5"
+        className="relative flex w-full flex-col overflow-hidden border-y border-white/5 bg-gradient-to-r from-transparent via-white/[0.02] to-transparent py-8"
         style={{
           maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
           WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
         }}
       >
         <motion.div
-          className="flex w-max items-center gap-6 md:gap-12"
+          className="flex w-max items-center gap-4 md:gap-8"
           animate={reducedMotion ? undefined : { x: ["0%", "-50%"] }}
           transition={
             reducedMotion
@@ -82,14 +103,22 @@ export function FooterSection() {
           }
         >
           {/* Double array for seamless loop */}
-          {[...techStack, ...techStack, ...techStack].map((tech, i) => (
-            <div key={i} className="flex items-center gap-6 md:gap-12 whitespace-nowrap">
-              <span className="text-3xl font-medium tracking-[-0.02em] text-white/50 lowercase md:text-5xl">
-                {tech}
-              </span>
-              <span className="text-white/20">•</span>
-            </div>
-          ))}
+          {[...techStack, ...techStack, ...techStack].map((tech, i) => {
+            const Icon = tech.icon;
+            return (
+              <div 
+                key={i} 
+                className="group flex items-center justify-center gap-3 md:gap-4 rounded-full border border-white/5 bg-white/[0.015] px-5 py-3 md:px-6 md:py-3.5 shadow-lg backdrop-blur-md transition-all duration-300 hover:border-white/10 hover:bg-white/[0.03] hover:-translate-y-0.5"
+              >
+                <div className={`flex items-center justify-center h-8 w-8 md:h-10 md:w-10 rounded-full border border-white/5 bg-[#070b12] shadow-inner ${tech.glow} transition-colors group-hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]`}>
+                  <Icon className={`h-4 w-4 md:h-5 md:w-5 ${tech.color}`} />
+                </div>
+                <span className="text-lg font-medium tracking-tight text-white/60 lowercase transition-colors group-hover:text-white/90 md:text-2xl">
+                  {tech.name}
+                </span>
+              </div>
+            );
+          })}
         </motion.div>
       </div>
 
@@ -147,20 +176,18 @@ export function FooterSection() {
               always down to chat about mobile dev, problem solving, or the weekend&apos;s football match.
             </p>
 
-            <ul className="mt-8 flex items-center justify-start gap-4 sm:gap-6 lg:justify-end">
+            <div className="mt-8 flex items-center justify-start gap-4 sm:gap-6 lg:justify-end">
               {socialLinks.map((link) => (
-                <li key={link.label}>
-                  <MagneticLink href={link.href} target="_blank" rel="noopener noreferrer">
-                    <span 
-                      className={`flex items-center justify-center transition-all duration-300 hover:scale-110 hover:opacity-80 ${link.colorClass}`}
-                      aria-label={link.label}
-                    >
-                      <link.icon className="h-7 w-7 drop-shadow-sm" />
-                    </span>
-                  </MagneticLink>
-                </li>
+                <MagneticLink key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
+                  <span 
+                    className={`flex items-center justify-center transition-all duration-300 hover:scale-110 hover:opacity-80 ${link.colorClass}`}
+                    aria-label={link.label}
+                  >
+                    <link.icon className="h-7 w-7 drop-shadow-sm" />
+                  </span>
+                </MagneticLink>
               ))}
-            </ul>
+            </div>
           </motion.div>
         </div>
 
