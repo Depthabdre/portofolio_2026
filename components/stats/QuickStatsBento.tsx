@@ -6,12 +6,12 @@ import {
   useMotionValue,
   type Variants,
 } from "framer-motion";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
 type StatCard = {
   id: string;
-  title: string;
-  subtext: string;
+  title: ReactNode;
+  subtext: ReactNode;
   className: string;
 };
 
@@ -39,9 +39,17 @@ const cards: StatCard[] = [
   },
   {
     id: "mentor",
-    title: "gdsc flutter mentor",
+    title: (
+      <>
+        <span className="normal-case">GDG</span> flutter mentor
+      </>
+    ),
     subtext:
-      "helping the 2026 batch figure out flutter. mostly we just debug things together and learn as we go.",
+      (
+        <>
+          helping the 2026 batch in <span className="normal-case">Google Developer Group (GDG)</span>. mostly we just debug things together and learn as we go.
+        </>
+      ),
     className: "md:col-span-1 md:row-span-1",
   },
   {

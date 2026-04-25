@@ -1,16 +1,16 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 
 type TimelineItem = {
   id: string;
   badge: string;
-  title: string;
-  description: string;
+  title: ReactNode;
+  description: ReactNode;
 };
 
-const items: TimelineItem[] = [
+const items: TimelineItem[] = [ 
   {
     id: "item-1",
     badge: "current",
@@ -21,9 +21,17 @@ const items: TimelineItem[] = [
   {
     id: "item-2",
     badge: "current",
-    title: "gdsc flutter mentor",
+    title: (
+      <>
+        <span className="normal-case">GDG</span> flutter mentor
+      </>
+    ),
     description:
-      "mentoring the 2026 batch of google developer student clubs in flutter. i try my best to help my peers understand clean architecture and debug state management issues. guiding others through their blockers constantly makes me a better developer.",
+      (
+        <>
+          mentoring the 2026 batch of <span className="normal-case">Google Developer Group (GDG)</span> in flutter. i try my best to help my peers understand clean architecture and debug state management issues. guiding others through their blockers constantly makes me a better developer.
+        </>
+      ),
   },
   {
     id: "item-3",
