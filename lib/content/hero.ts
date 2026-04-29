@@ -1,9 +1,9 @@
 export const heroContent = {
     title: "hey, i'm abdrehim.",
     subtitle:
-        "software engineering student @ aastu | a2sv graduate | flutter developer",
+        "software engineering student @ aastu | A2SV graduate | flutter and full-stack developer",
     intro:
-        "i spend most of my time building, experimenting, and refining my craft in mobile development. i care about software that is secure, reliable, and genuinely useful in the real world. more than anything, i'm someone who keeps learning and improving every single day.",
+        "turning ideas into reliable software is what i love doing most. as a flutter and full-stack developer, my focus is on clean architecture and creating seamless digital experiences. no matter the scale of the project, i care deeply about writing code that actually solves real-world problems. constantly curious, always iterating, and just trying to get a little better every day.",
     primaryCta: {
         label: "view my work",
         href: "#projects",
