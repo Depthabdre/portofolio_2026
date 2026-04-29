@@ -170,7 +170,7 @@ const projects: Project[] = [
   },
   {
     id: "student-focus-app",
-    title: "student focus app",
+    title: "student focus app (personal project)",
     description:
       "a full-stack productivity web app built to help students stay focused, motivated, and visually track their progress over time.",
     bullets: [
@@ -202,7 +202,7 @@ const projects: Project[] = [
     links: [
       {
         label: "github repo",
-        href: "https://github.com/Depthabdre/student_focus_app",
+        href: "https://github.com/Depthabdre/fullfocusmode",
       },
     ],
     uiImages: [
