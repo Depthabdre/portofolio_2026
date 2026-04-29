@@ -13,6 +13,7 @@ import {
   SiCplusplus,
   SiPython,
   SiDart,
+  SiNextdotjs,
 } from "react-icons/si";
 import { MdLayers, MdCloudOff, MdArchitecture } from "react-icons/md";
 
@@ -35,6 +36,7 @@ const techStack = [
   { name: "express", icon: SiExpress, color: "text-[#D6E2F5]", glow: "shadow-[#D6E2F5]/20" },
   { name: "postgresql", icon: SiPostgresql, color: "text-[#336791]", glow: "shadow-[#336791]/20" },
   { name: "react", icon: SiReact, color: "text-[#61DAFB]", glow: "shadow-[#61DAFB]/20" },
+  { name: "next.js", icon: SiNextdotjs, color: "text-[#ffffff]", glow: "shadow-[#ffffff]/20" },
   { name: "c++", icon: SiCplusplus, color: "text-[#00599C]", glow: "shadow-[#00599C]/20" },
   { name: "python", icon: SiPython, color: "text-[#3776AB]", glow: "shadow-[#3776AB]/20" },
   { name: "dart", icon: SiDart, color: "text-[#0175C2]", glow: "shadow-[#0175C2]/20" },

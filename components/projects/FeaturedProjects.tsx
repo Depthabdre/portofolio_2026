@@ -9,6 +9,9 @@ import {
   SiNodedotjs,
   SiGooglegemini,
   SiGithub,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiPostgresql,
 } from "react-icons/si";
 import { MdLayers, MdLock } from "react-icons/md";
 import type { IconBaseProps } from "react-icons";
@@ -47,6 +50,7 @@ type Project = {
   links: ProjectLink[];
   uiImages: string[];
   railTone: "cyan" | "lime";
+  imageType?: "mobile" | "web";
 };
 
 const projects: Project[] = [
@@ -164,6 +168,52 @@ const projects: Project[] = [
     ],
     railTone: "lime",
   },
+  {
+    id: "student-focus-app",
+    title: "student focus app",
+    description:
+      "a full-stack productivity web app built to help students stay focused, motivated, and visually track their progress over time.",
+    bullets: [
+      "multiple focus modes: dead mode (high-intensity), deep mode, and easy mode.",
+      "focus session timer with custom durations, automatic breaks, and daily inspirational quotes.",
+      "visual progress tracker with calendar view to log daily focus minutes and build streaks.",
+    ],
+    techIcons: [
+      { id: "nextjs", label: "next.js", icon: SiNextdotjs, iconClass: "text-[#ffffff]" },
+      {
+        id: "tailwindcss",
+        label: "tailwind css",
+        icon: SiTailwindcss,
+        iconClass: "text-[#38bdf8]",
+      },
+      {
+        id: "postgresql",
+        label: "neon db & drizzle",
+        icon: SiPostgresql,
+        iconClass: "text-[#336791]",
+      },
+      {
+        id: "betterauth",
+        label: "betterauth & oauth",
+        icon: MdLock,
+        iconClass: "text-[#ffbf00]",
+      },
+    ],
+    links: [
+      {
+        label: "github repo",
+        href: "https://github.com/Depthabdre/student_focus_app",
+      },
+    ],
+    uiImages: [
+      "/FocusModeweb/Screenshot 2026-04-29 at 6.10.27 in the evening.png",
+      "/FocusModeweb/Screenshot 2026-04-29 at 6.11.40 in the evening.png",
+      "/FocusModeweb/Screenshot 2026-04-29 at 6.12.06 in the evening.png",
+      "/FocusModeweb/Screenshot 2026-04-29 at 6.12.15 in the evening.png",
+    ],
+    railTone: "cyan",
+    imageType: "web",
+  },
 ];
 
 const sectionVariants: Variants = {
@@ -178,7 +228,7 @@ const sectionVariants: Variants = {
   },
 };
 
-function UiRail({ images, tone }: { images: string[]; tone: "cyan" | "lime" }) {
+function UiRail({ images, tone, imageType = "mobile" }: { images: string[]; tone: "cyan" | "lime"; imageType?: "mobile" | "web" }) {
   const reducedMotion = useReducedMotion();
   const palette =
     tone === "cyan"
@@ -194,6 +244,10 @@ function UiRail({ images, tone }: { images: string[]; tone: "cyan" | "lime" }) {
           "from-[#223728] to-[#1b2b20]",
           "from-[#293d2c] to-[#1d2a22]",
         ];
+
+  const isWeb = imageType === "web";
+  const sizeClass = isWeb ? "h-[200px] w-[340px]" : "h-[220px] w-[132px]";
+  const sizesAttr = isWeb ? "340px" : "132px";
 
   return (
     <div className="relative h-full w-full overflow-hidden rounded-2xl border border-white/10 bg-black/35 p-3">
@@ -217,14 +271,14 @@ function UiRail({ images, tone }: { images: string[]; tone: "cyan" | "lime" }) {
           return (
             <div
               key={`screen-${index}`}
-              className={`relative flex h-[220px] w-[132px] shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/12 bg-gradient-to-b ${toneClass} shadow-[0_16px_35px_rgba(2,8,15,0.4)]`}
+              className={`relative flex ${sizeClass} shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/12 bg-gradient-to-b ${toneClass} shadow-[0_16px_35px_rgba(2,8,15,0.4)]`}
             >
               <Image 
                 src={src}
                 alt="Product Preview"
                 fill
-                className="object-cover object-top"
-                sizes="132px"
+                className={`object-cover ${isWeb ? 'object-left-top' : 'object-top'}`}
+                sizes={sizesAttr}
               />
             </div>
           );
@@ -235,14 +289,14 @@ function UiRail({ images, tone }: { images: string[]; tone: "cyan" | "lime" }) {
           return (
             <div
               key={`screen-dup-${index}`}
-              className={`relative flex h-[220px] w-[132px] shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/12 bg-gradient-to-b ${toneClass} shadow-[0_16px_35px_rgba(2,8,15,0.4)]`}
+              className={`relative flex ${sizeClass} shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/12 bg-gradient-to-b ${toneClass} shadow-[0_16px_35px_rgba(2,8,15,0.4)]`}
             >
               <Image 
                 src={src}
                 alt="Product Preview"
                 fill
-                className="object-cover object-top"
-                sizes="132px"
+                className={`object-cover ${isWeb ? 'object-left-top' : 'object-top'}`}
+                sizes={sizesAttr}
               />
             </div>
           );
@@ -351,7 +405,7 @@ function ProjectCard({
             </span>
           </div>
           <div className="flex-1">
-            <UiRail images={project.uiImages} tone={project.railTone} />
+            <UiRail images={project.uiImages} tone={project.railTone} imageType={project.imageType} />
           </div>
         </div>
       </div>
