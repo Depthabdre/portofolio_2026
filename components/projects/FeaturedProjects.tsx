@@ -12,6 +12,8 @@ import {
   SiNextdotjs,
   SiTailwindcss,
   SiPostgresql,
+  SiApple,
+  SiDart,
 } from "react-icons/si";
 import { MdLayers, MdLock } from "react-icons/md";
 import type { IconBaseProps } from "react-icons";
@@ -51,6 +53,7 @@ type Project = {
   uiImages: string[];
   railTone: "cyan" | "lime";
   imageType?: "mobile" | "web";
+  imageFit?: "cover" | "contain";
 };
 
 const projects: Project[] = [
@@ -174,7 +177,7 @@ const projects: Project[] = [
   },
   {
     id: "student-focus-app",
-    title: "student focus app (personal project)",
+    title: "Student Focus App (personal project)",
     description:
       "a full-stack productivity web app built to help students stay focused, motivated, and visually track their progress over time.",
     bullets: [
@@ -222,6 +225,51 @@ const projects: Project[] = [
     railTone: "cyan",
     imageType: "web",
   },
+  {
+    id: "focus-session-macos",
+    title: "Focus Session for Mac (personal project)",
+    description:
+      "i built this because mac was missing a native focus session clock. designed to be simple, clean, and strictly focused on helping you get in the zone without distractions.",
+    bullets: [
+      "native macos notifications with persistent alerts when your session finishes.",
+      "responsive, distraction-free ui that scales elegantly to a floating window.",
+      "lightweight universal macos binary built with flutter and custom looping audio alerts.",
+    ],
+    techIcons: [
+      { id: "flutter", label: "flutter", icon: SiFlutter, iconClass: "text-[#67d8ff]" },
+      {
+        id: "dart",
+        label: "dart",
+        icon: SiDart,
+        iconClass: "text-[#0175C2]",
+      },
+      {
+        id: "apple",
+        label: "macos native",
+        icon: SiApple,
+        iconClass: "text-[#ffffff]",
+      },
+    ],
+    links: [
+      {
+        label: "github repo",
+        href: "https://github.com/Depthabdre/focus_session_for_mac",
+      },
+      {
+        label: "download (telegram)",
+        href: "https://t.me/DepthAbdre1",
+      },
+    ],
+    uiImages: [
+      "/FocusModeMac/1777187175567.jpeg",
+      "/FocusModeMac/1777187175586.jpeg",
+      "/FocusModeMac/1777187175733.jpeg",
+      "/FocusModeMac/1777187175861.jpeg",
+    ],
+    railTone: "lime",
+    imageType: "web",
+    imageFit: "contain",
+  },
 ];
 
 const sectionVariants: Variants = {
@@ -236,7 +284,7 @@ const sectionVariants: Variants = {
   },
 };
 
-function UiRail({ images, tone, imageType = "mobile" }: { images: string[]; tone: "cyan" | "lime"; imageType?: "mobile" | "web" }) {
+function UiRail({ images, tone, imageType = "mobile", imageFit = "cover" }: { images: string[]; tone: "cyan" | "lime"; imageType?: "mobile" | "web"; imageFit?: "cover" | "contain" }) {
   const reducedMotion = useReducedMotion();
   const palette =
     tone === "cyan"
@@ -256,6 +304,10 @@ function UiRail({ images, tone, imageType = "mobile" }: { images: string[]; tone
   const isWeb = imageType === "web";
   const sizeClass = isWeb ? "h-[200px] w-[340px]" : "h-[220px] w-[132px]";
   const sizesAttr = isWeb ? "340px" : "132px";
+  
+  const fitClass = imageFit === "contain" 
+    ? "object-contain p-2" 
+    : `object-cover ${isWeb ? 'object-left-top' : 'object-top'}`;
 
   return (
     <div className="relative h-full w-full overflow-hidden rounded-2xl border border-white/10 bg-black/35 p-3">
@@ -285,7 +337,7 @@ function UiRail({ images, tone, imageType = "mobile" }: { images: string[]; tone
                 src={src}
                 alt="Product Preview"
                 fill
-                className={`object-cover ${isWeb ? 'object-left-top' : 'object-top'}`}
+                className={fitClass}
                 sizes={sizesAttr}
               />
             </div>
@@ -303,7 +355,7 @@ function UiRail({ images, tone, imageType = "mobile" }: { images: string[]; tone
                 src={src}
                 alt="Product Preview"
                 fill
-                className={`object-cover ${isWeb ? 'object-left-top' : 'object-top'}`}
+                className={fitClass}
                 sizes={sizesAttr}
               />
             </div>
@@ -413,7 +465,7 @@ function ProjectCard({
             </span>
           </div>
           <div className="flex-1">
-            <UiRail images={project.uiImages} tone={project.railTone} imageType={project.imageType} />
+            <UiRail images={project.uiImages} tone={project.railTone} imageType={project.imageType} imageFit={project.imageFit} />
           </div>
         </div>
       </div>
