@@ -91,6 +91,10 @@ const projects: Project[] = [
         href: "https://github.com/Depthabdre/a_plus_tutorial_app",
         isPrivate: true,
       },
+      {
+        label: "official download",
+        href: "https://a-plus-download-platform.vercel.app",
+      },
     ],
     uiImages: [
       "/APlus/Screenshot_20260413-170535.jpg",
@@ -203,6 +207,10 @@ const projects: Project[] = [
       {
         label: "github repo",
         href: "https://github.com/Depthabdre/fullfocusmode",
+      },
+      {
+        label: "live app",
+        href: "https://focus-mode-xi.vercel.app/login",
       },
     ],
     uiImages: [
