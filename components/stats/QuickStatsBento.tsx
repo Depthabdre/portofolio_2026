@@ -18,9 +18,9 @@ type StatCard = {
 const cards: StatCard[] = [
   {
     id: "gpa",
-    title: "3.93 gpa",
+    title: "3.93 GPA",
     subtext:
-      "software engineering at aastu. just trying to keep my grades up while building side projects.",
+      "software engineering at aastu · building real things alongside the degree.",
     className: "md:col-span-1 md:row-span-1",
   },
   {

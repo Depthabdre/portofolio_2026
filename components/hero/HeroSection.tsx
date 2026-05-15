@@ -53,7 +53,7 @@ export function HeroSection() {
             variants={item}
               className="max-w-2xl text-xs sm:text-base lg:text-lg tracking-[0.05em] sm:tracking-[0.08em] text-[var(--hero-muted)] leading-relaxed"
             >
-              <strong className="font-semibold text-white">SWE @ AASTU</strong> | <strong className="font-semibold text-[var(--hero-accent)]">A2SV graduate</strong> | <strong className="font-semibold text-[#54c5f8]">flutter and full-stack developer</strong></motion.p>
+              <strong className="font-semibold text-white">Software Engineer</strong> · <strong className="font-semibold text-[var(--hero-accent)]">A2SV Graduate</strong> · <strong className="font-semibold text-[#54c5f8]">Flutter Developer</strong></motion.p>
           <motion.p
             variants={item}
             className="max-w-2xl text-[0.95rem] leading-7 sm:text-base sm:leading-8 text-white/82 sm:text-lg"

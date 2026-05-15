@@ -14,13 +14,6 @@ const items: TimelineItem[] = [
   {
     id: "item-1",
     badge: "current",
-    title: "4th-year software engineering student @ aastu",
-    description:
-      "currently in my 4th year at addis ababa science and technology university. balancing heavy coursework with building side projects and keeping my grades up. just trying to absorb as much knowledge as possible before graduation.",
-  },
-  {
-    id: "item-2",
-    badge: "current",
     title: (
       <>
         <span className="normal-case">GDG</span> flutter mentor
@@ -32,6 +25,13 @@ const items: TimelineItem[] = [
           mentoring the 2026 batch of <span className="normal-case">Google Developer Group (GDG)</span> in flutter. i try my best to help my peers understand clean architecture and debug state management issues. guiding others through their blockers constantly makes me a better developer.
         </>
       ),
+  },
+  {
+    id: "item-2",
+    badge: "education",
+    title: "software engineering · aastu",
+    description:
+      "currently in my final year, balancing coursework with real client work and personal projects. the degree gave me the foundation — everything else i built on top of it myself.",
   },
   {
     id: "item-3",
