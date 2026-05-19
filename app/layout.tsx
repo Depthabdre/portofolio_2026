@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Manrope } from "next/font/google";
+import { JetBrains_Mono, Inter } from "next/font/google";
 import { NavBar } from "@/components/nav/NavBar";
 import "./globals.css";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -14,9 +14,9 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "abdrehim | software engineer",
+  title: "Abdrehim | Software Engineer",
   description:
-    "portfolio of abdrehim: flutter-first engineer building secure, impactful software and mentoring future developers.",
+    "Portfolio of Abdrehim: Software engineer building secure, impactful mobile and web applications.",
 };
 
 export default function RootLayout({
@@ -28,9 +28,9 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${manrope.variable} ${jetBrainsMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
-      <body suppressHydrationWarning className="min-h-full flex flex-col relative">
+      <body suppressHydrationWarning className="min-h-full flex flex-col relative font-sans">
         <NavBar />
         {children}
       </body>

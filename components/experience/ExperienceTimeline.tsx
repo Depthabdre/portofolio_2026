@@ -13,46 +13,38 @@ type TimelineItem = {
 const items: TimelineItem[] = [ 
   {
     id: "item-1",
-    badge: "current",
-    title: (
-      <>
-        <span className="normal-case">GDG</span> flutter mentor
-      </>
-    ),
+    badge: "CURRENT",
+    title: "GDG Flutter Mentor",
     description:
-      (
-        <>
-          mentoring the 2026 batch of <span className="normal-case">Google Developer Group (GDG)</span> in flutter. i try my best to help my peers understand clean architecture and debug state management issues. guiding others through their blockers constantly makes me a better developer.
-        </>
-      ),
+      "I mentor the 2026 batch of the Google Developer Group (GDG) in Flutter. I help peers debug state management issues, enforce clean architecture, and navigate technical blockers, accelerating their development velocity.",
   },
   {
     id: "item-2",
-    badge: "education",
-    title: "software engineering · aastu",
+    badge: "EDUCATION",
+    title: "Software Engineering · AASTU",
     description:
-      "currently in my final year, balancing coursework with real client work and personal projects. the degree gave me the foundation — everything else i built on top of it myself.",
+      "I am currently completing my final year, balancing academic coursework with continuous real-world client engagements and personal application development.",
   },
   {
     id: "item-3",
-    badge: "internship",
-    title: "software engineer intern @ eskalate",
+    badge: "INTERNSHIP",
+    title: "Software Engineer Intern @ Eskalate",
     description:
-      "had the opportunity to work on a production e-commerce app. i collaborated with the backend team to build secure authentication, product management, and a real-time socket.io chat feature using flutter. wrote a lot of unit tests to make sure we didn't break anything.",
+      "I collaborated with a cross-functional team to engineer a production e-commerce application. I designed secure authentication flows, product management dashboards, and a real-time socket.io chat architecture using Flutter.",
   },
   {
     id: "item-4",
-    badge: "academy",
-    title: "a2sv (africa to silicon valley) graduate",
+    badge: "ACADEMY",
+    title: "A2SV Graduate",
     description:
-      "completed an intensive, life-changing software engineering program backed by google. spent months diving deep into data structures, algorithms, and system design alongside an incredibly inspiring community.",
+      "I completed an intensive software engineering program backed by Google, focusing on advanced data structures, algorithms, and system design alongside top-tier engineers.",
   },
   {
     id: "item-5",
-    badge: "the roots",
-    title: "teaching & community",
+    badge: "COMMUNITY",
+    title: "Teaching & Community",
     description:
-      "i’ve been volunteering to teach and mentor since elementary school (somehow collected 15+ community certificates along the way). i just genuinely believe that the best way to master something is to share it with someone else.",
+      "I actively volunteer to teach and mentor software concepts. Explaining complex technical problems ensures I deeply understand the systems I build.",
   },
 ];
 
@@ -72,7 +64,7 @@ export function ExperienceTimeline() {
   return (
     <section
       id="experience"
-      className="relative overflow-hidden px-6 py-24 md:px-12 lg:px-20"
+      className="relative overflow-hidden px-6 py-12 md:py-24 md:px-12 lg:px-20"
     >
       <div className="relative mx-auto w-full max-w-4xl">
         {/* Section Header */}
@@ -81,13 +73,13 @@ export function ExperienceTimeline() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-12 flex flex-col items-center justify-center space-y-3 text-center sm:mb-16"
+          className="mb-12 flex flex-col items-center justify-center space-y-2 text-center sm:mb-16"
         >
-          <p className="text-xs tracking-[0.26em] uppercase text-[var(--hero-muted)]">
-            experience
+          <p className="text-[13px] font-medium tracking-[0.1em] uppercase text-[var(--hero-muted)]">
+            EXPERIENCE
           </p>
-          <h2 className="max-w-2xl text-3xl font-semibold tracking-[-0.02em] text-[var(--hero-text)] sm:text-4xl lg:text-5xl">
-            my journey
+          <h2 className="max-w-2xl text-[28px] font-bold tracking-[-0.02em] text-[var(--hero-text)] sm:text-[32px] lg:text-[36px]">
+            My Journey
           </h2>
         </motion.div>
 
@@ -122,16 +114,16 @@ export function ExperienceTimeline() {
 
                 <div className="flex flex-col gap-1.5">
                   <div className="flex items-center gap-3">
-                    <span className="shrink-0 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[0.7rem] font-medium tracking-widest text-[#8be8f4] lowercase backdrop-blur-sm">
+                    <span className="shrink-0 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[13px] font-medium tracking-[0.1em] text-[#8be8f4] uppercase backdrop-blur-sm">
                       {item.badge}
                     </span>
                   </div>
 
-                  <h3 className="mt-2 text-xl font-medium tracking-tight text-white/90 lowercase sm:text-2xl">
+                  <h3 className="mt-2 text-[20px] font-bold tracking-tight text-white/90 sm:text-[22px]">
                     {item.title}
                   </h3>
 
-                  <p className="mt-3 max-w-2xl text-[0.95rem] leading-relaxed text-[#aeb6c2] lowercase sm:text-base">
+                  <p className="mt-2 max-w-[70ch] text-[16px] leading-[1.65] text-[#aeb6c2]">
                     {item.description}
                   </p>
                 </div>

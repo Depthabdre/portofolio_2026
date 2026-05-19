@@ -59,43 +59,43 @@ type Project = {
 const projects: Project[] = [
   {
     id: "a-plus",
-    title: "A+ tutorial class (client project)",
+    title: "A+ Tutorial Class",
     description:
-      "i built this with a backend friend for a tutorial agency. i mostly focused on keeping learning content secure while still keeping the app simple for students.",
+      "A tutorial agency needed a way to deliver courses securely without relying on continuous internet access. I built an offline-first mobile application that strictly enforces single-device DRM and kernel-uptime checks, currently serving over 2,000 active students.",
     bullets: [
-      "serving 2K+ active university students.",
-      "offers subscription-based access to courses packed with videos, notes, PDFs, and quizzes.",
-      "uses offline drm with kernel-uptime checks and single-device access.",
+      "Currently serving 2,000+ active university students.",
+      "Delivers subscription-based courses packed with videos, notes, PDFs, and quizzes.",
+      "Implements offline DRM with kernel-uptime checks and strict single-device access.",
     ],
     techIcons: [
-      { id: "flutter", label: "flutter", icon: SiFlutter, iconClass: "text-[#67d8ff]" },
+      { id: "flutter", label: "FLUTTER", icon: SiFlutter, iconClass: "text-[#67d8ff]" },
       {
         id: "bloc",
-        label: "flutter bloc",
+        label: "FLUTTER BLOC",
         icon: BlocIcon,
         iconClass: "text-[#bd8cff]",
       },
       {
         id: "clean-architecture",
-        label: "clean architecture",
+        label: "CLEAN ARCHITECTURE",
         icon: MdLayers,
         iconClass: "text-[#8be8f4]",
       },
       {
         id: "encryption",
-        label: "encryption",
+        label: "ENCRYPTION",
         icon: MdLock,
         iconClass: "text-[#c9efff]",
       },
     ],
     links: [
       {
-        label: "mobile app",
+        label: "Mobile App",
         href: "https://github.com/Depthabdre/a_plus_tutorial_app",
         isPrivate: true,
       },
       {
-        label: "official download",
+        label: "Official Download",
         href: "https://a-plus-download-platform.vercel.app",
       },
     ],
@@ -115,48 +115,48 @@ const projects: Project[] = [
   },
   {
     id: "real-english",
-    title: "Real English (personal project)",
+    title: "Real English",
     description:
-      "i built this because i wanted language learning to feel natural, not stressful. i handled both flutter and node.js to keep the experience simple and immersive for learners.",
+      "Language learning often feels rigid and forced. I designed a TikTok-style mobile application with a full AI-powered backend, producing immersive stories and fluid UI experiences without cognitive overhead.",
     bullets: [
-      "fully ai-powered story engine using gemini api for story paths, gemini text-to-voice, and pollination ai scene images.",
-      "immersion feed uses a tiktok-style experience with smooth preloading.",
-      "growth garden tracks streaks through a simple gamified tree profile.",
+      "Built a fully AI-powered story engine using Gemini API for dynamic storytelling and text-to-speech.",
+      "Engineered a TikTok-style immersion feed featuring seamless preloading mechanics.",
+      "Designed a gamified progression system tracking user streaks through a visualized growth garden.",
     ],
     techIcons: [
-      { id: "flutter", label: "flutter", icon: SiFlutter, iconClass: "text-[#67d8ff]" },
+      { id: "flutter", label: "FLUTTER", icon: SiFlutter, iconClass: "text-[#67d8ff]" },
       {
         id: "nodejs",
-        label: "node.js",
+        label: "NODE.JS",
         icon: SiNodedotjs,
         iconClass: "text-[#8af07d]",
       },
       {
         id: "express",
-        label: "express",
+        label: "EXPRESS",
         icon: SiExpress,
         iconClass: "text-[#d6e2f5]",
       },
       {
         id: "modular-monolith",
-        label: "modular monolith",
+        label: "MODULAR MONOLITH",
         icon: MdLayers,
         iconClass: "text-[#a1f3c6]",
       },
       {
         id: "ai-integration",
-        label: "gemini api",
+        label: "GEMINI API",
         icon: SiGooglegemini,
         iconClass: "text-[#b9f0cf]",
       },
     ],
     links: [
       {
-        label: "mobile app",
+        label: "Mobile App",
         href: "https://github.com/Depthabdre/real_english",
       },
       {
-        label: "backend api",
+        label: "Backend API",
         href: "https://github.com/Depthabdre/RealEnglish",
       },
     ],
@@ -177,42 +177,42 @@ const projects: Project[] = [
   },
   {
     id: "student-focus-app",
-    title: "Student Focus App (personal project)",
+    title: "Student Focus Web App",
     description:
-      "a full-stack productivity web app built to help students stay focused, motivated, and visually track their progress over time.",
+      "To resolve severe focus fragmentation, I developed a productivity web application prioritizing visual analytics and stringent timeboxing metrics, accelerating deep work adaptation for students.",
     bullets: [
-      "multiple focus modes: dead mode (high-intensity), deep mode, and easy mode.",
-      "focus session timer with custom durations, automatic breaks, and daily inspirational quotes.",
-      "visual progress tracker with calendar view to log daily focus minutes and build streaks.",
+      "Built multiple focus modes, including a high-intensity 'dead mode' for uncompromising concentration.",
+      "Programmed a session timer handling custom intervals, auto-breaks, and generative motivation loops.",
+      "Constructed a visual data tracker capturing focus metrics across personalized calendar dashboards.",
     ],
     techIcons: [
-      { id: "nextjs", label: "next.js", icon: SiNextdotjs, iconClass: "text-[#ffffff]" },
+      { id: "nextjs", label: "NEXT.JS", icon: SiNextdotjs, iconClass: "text-[#ffffff]" },
       {
         id: "tailwindcss",
-        label: "tailwind css",
+        label: "TAILWIND CSS",
         icon: SiTailwindcss,
         iconClass: "text-[#38bdf8]",
       },
       {
         id: "postgresql",
-        label: "neon db & drizzle",
+        label: "NEON DB & DRIZZLE",
         icon: SiPostgresql,
         iconClass: "text-[#336791]",
       },
       {
         id: "betterauth",
-        label: "betterauth & oauth",
+        label: "BETTERAUTH",
         icon: MdLock,
         iconClass: "text-[#ffbf00]",
       },
     ],
     links: [
       {
-        label: "github repo",
+        label: "GitHub Repo",
         href: "https://github.com/Depthabdre/fullfocusmode",
       },
       {
-        label: "live app",
+        label: "Live App",
         href: "https://focus-mode-xi.vercel.app/login",
       },
     ],
@@ -227,36 +227,36 @@ const projects: Project[] = [
   },
   {
     id: "focus-session-macos",
-    title: "Focus Session for Mac (personal project)",
+    title: "Focus Session for Mac",
     description:
-      "i built this because mac was missing a native focus session clock. designed to be simple, clean, and strictly focused on helping you get in the zone without distractions.",
+      "macOS lacks an integrated, distraction-free session clock. I compiled a native macOS application featuring an absolute minimalist UI to maintain workflow momentum without unnecessary OS interruptions.",
     bullets: [
-      "native macos notifications with persistent alerts when your session finishes.",
-      "responsive, distraction-free ui that scales elegantly to a floating window.",
-      "lightweight universal macos binary built with flutter and custom looping audio alerts.",
+      "Engineered reliable native macOS notifications triggering persistent alerts upon session completion.",
+      "Developed a fluid, scale-agnostic UI operating effortlessly as a floating auxiliary window.",
+      "Deployed a highly optimized universal macOS binary wrapping custom-looped audio alert vectors.",
     ],
     techIcons: [
-      { id: "flutter", label: "flutter", icon: SiFlutter, iconClass: "text-[#67d8ff]" },
+      { id: "flutter", label: "FLUTTER", icon: SiFlutter, iconClass: "text-[#67d8ff]" },
       {
         id: "dart",
-        label: "dart",
+        label: "DART",
         icon: SiDart,
         iconClass: "text-[#0175C2]",
       },
       {
         id: "apple",
-        label: "macos native",
+        label: "MACOS NATIVE",
         icon: SiApple,
         iconClass: "text-[#ffffff]",
       },
     ],
     links: [
       {
-        label: "github repo",
+        label: "GitHub Repo",
         href: "https://github.com/Depthabdre/focus_session_for_mac",
       },
       {
-        label: "download (telegram)",
+        label: "Download App",
         href: "https://t.me/DepthAbdre1",
       },
     ],
@@ -387,14 +387,14 @@ function ProjectCard({
           data-align="title"
           className="flex items-start gap-4"
         >
-          <h3 className="max-w-5xl text-[1.45rem] font-semibold tracking-[-0.015em] text-[var(--hero-text)] md:text-[1.62rem] xl:text-[1.74rem]">
+          <h3 className="max-w-5xl text-[20px] sm:text-[22px] font-bold tracking-[-0.015em] text-[var(--hero-text)]">
             {project.title}
           </h3>
         </div>
 
         <p
           data-align="description"
-          className="mt-3 max-w-5xl text-sm leading-6 text-white/80 lowercase md:text-[0.93rem]"
+          className="mt-3 max-w-[70ch] text-[16px] leading-[1.65] text-white/80"
         >
           {project.description}
         </p>
@@ -403,7 +403,7 @@ function ProjectCard({
           data-align="bullets"
           className="mt-5"
         >
-          <ul className="list-disc space-y-2.5 pl-5 text-sm leading-6.5 text-white/76 lowercase md:text-[0.92rem]">
+          <ul className="list-disc space-y-2 pl-5 text-[16px] leading-[1.65] text-white/76">
             {project.bullets.map((bullet) => (
               <li key={bullet}>{bullet}</li>
             ))}
@@ -432,7 +432,7 @@ function ProjectCard({
                 className="group flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-2 text-[0.85rem] tracking-wide text-white/80 transition-all hover:border-white/25 hover:bg-white/10 hover:text-white"
               >
                 <SiGithub className="h-4 w-4 opacity-80" />
-                <span className="lowercase">{link.label}</span>
+                <span className="font-medium text-[14px]">{link.label}</span>
                 {link.isPrivate && (
                   <MdLock className="ml-0.5 h-3.5 w-3.5 text-white/40 transition-colors group-hover:text-white/70" />
                 )}
@@ -460,8 +460,8 @@ function ProjectCard({
 
         <div className="relative mt-5 flex min-h-[230px] flex-1 flex-col">
           <div className="mb-3 flex items-center justify-between px-1">
-            <span className="text-[0.72rem] tracking-[0.17em] text-white/52 lowercase">
-              product ui preview rail
+            <span className="text-[13px] tracking-[0.1em] text-white/52 uppercase font-medium">
+              PRODUCT UI PREVIEW
             </span>
           </div>
           <div className="flex-1">
@@ -567,20 +567,20 @@ export function FeaturedProjects() {
   }, []);
 
   return (
-    <section id="projects" className="relative overflow-hidden px-6 py-24 md:px-12 lg:px-20">
+    <section id="projects" className="relative overflow-hidden px-6 py-12 md:py-24 md:px-12 lg:px-20">
       <div className="relative mx-auto w-full max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-12 flex flex-col items-center justify-center space-y-3 text-center sm:mb-16"
+            className="mb-12 flex flex-col items-center justify-center space-y-2 text-center sm:mb-16"
           >
-            <p className="text-[var(--hero-muted)] text-xs tracking-[0.26em] uppercase">
-              featured projects
+            <p className="text-[var(--hero-muted)] text-[13px] font-medium tracking-[0.1em] uppercase">
+              FEATURED PROJECTS
             </p>
-            <h2 className="max-w-2xl text-3xl font-semibold tracking-[-0.02em] text-[var(--hero-text)] sm:text-4xl lg:text-5xl">
-              stuff i&apos;ve built
+            <h2 className="max-w-2xl text-[28px] font-bold tracking-[-0.02em] text-[var(--hero-text)] sm:text-[32px] lg:text-[36px]">
+              Selected Work
             </h2>
           </motion.div>
 

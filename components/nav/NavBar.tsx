@@ -50,7 +50,7 @@ export function NavBar() {
           <Link
             key={item.id}
             href={`#${item.id}`}
-            className="group relative shrink-0 px-2.5 sm:px-4 py-1.5 sm:py-2 text-[0.7rem] sm:text-sm tracking-wide sm:tracking-normal font-medium transition-all"
+            className="group relative shrink-0 px-3 sm:px-4 py-1.5 sm:py-2 text-[13px] sm:text-sm font-medium transition-all"
             onClick={(e) => {
               e.preventDefault();
               document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });

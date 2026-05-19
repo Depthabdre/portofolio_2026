@@ -1,32 +1,32 @@
 export const heroContent = {
-    title: "hey, i'm abdrehim.",
+    title: "Hi, I'm Abdrehim.",
     subtitle:
         "Software Engineer · A2SV Graduate · Flutter Developer",
     intro:
-        "i'm a flutter developer with a deep passion for clean architecture and building software the right way. i care about every layer of the code — not just making things work, but making them maintainable, scalable, and something i'm genuinely proud of. i trained at africa to silicon valley (a2sv), a google-backed academy, where i learned that discipline and ownership are just as important as technical skill. i show up fully committed to whatever i'm part of, i take what's given to me seriously, and i don't stop until it's done right.",
+        "I build scalable mobile and web applications for ambitious teams, specializing in Flutter and clean architecture. As an Africa to Silicon Valley (A2SV) graduate, I focus on delivering maintainable software with strict engineering discipline and ownership.",
     primaryCta: {
-        label: "view my work",
+        label: "View My Work",
         href: "#projects",
     },
     secondaryCta: {
-        label: "grab resume",
+        label: "Download CV",
         href: "/AbdrehimMisbahResumeC.pdf",
     },
-    quote: "we aren't given anything we can't handle.",
+    quote: "We aren't given anything we can't handle.",
     profileImage: "/profile.jpg",
 };
 
 export const socialLinks = [
     {
-        label: "github",
+        label: "GitHub",
         href: "https://github.com/Depthabdre",
     },
     {
-        label: "linkedin",
+        label: "LinkedIn",
         href: "https://www.linkedin.com/in/abdrehim-misbah/",
     },
     {
-        label: "telegram",
+        label: "Telegram",
         href: "https://t.me/depthabdre",
     },
 ];

@@ -34,7 +34,7 @@ export function HeroSection() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section id="hero" className="hero-shell relative min-h-[100svh] overflow-hidden px-5 pt-28 pb-16 sm:px-6 sm:pt-32 sm:pb-10 md:px-12 md:pb-12 lg:px-20 flex flex-col justify-center">
+    <section id="hero" className="hero-shell relative min-h-[100svh] overflow-hidden px-5 pt-28 pb-12 sm:px-6 sm:pt-32 sm:pb-12 md:px-12 md:pb-24 lg:px-20 flex flex-col justify-center">
       <div className="hero-grid relative z-20 mx-auto grid w-full max-w-7xl gap-8 sm:gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <motion.div
           variants={container}
@@ -42,28 +42,31 @@ export function HeroSection() {
           animate="show"
           className="space-y-6 sm:space-y-7 text-center lg:text-left flex flex-col items-center lg:items-start"
         >
+          {/* Typography: Hero heading 48-56px (text-5xl to text-6xl), Title Case, font-bold, tracking-[-0.02em], leading-tight */}
           <motion.h1
             variants={item}
-            className="text-balance text-4xl font-semibold tracking-[-0.03em] text-[var(--hero-text)] sm:text-5xl lg:text-7xl"
+            className="text-balance text-5xl font-bold tracking-[-0.02em] leading-[1.1] text-[var(--hero-text)] sm:text-[56px] lg:text-[64px]"
           >
             {heroContent.title}
           </motion.h1>
 
           <motion.p
             variants={item}
-              className="max-w-2xl text-xs sm:text-base lg:text-lg tracking-[0.05em] sm:tracking-[0.08em] text-[var(--hero-muted)] leading-relaxed"
-            >
+            className="max-w-2xl text-[13px] sm:text-sm font-medium tracking-[0.08em] text-[var(--hero-muted)] uppercase"
+          >
               <strong className="font-semibold text-white">Software Engineer</strong> · <strong className="font-semibold text-[var(--hero-accent)]">A2SV Graduate</strong> · <strong className="font-semibold text-[#54c5f8]">Flutter Developer</strong></motion.p>
+          
+          {/* Typography: Body 16-18px, font-normal, leading-relaxed, text-balance */}
           <motion.p
             variants={item}
-            className="max-w-2xl text-[0.95rem] leading-7 sm:text-base sm:leading-8 text-white/82 sm:text-lg"
+            className="max-w-[70ch] text-base font-normal leading-[1.65] text-white/82 sm:text-lg text-balance"
           >
             {heroContent.intro}
           </motion.p>
 
           <motion.div variants={item} className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
             <MagneticLink href={heroContent.primaryCta.href} variant="primary">
-              {heroContent.primaryCta.label}
+              <span className="font-medium">{heroContent.primaryCta.label}</span>
             </MagneticLink>
             <MagneticLink
               href={heroContent.secondaryCta.href}
@@ -71,7 +74,7 @@ export function HeroSection() {
               target="_blank"
               rel="noreferrer"
             >
-              {heroContent.secondaryCta.label}
+              <span className="font-medium">{heroContent.secondaryCta.label}</span>
             </MagneticLink>
           </motion.div>
 
@@ -82,7 +85,7 @@ export function HeroSection() {
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="group text-sm tracking-[0.16em] text-white/56 lowercase transition-colors hover:text-[var(--hero-accent)]"
+                className="group text-[13px] tracking-[0.1em] text-white/56 transition-colors hover:text-[var(--hero-accent)]"
               >
                 <span className="relative inline-block">
                   {link.label}

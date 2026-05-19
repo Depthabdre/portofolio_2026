@@ -24,7 +24,7 @@ export function MagneticLink({
   const springY = useSpring(y, { stiffness: 220, damping: 20, mass: 0.3 });
 
   const baseClass =
-    "relative inline-flex h-12 items-center justify-center rounded-full px-6 text-sm tracking-[0.12em] lowercase transition-colors duration-300";
+    "relative inline-flex h-12 items-center justify-center rounded-full px-6 text-[14px] font-medium tracking-[0.05em] transition-colors duration-300";
 
   const variantClass = useMemo(() => {
     if (variant === "primary") {
