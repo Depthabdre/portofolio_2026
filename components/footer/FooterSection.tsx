@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { MagneticLink } from "@/components/hero/MagneticLink";
 import { FaTelegramPlane, FaLinkedinIn, FaYoutube, FaEnvelope } from "react-icons/fa";
-import { IconType } from "react-icons";
+import { IconType, IconBaseProps } from "react-icons";
 import {
   SiFlutter,
   SiNodedotjs,
@@ -18,7 +18,7 @@ import {
 import { MdLayers, MdCloudOff, MdArchitecture } from "react-icons/md";
 
 // Custom Flutter BLoC Icon
-const BlocIcon = (props: any) => (
+const BlocIcon = (props: IconBaseProps) => (
   // eslint-disable-next-line @next/next/no-img-element
   <img 
     src="https://plugins.jetbrains.com/files/12129/953327/icon/default.png" 
@@ -125,7 +125,7 @@ export function FooterSection() {
       </div>
 
       {/* Main Content Layout */}
-      <div className="relative mx-auto w-full max-w-7xl px-6 py-12 md:py-24 md:px-12 lg:px-20">
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-24 md:px-12 lg:px-20">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-8">
           
           {/* 2. Offline / Personal Life (Text Block) */}
@@ -171,17 +171,17 @@ export function FooterSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="flex flex-col lg:col-span-5 items-center text-center lg:items-end lg:text-right"
+            className="flex flex-col lg:col-span-5 items-center text-center lg:items-center lg:text-center"
           >
             <p className="text-[13px] font-medium tracking-[0.1em] text-white/65 uppercase mb-3">CONTACT</p>
             <h2 className="max-w-2xl text-[28px] font-bold tracking-[-0.02em] text-[var(--hero-text)] sm:text-[32px] lg:text-[36px]">
               Let&apos;s Connect
             </h2>
-            <p className="mt-4 max-w-[70ch] text-[16px] leading-[1.65] text-[var(--hero-muted)] lg:max-w-[19rem]">
+            <p className="mt-4 max-w-[70ch] text-[16px] leading-[1.65] text-[var(--hero-muted)]">
               Open to freelance and full-time roles — let&apos;s talk.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-end gap-4 sm:gap-6">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
               {socialLinks.map((link) => (
                 <MagneticLink key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
                   <span 
