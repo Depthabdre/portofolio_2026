@@ -144,21 +144,21 @@ export function FooterSection() {
             </h2>
             
             <div className="mt-8 grid w-full grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:items-center sm:justify-start sm:gap-3">
-              <div className="group col-span-1 flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-white/10 bg-[linear-gradient(140deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] px-3 py-2 text-[14px] font-medium text-[var(--hero-text)] shadow-[0_8px_22px_rgba(3,10,22,0.32)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 sm:min-h-0 sm:w-fit sm:rounded-full sm:px-4 sm:py-2">
-                <span className="text-[var(--hero-accent)] text-base">🏋️‍♂️</span>
-                <span className="whitespace-nowrap">Lifting Weights</span>
+              <div className="group col-span-1 flex min-h-12 items-center justify-center gap-1.5 sm:gap-2 rounded-2xl border border-white/10 bg-[linear-gradient(140deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] px-2 py-2 text-[11px] min-[375px]:text-[12px] sm:text-[14px] font-medium text-[var(--hero-text)] shadow-[0_8px_22px_rgba(3,10,22,0.32)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 sm:min-h-0 sm:w-fit sm:rounded-full sm:px-4 sm:py-2 text-center">
+                <span className="text-[var(--hero-accent)] text-sm sm:text-base">🏋️‍♂️</span>
+                <span className="leading-tight sm:whitespace-nowrap">Lifting Weights</span>
               </div>
-              <div className="group col-span-1 flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-white/10 bg-[linear-gradient(140deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] px-3 py-2 text-[14px] font-medium text-[var(--hero-text)] shadow-[0_8px_22px_rgba(3,10,22,0.32)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 sm:min-h-0 sm:w-fit sm:rounded-full sm:px-4 sm:py-2">
-                <span className="text-[#54c5f8] text-base">📚</span>
-                <span className="whitespace-nowrap">Philosophy & Self-Help</span>
+              <div className="group col-span-1 flex min-h-12 items-center justify-center gap-1.5 sm:gap-2 rounded-2xl border border-white/10 bg-[linear-gradient(140deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] px-2 py-2 text-[11px] min-[375px]:text-[12px] sm:text-[14px] font-medium text-[var(--hero-text)] shadow-[0_8px_22px_rgba(3,10,22,0.32)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 sm:min-h-0 sm:w-fit sm:rounded-full sm:px-4 sm:py-2 text-center">
+                <span className="text-[#54c5f8] text-sm sm:text-base">📚</span>
+                <span className="leading-tight sm:whitespace-nowrap">Philosophy & Self-Help</span>
               </div>
-              <div className="group col-span-2 flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-[rgba(200,60,60,0.55)] bg-[linear-gradient(140deg,rgba(239,68,68,0.2),rgba(239,68,68,0.08))] px-3 py-2 text-[14px] font-medium text-[var(--hero-text)] shadow-[0_8px_22px_rgba(35,8,10,0.32)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(200,60,60,0.8)] sm:min-h-0 sm:w-fit sm:rounded-full sm:px-4 sm:py-2">
-                <span className="text-red-400 text-base">⚽</span>
-                <span className="whitespace-nowrap">Liverpool FC</span>
+              <div className="group col-span-2 flex min-h-12 items-center justify-center gap-1.5 sm:gap-2 rounded-2xl border border-[rgba(200,60,60,0.55)] bg-[linear-gradient(140deg,rgba(239,68,68,0.2),rgba(239,68,68,0.08))] px-2 py-2 text-[11px] min-[375px]:text-[12px] sm:text-[14px] font-medium text-[var(--hero-text)] shadow-[0_8px_22px_rgba(35,8,10,0.32)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(200,60,60,0.8)] sm:min-h-0 sm:w-fit sm:rounded-full sm:px-4 sm:py-2 text-center">
+                <span className="text-red-400 text-sm sm:text-base">⚽</span>
+                <span className="leading-tight sm:whitespace-nowrap">Liverpool FC</span>
               </div>
             </div>
 
-            <p className="mt-6 sm:mt-8 max-w-[70ch] text-[16px] leading-[1.65] text-[var(--hero-muted)] text-balance">
+            <p className="mt-6 sm:mt-8 max-w-[70ch] text-[16px] leading-[1.65] text-[var(--hero-muted)] text-left sm:text-balance">
               I balance my rigorous engineering schedule by lifting weights to build physical and mental resilience. I read extensively across philosophy and psychology to refine my mental models and spend weekends supporting Liverpool FC.
             </p>
           </motion.div>

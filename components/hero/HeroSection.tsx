@@ -35,12 +35,12 @@ export function HeroSection() {
 
   return (
     <section id="hero" className="hero-shell relative min-h-[100svh] overflow-hidden px-5 pt-28 pb-12 sm:px-6 sm:pt-32 sm:pb-12 md:px-12 md:pb-24 lg:px-20 flex flex-col justify-center">
-      <div className="hero-grid relative z-20 mx-auto grid w-full max-w-7xl gap-8 sm:gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div className="hero-grid relative z-20 mx-auto grid w-full max-w-7xl gap-8 sm:gap-12 md:grid-cols-2 md:items-center">
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="space-y-6 sm:space-y-7 text-center lg:text-left flex flex-col items-center lg:items-start"
+          className="space-y-6 sm:space-y-7 text-center md:text-left flex flex-col items-center md:items-start"
         >
           {/* Typography: Hero heading 48-56px (text-5xl to text-6xl), Title Case, font-bold, tracking-[-0.02em], leading-tight */}
           <motion.h1
@@ -59,12 +59,12 @@ export function HeroSection() {
           {/* Typography: Body 16-18px, font-normal, leading-relaxed, text-balance */}
           <motion.p
             variants={item}
-            className="max-w-[70ch] text-base font-normal leading-[1.65] text-white/82 sm:text-lg text-balance"
+            className="max-w-[70ch] text-base font-normal leading-[1.65] text-white/82 sm:text-lg text-left sm:text-balance"
           >
             {heroContent.intro}
           </motion.p>
 
-          <motion.div variants={item} className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
+          <motion.div variants={item} className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4 pt-2">
             <MagneticLink href={heroContent.primaryCta.href} variant="primary">
               <span className="font-medium">{heroContent.primaryCta.label}</span>
             </MagneticLink>
@@ -78,7 +78,7 @@ export function HeroSection() {
             </MagneticLink>
           </motion.div>
 
-          <motion.div variants={item} className="flex justify-center lg:justify-start items-center gap-4 sm:gap-6 pt-4">
+          <motion.div variants={item} className="flex justify-center md:justify-start items-center gap-4 sm:gap-6 pt-4">
             {socialLinks.map((link) => (
               <a
                 key={link.label}
@@ -104,7 +104,7 @@ export function HeroSection() {
             ease: [0.22, 1, 0.36, 1],
             delay: 0.2,
           }}
-          className="relative hidden md:block mt-8 lg:mt-0"
+          className="relative hidden md:block mt-8 md:mt-0"
         >
           <div className="hero-glow absolute inset-8 -z-10 rounded-full blur-3xl" />
           <div className="hero-frame relative h-[420px] overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] shadow-[0_20px_80px_rgba(6,20,32,0.4)] lg:h-[520px]">

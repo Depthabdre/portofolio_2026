@@ -123,7 +123,7 @@ export function ExperienceTimeline() {
                     {item.title}
                   </h3>
 
-                  <p className="mt-2 max-w-[70ch] text-[16px] leading-[1.65] text-[#aeb6c2]">
+                  <p className="mt-2 max-w-[70ch] text-[16px] leading-[1.65] text-[#aeb6c2] text-left">
                     {item.description}
                   </p>
                 </div>

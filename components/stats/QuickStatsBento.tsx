@@ -136,7 +136,7 @@ export function QuickStatsBento() {
                   <h3 className="text-[20px] font-bold tracking-[-0.01em] text-white sm:text-[22px]">
                     {card.title}
                   </h3>
-                  <p className="mt-3 text-[16px] leading-[1.65] text-white/74">
+                  <p className="mt-3 text-[16px] leading-[1.65] text-white/74 text-left">
                     {card.subtext}
                   </p>
                 </div>

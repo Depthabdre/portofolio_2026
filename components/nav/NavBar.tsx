@@ -43,14 +43,14 @@ export function NavBar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
-        className="pointer-events-auto flex items-center justify-center max-w-full overflow-x-auto gap-0.5 sm:gap-1 rounded-full border border-white/10 bg-[#070b12]/60 p-1 sm:p-1.5 backdrop-blur-xl shadow-lg shadow-black/40"
+        className="pointer-events-auto flex items-center max-w-full overflow-x-auto gap-0.5 sm:gap-1 rounded-full border border-white/10 bg-[#070b12]/60 p-1 sm:p-1.5 backdrop-blur-xl shadow-lg shadow-black/40 scroll-smooth"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {navItems.map((item) => (
           <Link
             key={item.id}
             href={`#${item.id}`}
-            className="group relative shrink-0 px-3 sm:px-4 py-1.5 sm:py-2 text-[13px] sm:text-sm font-medium transition-all"
+            className="group relative shrink-0 px-2 min-[375px]:px-2.5 sm:px-4 py-1.5 sm:py-2 text-[10px] min-[375px]:text-[11px] sm:text-sm font-medium whitespace-nowrap transition-all"
             onClick={(e) => {
               e.preventDefault();
               document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
