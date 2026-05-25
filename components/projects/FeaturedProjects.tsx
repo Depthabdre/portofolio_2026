@@ -14,8 +14,9 @@ import {
   SiPostgresql,
   SiApple,
   SiDart,
+  SiGoogleplay,
 } from "react-icons/si";
-import { MdLayers, MdLock } from "react-icons/md";
+import { MdLayers, MdLock, MdLanguage } from "react-icons/md";
 import type { IconBaseProps } from "react-icons";
 import Image from "next/image";
 
@@ -41,6 +42,7 @@ type ProjectLink = {
   label: string;
   href: string;
   isPrivate?: boolean;
+  iconType?: "github" | "web" | "playstore";
 };
 
 type Project = {
@@ -61,9 +63,9 @@ const projects: Project[] = [
     id: "a-plus",
     title: "A+ Tutorial Class",
     description:
-      "A tutorial agency needed a way to deliver courses securely without relying on continuous internet access. I built an offline-first mobile application that strictly enforces single-device DRM and kernel-uptime checks, currently serving over 2,000 active students.",
+      "A tutorial agency needed a way to deliver courses securely without relying on continuous internet access. I built an offline-first mobile application enforcing strict single-device DRM. After successfully serving over 2,000 active students via direct web downloads, it is now officially live on the Google Play Store.",
     bullets: [
-      "Currently serving 2,000+ active university students.",
+      "Scaled to 2,000+ active students downloading directly from the web platform, and recently launched officially on the Google Play Store.",
       "Delivers subscription-based courses packed with videos, notes, PDFs, and quizzes.",
       "Implements offline DRM with kernel-uptime checks and strict single-device access.",
     ],
@@ -90,13 +92,20 @@ const projects: Project[] = [
     ],
     links: [
       {
-        label: "Mobile App",
+        label: "Source Code",
         href: "https://github.com/Depthabdre/a_plus_tutorial_app",
         isPrivate: true,
+        iconType: "github",
       },
       {
-        label: "Official Download",
+        label: "Web App",
         href: "https://a-plus-download-platform.vercel.app",
+        iconType: "web",
+      },
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.aplus.depthabdre.tutorial",
+        iconType: "playstore",
       },
     ],
     uiImages: [
@@ -415,7 +424,9 @@ function ProjectCard({
           className="mt-5 flex flex-col justify-between gap-4 border-y border-white/10 py-4 md:flex-row md:items-center"
         >
           <div className="flex flex-wrap items-center gap-3">
-            {project.links.map((link) => (
+            {project.links.map((link) => {
+              const Icon = link.iconType === "web" ? MdLanguage : link.iconType === "playstore" ? SiGoogleplay : SiGithub;
+              return (
               <a
                 key={link.label}
                 href={link.href}
@@ -431,13 +442,13 @@ function ProjectCard({
                 }
                 className="group flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-2 text-[0.85rem] tracking-wide text-white/80 transition-all hover:border-white/25 hover:bg-white/10 hover:text-white"
               >
-                <SiGithub className="h-4 w-4 opacity-80" />
+                <Icon className="h-4 w-4 opacity-80" />
                 <span className="font-medium text-[14px]">{link.label}</span>
                 {link.isPrivate && (
                   <MdLock className="ml-0.5 h-3.5 w-3.5 text-white/40 transition-colors group-hover:text-white/70" />
                 )}
               </a>
-            ))}
+            )})}
           </div>
 
           <div className="flex flex-wrap items-center gap-2 md:justify-end" role="list" aria-label="technology used">
