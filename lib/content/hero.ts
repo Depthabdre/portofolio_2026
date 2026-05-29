@@ -10,7 +10,7 @@ export const heroContent = {
     },
     secondaryCta: {
         label: "Download CV",
-        href: "/AbdrehimMisbahResumeW12.pdf",
+        href: "/AbdrehimMisbahResumeW2.pdf",
     },
     quote: "We aren't given anything we can't handle.",
     profileImage: "/profile.jpg",
