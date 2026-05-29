@@ -73,6 +73,7 @@ export function HeroSection() {
               variant="secondary"
               target="_blank"
               rel="noreferrer"
+              download="Abdrehim_Misbah_Resume.pdf"
             >
               <span className="font-medium">{heroContent.secondaryCta.label}</span>
             </MagneticLink>

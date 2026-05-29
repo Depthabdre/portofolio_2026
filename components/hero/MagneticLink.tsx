@@ -9,6 +9,7 @@ type MagneticLinkProps = {
   variant?: "primary" | "secondary";
   target?: string;
   rel?: string;
+  download?: boolean | string;
 };
 
 export function MagneticLink({
@@ -17,6 +18,7 @@ export function MagneticLink({
   variant = "secondary",
   target,
   rel,
+  download,
 }: MagneticLinkProps) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -39,6 +41,7 @@ export function MagneticLink({
       href={href}
       target={target}
       rel={rel}
+      download={download}
       style={{ x: springX, y: springY }}
       className={`${baseClass} ${variantClass}`}
       onMouseMove={(event) => {
