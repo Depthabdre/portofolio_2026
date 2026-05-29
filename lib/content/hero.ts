@@ -3,7 +3,7 @@ export const heroContent = {
     subtitle:
         "Software Engineer · A2SV Graduate · Flutter Developer",
     intro:
-        "I build scalable mobile and web applications for ambitious teams, specializing in Flutter and clean architecture. As an Africa to Silicon Valley (A2SV) graduate, I focus on delivering maintainable software with strict engineering discipline and ownership.",
+        "I’m a Full-Stack Software Engineer specializing in Flutter and Clean Architecture, with strong problem-solving, system design, and development skills built through the A2SV program. I’ve built and launched production-ready platforms serving 2,000+ users, developed AI-powered applications, and engineered secure, high-performance mobile experiences. I take full ownership of the work I’m trusted with, consistently delivering reliable solutions, following through on responsibilities, and creating meaningful impact through the products and teams I contribute to.",
     primaryCta: {
         label: "View My Work",
         href: "#projects",
