@@ -294,7 +294,6 @@ const sectionVariants: Variants = {
 };
 
 function UiRail({ images, tone, imageType = "mobile", imageFit = "cover" }: { images: string[]; tone: "cyan" | "lime"; imageType?: "mobile" | "web"; imageFit?: "cover" | "contain" }) {
-  const reducedMotion = useReducedMotion();
   const palette =
     tone === "cyan"
       ? [
@@ -320,19 +319,9 @@ function UiRail({ images, tone, imageType = "mobile", imageFit = "cover" }: { im
 
   return (
     <div className="relative h-full w-full overflow-hidden rounded-2xl border border-white/10 bg-black/35 p-3">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(255,255,255,0.12),transparent_54%)]" />
-      <motion.div
-        className="flex w-max gap-4"
-        animate={reducedMotion ? undefined : { x: ["0%", "-50%"] }}
-        transition={
-          reducedMotion
-            ? undefined
-            : {
-                duration: 24,
-                ease: "linear",
-                repeat: Infinity,
-              }
-        }
+      <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_at_70%_20%,rgba(255,255,255,0.12),transparent_54%)]" />
+      <div
+        className="relative z-20 flex w-full gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pr-4"
       >
         {images.map((src, index) => {
           const toneClass = palette[index % palette.length];
@@ -340,7 +329,7 @@ function UiRail({ images, tone, imageType = "mobile", imageFit = "cover" }: { im
           return (
             <div
               key={`screen-${index}`}
-              className={`relative flex ${sizeClass} shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/12 bg-gradient-to-b ${toneClass} shadow-[0_16px_35px_rgba(2,8,15,0.4)]`}
+              className={`relative flex ${sizeClass} shrink-0 snap-start items-center justify-center overflow-hidden rounded-2xl border border-white/12 bg-gradient-to-b ${toneClass} shadow-[0_16px_35px_rgba(2,8,15,0.4)]`}
             >
               <Image 
                 src={src}
@@ -352,25 +341,7 @@ function UiRail({ images, tone, imageType = "mobile", imageFit = "cover" }: { im
             </div>
           );
         })}
-        {images.map((src, index) => {
-          const toneClass = palette[index % palette.length];
-
-          return (
-            <div
-              key={`screen-dup-${index}`}
-              className={`relative flex ${sizeClass} shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/12 bg-gradient-to-b ${toneClass} shadow-[0_16px_35px_rgba(2,8,15,0.4)]`}
-            >
-              <Image 
-                src={src}
-                alt="Product Preview"
-                fill
-                className={fitClass}
-                sizes={sizesAttr}
-              />
-            </div>
-          );
-        })}
-      </motion.div>
+      </div>
     </div>
   );
 }
