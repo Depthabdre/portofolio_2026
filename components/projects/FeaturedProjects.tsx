@@ -99,14 +99,14 @@ const projects: Project[] = [
         iconType: "github",
       },
       {
-        label: "Web App",
-        href: "https://a-plus-download-platform.vercel.app",
-        iconType: "web",
-      },
-      {
         label: "Google Play",
         href: "https://play.google.com/store/apps/details?id=com.aplus.depthabdre.tutorial",
         iconType: "playstore",
+      },
+      {
+        label: "Web App",
+        href: "https://a-plus-download-platform.vercel.app",
+        iconType: "web",
       },
     ],
     uiImages: [
