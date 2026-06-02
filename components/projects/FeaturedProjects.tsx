@@ -162,12 +162,12 @@ const projects: Project[] = [
     ],
     links: [
       {
-        label: "App Source",
+        label: "App Source Code",
         href: "https://github.com/Depthabdre/real_english",
         iconType: "github",
       },
       {
-        label: "API Source",
+        label: "API Source Code",
         href: "https://github.com/Depthabdre/RealEnglish",
         iconType: "github",
       },
@@ -401,7 +401,7 @@ function ProjectCard({
           data-align="meta"
           className="mt-5 flex flex-col justify-between gap-4 border-y border-white/10 py-4 md:flex-row md:items-center"
         >
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
             {project.links.map((link) => {
               const Icon = link.iconType === "web" ? MdLanguage : link.iconType === "playstore" ? SiGoogleplay : link.iconType === "telegram" ? SiTelegram : SiGithub;
               return (
@@ -429,7 +429,7 @@ function ProjectCard({
             )})}
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 md:justify-end" role="list" aria-label="technology used">
+          <div className="flex flex-wrap items-center justify-center gap-2 md:justify-end" role="list" aria-label="technology used">
             {project.techIcons.map((tech) => {
               const TechIconComponent = tech.icon;
 
