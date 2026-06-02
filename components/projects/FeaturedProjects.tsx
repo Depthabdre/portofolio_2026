@@ -15,6 +15,7 @@ import {
   SiApple,
   SiDart,
   SiGoogleplay,
+  SiTelegram,
 } from "react-icons/si";
 import { MdLayers, MdLock, MdLanguage } from "react-icons/md";
 import type { IconBaseProps } from "react-icons";
@@ -42,7 +43,7 @@ type ProjectLink = {
   label: string;
   href: string;
   isPrivate?: boolean;
-  iconType?: "github" | "web" | "playstore";
+  iconType?: "github" | "web" | "playstore" | "telegram";
 };
 
 type Project = {
@@ -161,12 +162,14 @@ const projects: Project[] = [
     ],
     links: [
       {
-        label: "Mobile App",
+        label: "App Source",
         href: "https://github.com/Depthabdre/real_english",
+        iconType: "github",
       },
       {
-        label: "Backend API",
+        label: "API Source",
         href: "https://github.com/Depthabdre/RealEnglish",
+        iconType: "github",
       },
     ],
     uiImages: [
@@ -217,12 +220,14 @@ const projects: Project[] = [
     ],
     links: [
       {
-        label: "GitHub Repo",
+        label: "Source Code",
         href: "https://github.com/Depthabdre/fullfocusmode",
+        iconType: "github",
       },
       {
         label: "Live App",
         href: "https://focus-mode-xi.vercel.app/login",
+        iconType: "web",
       },
     ],
     uiImages: [
@@ -261,12 +266,14 @@ const projects: Project[] = [
     ],
     links: [
       {
-        label: "GitHub Repo",
+        label: "Source Code",
         href: "https://github.com/Depthabdre/focus_session_for_mac",
+        iconType: "github",
       },
       {
         label: "Download App",
         href: "https://t.me/DepthAbdre1",
+        iconType: "telegram",
       },
     ],
     uiImages: [
@@ -396,7 +403,7 @@ function ProjectCard({
         >
           <div className="flex flex-wrap items-center gap-3">
             {project.links.map((link) => {
-              const Icon = link.iconType === "web" ? MdLanguage : link.iconType === "playstore" ? SiGoogleplay : SiGithub;
+              const Icon = link.iconType === "web" ? MdLanguage : link.iconType === "playstore" ? SiGoogleplay : link.iconType === "telegram" ? SiTelegram : SiGithub;
               return (
               <a
                 key={link.label}
