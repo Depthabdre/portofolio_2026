@@ -399,9 +399,9 @@ function ProjectCard({
 
         <div
           data-align="meta"
-          className="mt-5 flex flex-col justify-between gap-4 border-y border-white/10 py-4 md:flex-row md:items-center"
+          className="mt-5 flex flex-col justify-between gap-4 border-y border-white/10 py-4 md:flex-row md:items-center overflow-hidden"
         >
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
+          <div className="flex max-w-full overflow-x-auto items-center gap-3 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {project.links.map((link) => {
               const Icon = link.iconType === "web" ? MdLanguage : link.iconType === "playstore" ? SiGoogleplay : link.iconType === "telegram" ? SiTelegram : SiGithub;
               return (
@@ -418,7 +418,7 @@ function ProjectCard({
                       }
                     : undefined
                 }
-                className="group flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-2 text-[0.85rem] tracking-wide text-white/80 transition-all hover:border-white/25 hover:bg-white/10 hover:text-white"
+                className="group flex w-fit shrink-0 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-2 text-[0.85rem] tracking-wide text-white/80 transition-all hover:border-white/25 hover:bg-white/10 hover:text-white"
               >
                 <Icon className="h-4 w-4 opacity-80" />
                 <span className="font-medium text-[14px]">{link.label}</span>
@@ -429,7 +429,7 @@ function ProjectCard({
             )})}
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-2 md:justify-end" role="list" aria-label="technology used">
+          <div className="flex max-w-full overflow-x-auto items-center gap-2 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:ml-auto" role="list" aria-label="technology used">
             {project.techIcons.map((tech) => {
               const TechIconComponent = tech.icon;
 
@@ -437,7 +437,7 @@ function ProjectCard({
                 <span
                   key={tech.id}
                   title={tech.label}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/30 bg-white/15 shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
+                  className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/30 bg-white/15 shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
                 >
                   <TechIconComponent className={`h-5 w-5 ${tech.iconClass}`} aria-hidden="true" />
                   <span className="sr-only">{tech.label}</span>
