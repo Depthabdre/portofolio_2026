@@ -71,9 +71,9 @@ const projects: Project[] = [
     description:
       "A tutorial agency needed a way to deliver courses securely without relying on continuous internet access. I built an offline-first mobile application enforcing strict single-device DRM. After successfully serving over 2,000 active students via direct web downloads, it is now officially live on the Google Play Store.",
     bullets: [
-      "Scaled to 2,000+ active students on web and Google Play.",
-      "Built subscription-based course delivery with videos, notes, PDFs, and quizzes.",
-      "Engineered offline DRM with kernel-uptime checks and strict device binding.",
+      "Developed a mobile app letting students access course videos, notes, and quizzes.",
+      "Made it work completely offline so students can study without internet access.",
+      "Secured the content to ensure materials are only accessed by subscribed students.",
     ],
     techIcons: [
       {
@@ -139,9 +139,9 @@ const projects: Project[] = [
     description:
       "Language learning often feels rigid and forced. I designed a TikTok-style mobile application with a full AI-powered backend, producing immersive stories and fluid UI experiences without cognitive overhead.",
     bullets: [
-      "Built AI engine using Gemini API for dynamic storytelling.",
-      "Engineered TikTok-style immersion feed featuring seamless content preloading mechanics.",
-      "Designed gamified progression system tracking streaks via visualized growth garden.",
+      "Built a language learning app that uses AI to generate engaging stories.",
+      "Created a smooth, TikTok-style feed so users can easily scroll through lessons.",
+      "Added a virtual garden that grows as users keep up their daily reading habits.",
     ],
     techIcons: [
       {
@@ -208,9 +208,9 @@ const projects: Project[] = [
     description:
       "To resolve severe focus fragmentation, I developed a productivity web application prioritizing visual analytics and stringent timeboxing metrics, accelerating deep work adaptation for students.",
     bullets: [
-      "Engineered high-intensity 'dead mode' for uncompromising deep work sessions.",
-      "Built session timer handling custom intervals, auto-breaks, and generative motivation.",
-      "Designed visual data tracker capturing focus metrics across personalized dashboards.",
+      "Created a productivity app that helps students manage their time with custom breaks.",
+      "Built a strict 'dead mode' feature designed to lock out all distractions.",
+      "Designed a dashboard that visually tracks study habits so users can see progress.",
     ],
     techIcons: [
       {
@@ -265,9 +265,9 @@ const projects: Project[] = [
     description:
       "macOS lacks an integrated, distraction-free session clock. I compiled a native macOS application featuring an absolute minimalist UI to maintain workflow momentum without unnecessary OS interruptions.",
     bullets: [
-      "Engineered reliable native macOS notifications triggering persistent session completion alerts.",
-      "Designed fluid, scale-agnostic UI operating as a floating auxiliary window.",
-      "Shipped highly optimized universal macOS binary with custom audio loops.",
+      "Built a simple Mac timer app that helps users stay focused without screen clutter.",
+      "Designed it to sit quietly as a small floating window alongside other apps.",
+      "Added reliable notifications that gently alert you when a focus session is complete.",
     ],
     techIcons: [
       {
