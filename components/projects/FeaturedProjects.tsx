@@ -66,9 +66,9 @@ const projects: Project[] = [
     description:
       "A tutorial agency needed a way to deliver courses securely without relying on continuous internet access. I built an offline-first mobile application enforcing strict single-device DRM. After successfully serving over 2,000 active students via direct web downloads, it is now officially live on the Google Play Store.",
     bullets: [
-      "Scaled to 2,000+ active students downloading directly from the web platform, and recently launched officially on the Google Play Store.",
-      "Delivers subscription-based courses packed with videos, notes, PDFs, and quizzes.",
-      "Implements offline DRM with kernel-uptime checks and strict single-device access.",
+      "Scaled to 2,000+ active students on web and Google Play.",
+      "Built subscription-based course delivery with videos, notes, PDFs, and quizzes.",
+      "Engineered offline DRM with kernel-uptime checks and strict device binding.",
     ],
     techIcons: [
       { id: "flutter", label: "FLUTTER", icon: SiFlutter, iconClass: "text-[#67d8ff]" },
@@ -129,9 +129,9 @@ const projects: Project[] = [
     description:
       "Language learning often feels rigid and forced. I designed a TikTok-style mobile application with a full AI-powered backend, producing immersive stories and fluid UI experiences without cognitive overhead.",
     bullets: [
-      "Built a fully AI-powered story engine using Gemini API for dynamic storytelling and text-to-speech.",
-      "Engineered a TikTok-style immersion feed featuring seamless preloading mechanics.",
-      "Designed a gamified progression system tracking user streaks through a visualized growth garden.",
+      "Built AI engine using Gemini API for dynamic storytelling.",
+      "Engineered TikTok-style immersion feed featuring seamless content preloading mechanics.",
+      "Designed gamified progression system tracking streaks via visualized growth garden.",
     ],
     techIcons: [
       { id: "flutter", label: "FLUTTER", icon: SiFlutter, iconClass: "text-[#67d8ff]" },
@@ -193,9 +193,9 @@ const projects: Project[] = [
     description:
       "To resolve severe focus fragmentation, I developed a productivity web application prioritizing visual analytics and stringent timeboxing metrics, accelerating deep work adaptation for students.",
     bullets: [
-      "Built multiple focus modes, including a high-intensity 'dead mode' for uncompromising concentration.",
-      "Programmed a session timer handling custom intervals, auto-breaks, and generative motivation loops.",
-      "Constructed a visual data tracker capturing focus metrics across personalized calendar dashboards.",
+      "Engineered high-intensity 'dead mode' for uncompromising deep work sessions.",
+      "Built session timer handling custom intervals, auto-breaks, and generative motivation.",
+      "Designed visual data tracker capturing focus metrics across personalized dashboards.",
     ],
     techIcons: [
       { id: "nextjs", label: "NEXT.JS", icon: SiNextdotjs, iconClass: "text-[#ffffff]" },
@@ -245,9 +245,9 @@ const projects: Project[] = [
     description:
       "macOS lacks an integrated, distraction-free session clock. I compiled a native macOS application featuring an absolute minimalist UI to maintain workflow momentum without unnecessary OS interruptions.",
     bullets: [
-      "Engineered reliable native macOS notifications triggering persistent alerts upon session completion.",
-      "Developed a fluid, scale-agnostic UI operating effortlessly as a floating auxiliary window.",
-      "Deployed a highly optimized universal macOS binary wrapping custom-looped audio alert vectors.",
+      "Engineered reliable native macOS notifications triggering persistent session completion alerts.",
+      "Designed fluid, scale-agnostic UI operating as a floating auxiliary window.",
+      "Shipped highly optimized universal macOS binary with custom audio loops.",
     ],
     techIcons: [
       { id: "flutter", label: "FLUTTER", icon: SiFlutter, iconClass: "text-[#67d8ff]" },
@@ -369,27 +369,21 @@ function ProjectCard({
     >
       <div className="pointer-events-none absolute inset-0 rounded-[1.75rem] bg-[radial-gradient(circle_at_8%_0%,rgba(130,224,255,0.12),transparent_36%),radial-gradient(circle_at_85%_0%,rgba(191,249,122,0.08),transparent_40%)]" />
 
-      <div className="relative flex h-full flex-col">
-        <div
-          data-align="title"
-          className="flex items-start gap-4"
-        >
-          <h3 className="max-w-5xl text-[20px] sm:text-[22px] font-bold tracking-[-0.015em] text-[var(--hero-text)]">
-            {project.title}
-          </h3>
-        </div>
+      <div className="relative flex h-full flex-col lg:flex-row lg:gap-6">
+        <div className="flex h-full flex-col lg:w-[55%]">
+          <div
+            data-align="title"
+            className="flex items-start gap-4"
+          >
+            <h3 className="max-w-5xl text-[20px] sm:text-[22px] font-bold tracking-[-0.015em] text-[var(--hero-text)]">
+              {project.title}
+            </h3>
+          </div>
 
-        <p
-          data-align="description"
-          className="mt-3 max-w-[70ch] text-[16px] leading-[1.65] text-white/80"
-        >
-          {project.description}
-        </p>
-
-        <div
-          data-align="bullets"
-          className="mt-5"
-        >
+          <div
+            data-align="bullets"
+            className="mt-5"
+          >
           <ul className="list-disc space-y-2 pl-5 text-[16px] leading-[1.65] text-white/76">
             {project.bullets.map((bullet) => (
               <li key={bullet}>{bullet}</li>
@@ -399,7 +393,7 @@ function ProjectCard({
 
         <div
           data-align="meta"
-          className="mt-5 flex flex-col justify-between gap-4 border-y border-white/10 py-4 md:flex-row md:items-center overflow-hidden"
+          className="mt-auto flex flex-col justify-between gap-4 border-y border-white/10 py-4 md:flex-row md:items-center overflow-hidden"
         >
           <div className="flex max-w-full overflow-x-auto items-center gap-3 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {project.links.map((link) => {
@@ -446,14 +440,15 @@ function ProjectCard({
             })}
           </div>
         </div>
+        </div>
 
-        <div className="relative mt-5 flex min-h-[230px] flex-1 flex-col">
+        <div className="relative mt-5 flex min-h-[230px] flex-1 flex-col lg:mt-0 lg:min-h-0 lg:w-[45%]">
           <div className="mb-3 flex items-center justify-between px-1">
             <span className="text-[13px] tracking-[0.1em] text-white/52 uppercase font-medium">
               PRODUCT UI PREVIEW
             </span>
           </div>
-          <div className="flex-1">
+          <div className="flex-1 lg:max-h-[160px]">
             <UiRail images={project.uiImages} tone={project.railTone} imageType={project.imageType} imageFit={project.imageFit} />
           </div>
         </div>
