@@ -71,9 +71,9 @@ const projects: Project[] = [
     description:
       "A tutorial agency needed a way to deliver courses securely without relying on continuous internet access. I built an offline-first mobile application enforcing strict single-device DRM. After successfully serving over 2,000 active students via direct web downloads, it is now officially live on the Google Play Store.",
     bullets: [
-      "Developed a subscription-based mobile app where students can access course videos, notes, and quizzes.",
-      "Grew the platform to support over 2,000 active students, and it is now officially available on the Google Play Store.",
-      "Built it to work completely offline so students can study anywhere while keeping the educational content secure.",
+      "Developed a subscription-based e-learning app for a tutorial agency, currently serving over 2,000 university students.",
+      "Allowed students to seamlessly download all course materials and use the app completely offline without an internet connection.",
+      "Secured the content with rigorous protections, including screenshot prevention and system kernel uptime checks to block device data manipulation.",
     ],
     techIcons: [
       {

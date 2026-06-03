@@ -2,8 +2,8 @@ export const heroContent = {
     title: "Hi, I'm Abdrehim.",
     subtitle:
         "Software Engineer · A2SV Graduate · Flutter Developer",
-    intro:
-        "I’m a Full-Stack Software Engineer specializing in Flutter and Clean Architecture, with strong problem-solving, system design, and development skills built through the A2SV program. I’ve built and launched production-ready platforms serving 2,000+ users, developed AI-powered applications, and engineered secure, high-performance mobile experiences. I take full ownership of the work I’m trusted with, consistently delivering reliable solutions, following through on responsibilities, and creating meaningful impact through the products and teams I contribute to.",
+    intro: 
+    "Full-Stack Software Engineer specializing in Flutter and Clean Architecture. Built and launched production platforms serving 2,000+ users, developed AI-powered apps, and engineered secure mobile experiences. Trained at A2SV — I take full ownership of what I'm trusted with and deliver.",
     primaryCta: {
         label: "View My Work",
         href: "#projects",
