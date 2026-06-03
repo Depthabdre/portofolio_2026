@@ -1,6 +1,11 @@
 "use client";
 
-import { motion, useReducedMotion, AnimatePresence, type Variants } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  AnimatePresence,
+  type Variants,
+} from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import type { IconType } from "react-icons";
 import {
@@ -24,10 +29,10 @@ import Image from "next/image";
 // Custom Flutter BLoC Icon using the provided official image
 const BlocIcon = (props: IconBaseProps) => (
   /* eslint-disable-next-line @next/next/no-img-element */
-  <img 
-    src="https://plugins.jetbrains.com/files/12129/953327/icon/default.png" 
-    alt="flutter bloc" 
-    className={props.className} 
+  <img
+    src="https://plugins.jetbrains.com/files/12129/953327/icon/default.png"
+    alt="flutter bloc"
+    className={props.className}
     style={{ display: "inline-block", ...props.style }}
   />
 );
@@ -71,7 +76,12 @@ const projects: Project[] = [
       "Engineered offline DRM with kernel-uptime checks and strict device binding.",
     ],
     techIcons: [
-      { id: "flutter", label: "FLUTTER", icon: SiFlutter, iconClass: "text-[#67d8ff]" },
+      {
+        id: "flutter",
+        label: "FLUTTER",
+        icon: SiFlutter,
+        iconClass: "text-[#67d8ff]",
+      },
       {
         id: "bloc",
         label: "FLUTTER BLOC",
@@ -134,7 +144,12 @@ const projects: Project[] = [
       "Designed gamified progression system tracking streaks via visualized growth garden.",
     ],
     techIcons: [
-      { id: "flutter", label: "FLUTTER", icon: SiFlutter, iconClass: "text-[#67d8ff]" },
+      {
+        id: "flutter",
+        label: "FLUTTER",
+        icon: SiFlutter,
+        iconClass: "text-[#67d8ff]",
+      },
       {
         id: "nodejs",
         label: "NODE.JS",
@@ -198,7 +213,12 @@ const projects: Project[] = [
       "Designed visual data tracker capturing focus metrics across personalized dashboards.",
     ],
     techIcons: [
-      { id: "nextjs", label: "NEXT.JS", icon: SiNextdotjs, iconClass: "text-[#ffffff]" },
+      {
+        id: "nextjs",
+        label: "NEXT.JS",
+        icon: SiNextdotjs,
+        iconClass: "text-[#ffffff]",
+      },
       {
         id: "tailwindcss",
         label: "TAILWIND CSS",
@@ -250,7 +270,12 @@ const projects: Project[] = [
       "Shipped highly optimized universal macOS binary with custom audio loops.",
     ],
     techIcons: [
-      { id: "flutter", label: "FLUTTER", icon: SiFlutter, iconClass: "text-[#67d8ff]" },
+      {
+        id: "flutter",
+        label: "FLUTTER",
+        icon: SiFlutter,
+        iconClass: "text-[#67d8ff]",
+      },
       {
         id: "dart",
         label: "DART",
@@ -300,7 +325,17 @@ const sectionVariants: Variants = {
   },
 };
 
-function UiRail({ images, tone, imageType = "mobile", imageFit = "cover" }: { images: string[]; tone: "cyan" | "lime"; imageType?: "mobile" | "web"; imageFit?: "cover" | "contain" }) {
+function UiRail({
+  images,
+  tone,
+  imageType = "mobile",
+  imageFit = "cover",
+}: {
+  images: string[];
+  tone: "cyan" | "lime";
+  imageType?: "mobile" | "web";
+  imageFit?: "cover" | "contain";
+}) {
   const palette =
     tone === "cyan"
       ? [
@@ -319,17 +354,16 @@ function UiRail({ images, tone, imageType = "mobile", imageFit = "cover" }: { im
   const isWeb = imageType === "web";
   const sizeClass = isWeb ? "h-[200px] w-[340px]" : "h-[220px] w-[132px]";
   const sizesAttr = isWeb ? "340px" : "132px";
-  
-  const fitClass = imageFit === "contain" 
-    ? "object-contain p-2" 
-    : `object-cover ${isWeb ? 'object-left-top' : 'object-top'}`;
+
+  const fitClass =
+    imageFit === "contain"
+      ? "object-contain p-2"
+      : `object-cover ${isWeb ? "object-left-top" : "object-top"}`;
 
   return (
     <div className="relative h-full w-full overflow-hidden rounded-2xl border border-white/10 bg-black/35 p-3">
       <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_at_70%_20%,rgba(255,255,255,0.12),transparent_54%)]" />
-      <div
-        className="relative z-20 flex w-full gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pr-4"
-      >
+      <div className="relative z-20 flex w-full gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pr-4">
         {images.map((src, index) => {
           const toneClass = palette[index % palette.length];
 
@@ -338,7 +372,7 @@ function UiRail({ images, tone, imageType = "mobile", imageFit = "cover" }: { im
               key={`screen-${index}`}
               className={`relative flex ${sizeClass} shrink-0 snap-start items-center justify-center overflow-hidden rounded-2xl border border-white/12 bg-gradient-to-b ${toneClass} shadow-[0_16px_35px_rgba(2,8,15,0.4)]`}
             >
-              <Image 
+              <Image
                 src={src}
                 alt="Product Preview"
                 fill
@@ -353,11 +387,7 @@ function UiRail({ images, tone, imageType = "mobile", imageFit = "cover" }: { im
   );
 }
 
-function ProjectCard({
-  project,
-}: {
-  project: Project;
-}) {
+function ProjectCard({ project }: { project: Project }) {
   const [showPrivateModal, setShowPrivateModal] = useState(false);
 
   return (
@@ -369,21 +399,14 @@ function ProjectCard({
     >
       <div className="pointer-events-none absolute inset-0 rounded-[1.75rem] bg-[radial-gradient(circle_at_8%_0%,rgba(130,224,255,0.12),transparent_36%),radial-gradient(circle_at_85%_0%,rgba(191,249,122,0.08),transparent_40%)]" />
 
-      <div className="relative flex h-full flex-col lg:flex-row lg:gap-6">
-        <div className="flex h-full flex-col lg:w-[55%]">
-          <div
-            data-align="title"
-            className="flex items-start gap-4"
-          >
-            <h3 className="max-w-5xl text-[20px] sm:text-[22px] font-bold tracking-[-0.015em] text-[var(--hero-text)]">
-              {project.title}
-            </h3>
-          </div>
+      <div className="relative flex h-full flex-col">
+        <div data-align="title" className="flex items-start gap-4">
+          <h3 className="max-w-5xl text-[20px] sm:text-[22px] font-bold tracking-[-0.015em] text-[var(--hero-text)]">
+            {project.title}
+          </h3>
+        </div>
 
-          <div
-            data-align="bullets"
-            className="mt-5"
-          >
+        <div data-align="bullets" className="mt-5">
           <ul className="list-disc space-y-2 pl-5 text-[16px] leading-[1.65] text-white/76">
             {project.bullets.map((bullet) => (
               <li key={bullet}>{bullet}</li>
@@ -393,37 +416,49 @@ function ProjectCard({
 
         <div
           data-align="meta"
-          className="mt-auto flex flex-col justify-between gap-4 border-y border-white/10 py-4 md:flex-row md:items-center overflow-hidden"
+          className="mt-5 flex flex-col justify-between gap-4 border-y border-white/10 py-4 md:flex-row md:items-center overflow-hidden"
         >
           <div className="flex max-w-full overflow-x-auto items-center gap-3 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {project.links.map((link) => {
-              const Icon = link.iconType === "web" ? MdLanguage : link.iconType === "playstore" ? SiGoogleplay : link.iconType === "telegram" ? SiTelegram : SiGithub;
+              const Icon =
+                link.iconType === "web"
+                  ? MdLanguage
+                  : link.iconType === "playstore"
+                    ? SiGoogleplay
+                    : link.iconType === "telegram"
+                      ? SiTelegram
+                      : SiGithub;
               return (
-              <a
-                key={link.label}
-                href={link.href}
-                target={!link.isPrivate ? "_blank" : undefined}
-                rel={!link.isPrivate ? "noopener noreferrer" : undefined}
-                onClick={
-                  link.isPrivate
-                    ? (e) => {
-                        e.preventDefault();
-                        setShowPrivateModal(true);
-                      }
-                    : undefined
-                }
-                className="group flex w-fit shrink-0 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-2 text-[0.85rem] tracking-wide text-white/80 transition-all hover:border-white/25 hover:bg-white/10 hover:text-white"
-              >
-                <Icon className="h-4 w-4 opacity-80" />
-                <span className="font-medium text-[14px]">{link.label}</span>
-                {link.isPrivate && (
-                  <MdLock className="ml-0.5 h-3.5 w-3.5 text-white/40 transition-colors group-hover:text-white/70" />
-                )}
-              </a>
-            )})}
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target={!link.isPrivate ? "_blank" : undefined}
+                  rel={!link.isPrivate ? "noopener noreferrer" : undefined}
+                  onClick={
+                    link.isPrivate
+                      ? (e) => {
+                          e.preventDefault();
+                          setShowPrivateModal(true);
+                        }
+                      : undefined
+                  }
+                  className="group flex w-fit shrink-0 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-2 text-[0.85rem] tracking-wide text-white/80 transition-all hover:border-white/25 hover:bg-white/10 hover:text-white"
+                >
+                  <Icon className="h-4 w-4 opacity-80" />
+                  <span className="font-medium text-[14px]">{link.label}</span>
+                  {link.isPrivate && (
+                    <MdLock className="ml-0.5 h-3.5 w-3.5 text-white/40 transition-colors group-hover:text-white/70" />
+                  )}
+                </a>
+              );
+            })}
           </div>
 
-          <div className="flex max-w-full overflow-x-auto items-center gap-2 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:ml-auto" role="list" aria-label="technology used">
+          <div
+            className="flex max-w-full overflow-x-auto items-center gap-2 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:ml-auto"
+            role="list"
+            aria-label="technology used"
+          >
             {project.techIcons.map((tech) => {
               const TechIconComponent = tech.icon;
 
@@ -433,23 +468,30 @@ function ProjectCard({
                   title={tech.label}
                   className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/30 bg-white/15 shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
                 >
-                  <TechIconComponent className={`h-5 w-5 ${tech.iconClass}`} aria-hidden="true" />
+                  <TechIconComponent
+                    className={`h-5 w-5 ${tech.iconClass}`}
+                    aria-hidden="true"
+                  />
                   <span className="sr-only">{tech.label}</span>
                 </span>
               );
             })}
           </div>
         </div>
-        </div>
 
-        <div className="relative mt-5 flex min-h-[230px] flex-1 flex-col lg:mt-0 lg:min-h-0 lg:w-[45%]">
+        <div className="relative mt-5 flex min-h-[230px] flex-1 flex-col">
           <div className="mb-3 flex items-center justify-between px-1">
             <span className="text-[13px] tracking-[0.1em] text-white/52 uppercase font-medium">
               PRODUCT UI PREVIEW
             </span>
           </div>
-          <div className="flex-1 lg:max-h-[160px]">
-            <UiRail images={project.uiImages} tone={project.railTone} imageType={project.imageType} imageFit={project.imageFit} />
+          <div className="flex-1">
+            <UiRail
+              images={project.uiImages}
+              tone={project.railTone}
+              imageType={project.imageType}
+              imageFit={project.imageFit}
+            />
           </div>
         </div>
       </div>
@@ -466,7 +508,12 @@ function ProjectCard({
               initial={{ scale: 0.9, y: 10, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
               exit={{ scale: 0.9, y: 10, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 25, delay: 0.05 }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 25,
+                delay: 0.05,
+              }}
               className="flex flex-col items-center"
             >
               <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-white/5 shadow-xl">
@@ -476,7 +523,9 @@ function ProjectCard({
                 Proprietary Codebase
               </h4>
               <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/70">
-                This repository is strictly private to protect client intellectual property and the application&apos;s subscription-based DRM architecture.
+                This repository is strictly private to protect client
+                intellectual property and the application&apos;s
+                subscription-based DRM architecture.
               </p>
               <button
                 onClick={() => setShowPrivateModal(false)}
@@ -509,7 +558,9 @@ export function FeaturedProjects() {
 
       sections.forEach((section) => {
         const nodes = Array.from(
-          cardsRef.current?.querySelectorAll<HTMLElement>(`[data-align="${section}"]`) ?? []
+          cardsRef.current?.querySelectorAll<HTMLElement>(
+            `[data-align="${section}"]`,
+          ) ?? [],
         );
 
         if (nodes.length <= 1) return;
@@ -539,7 +590,9 @@ export function FeaturedProjects() {
       requestAnimationFrame(() => measure());
     });
 
-    const nodes = Array.from(cardsRef.current.querySelectorAll<HTMLElement>("[data-align]"));
+    const nodes = Array.from(
+      cardsRef.current.querySelectorAll<HTMLElement>("[data-align]"),
+    );
     nodes.forEach((node) => observer.observe(node));
 
     window.addEventListener("resize", measure);
@@ -551,22 +604,25 @@ export function FeaturedProjects() {
   }, []);
 
   return (
-    <section id="projects" className="relative overflow-hidden px-6 py-12 md:py-24 md:px-12 lg:px-20">
+    <section
+      id="projects"
+      className="relative overflow-hidden px-6 py-12 md:py-24 md:px-12 lg:px-20"
+    >
       <div className="relative mx-auto w-full max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-12 flex flex-col items-center justify-center space-y-2 text-center sm:mb-16"
-          >
-            <p className="text-[var(--hero-muted)] text-[13px] font-medium tracking-[0.1em] uppercase">
-              FEATURED PROJECTS
-            </p>
-            <h2 className="max-w-2xl text-[28px] font-bold tracking-[-0.02em] text-[var(--hero-text)] sm:text-[32px] lg:text-[36px]">
-              Selected Work
-            </h2>
-          </motion.div>
+          className="mb-12 flex flex-col items-center justify-center space-y-2 text-center sm:mb-16"
+        >
+          <p className="text-[var(--hero-muted)] text-[13px] font-medium tracking-[0.1em] uppercase">
+            FEATURED PROJECTS
+          </p>
+          <h2 className="max-w-2xl text-[28px] font-bold tracking-[-0.02em] text-[var(--hero-text)] sm:text-[32px] lg:text-[36px]">
+            Selected Work
+          </h2>
+        </motion.div>
 
         <div
           ref={cardsRef}
@@ -588,4 +644,3 @@ export function FeaturedProjects() {
     </section>
   );
 }
-
