@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
+import { track } from "@vercel/analytics";
 
 // ==========================================
 // 1. EXTENSIBLE INTERFACES & PLATFORMS
@@ -24,6 +25,7 @@ export interface AppModel {
   ctaUrl?: string;
   status: "active" | "coming_soon";
   stats?: string;
+  localIconUrl?: string;
 }
 
 // Minimalist, high-performance SVG icon builders
@@ -109,18 +111,20 @@ const appsList: AppModel[] = [
     platformKey: "android",
     description: "Subscription-based e-learning platform serving 2,000+ active university students with offline DRM, screenshot prevention, and single-device access control.",
     ctaText: "Download on Play Store",
-    ctaUrl: "https://play.google.com/store/apps/details?id=com.aplus.depthabdre.tutorial",
+    ctaUrl: "/apps/aplus.apk",
     status: "active",
     stats: "2,000+ active students",
+    localIconUrl: "/icons/aplus.png",
   },
   {
     id: "focus-mac",
     name: "Focus Session for Mac",
     platformKey: "macos",
     description: "Native macOS focus timer built with Flutter. Lightweight and system-integrated with native notifications and custom audio alerts.",
-    ctaText: "Get via Telegram",
-    ctaUrl: "https://t.me/DepthAbdre",
+    ctaText: "Download DMG",
+    ctaUrl: "/apps/focus-mac.dmg",
     status: "active",
+    localIconUrl: "/icons/focus-mac.png",
   },
   {
     id: "student-focus",
@@ -130,23 +134,27 @@ const appsList: AppModel[] = [
     ctaText: "Open Web App",
     ctaUrl: "https://focus-mode-xi.vercel.app/login",
     status: "active",
+    localIconUrl: "/icons/student-focus.png",
   },
   {
     id: "pushups-counter",
     name: "PushUps",
-    platformKey: "mobile",
+    platformKey: "android",
     description: "Hardware-accurate push-up counter using your device proximity sensor. Features custom debouncing logic, clean cyan glassmorphic UI, real-time audio coaching, and persistent high score tracking.",
-    ctaText: "View on GitHub",
-    ctaUrl: "https://github.com/depthabdre/pushups",
+    ctaText: "Download APK",
+    ctaUrl: "/apps/pushups.apk",
     status: "active",
+    localIconUrl: "/icons/pushups.png",
   },
   {
     id: "tapreply",
     name: "TapReply",
     platformKey: "android",
     description: "Android overlay app that reads on-screen chat context using Accessibility Service and generates AI-powered reply options instantly across WhatsApp, Telegram, and LinkedIn.",
-    ctaText: "Coming Soon",
-    status: "coming_soon",
+    ctaText: "Download APK",
+    ctaUrl: "/apps/tapreply.apk",
+    status: "active",
+    localIconUrl: "/icons/tapreply.png",
   },
 ];
 
@@ -181,6 +189,14 @@ const itemVariants: Variants = {
 // ==========================================
 
 export default function AppsPage() {
+  const handleDownloadClick = (app: AppModel) => {
+    try {
+      track("App Download", { appName: app.name, platform: app.platformKey });
+    } catch (e) {
+      console.warn("Analytics tracking failed:", e);
+    }
+  };
+
   return (
     <main className="page-shell min-h-screen relative flex flex-col pt-32 pb-24 px-6 md:px-12 lg:px-20 overflow-hidden">
       <div className="relative mx-auto w-full max-w-5xl">
@@ -230,7 +246,7 @@ export default function AppsPage() {
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             className="text-[16px] md:text-lg text-[var(--hero-muted)] leading-relaxed font-normal"
           >
-            A collection of native, web, and system utilities built to solve specific problems. Most of these platforms are actively serving users in the real world.
+            A collection of Android, macOS, and web applications I built. Some are client projects like A+ Tutorial Class, while others are personal hobby tools built to solve real-world problems I faced, now used by active users.
           </motion.p>
         </div>
 
@@ -256,30 +272,52 @@ export default function AppsPage() {
                   isComingSoon 
                     ? "border-white/5 bg-white/[0.01] opacity-70" 
                     : "border-white/10 bg-[#0d1424]/20 hover:border-white/20 hover:bg-white/[0.03] shadow-lg shadow-black/10"
-                } p-6 sm:p-8 min-h-[300px] transition-all duration-300`}
+                } p-6 sm:p-8 min-h-[320px] transition-all duration-300`}
               >
                 {/* Visual glassmorphic overlay background glow */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none" />
+                <div className="absolute -inset-px bg-gradient-to-t from-transparent via-white/5 to-white/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                {/* Card Header Area */}
+                {/* Card Content Area */}
                 <div>
-                  <div className="flex items-center justify-between gap-4 mb-5">
-                    {/* Platform Badge */}
-                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-semibold tracking-wide uppercase ${platform.badgeStyles}`}>
-                      <PlatformIcon />
-                      {platform.label}
-                    </span>
-
-                    {/* App Stats Status */}
-                    {app.stats && (
-                      <span className="text-[11px] font-medium tracking-wide text-white/40 bg-white/5 border border-white/[0.03] px-2.5 py-0.5 rounded-md">
-                        {app.stats}
-                      </span>
+                  <div className="flex items-start justify-between gap-4 mb-6">
+                    {/* Rounded Graphic Icon or fallback */}
+                    {app.localIconUrl ? (
+                      <div className="relative w-14 h-14 rounded-2xl overflow-hidden border border-white/15 bg-white/5 shadow-xl flex-shrink-0 transition-transform duration-300 group-hover:scale-105 group-hover:border-white/30">
+                        {/* subtle glass overlay inside icon */}
+                        <div className="absolute inset-0 bg-gradient-to-tr from-black/25 to-transparent pointer-events-none" />
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={app.localIconUrl}
+                          alt={`${app.name} Icon`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ) : (
+                      <div className="relative w-14 h-14 rounded-2xl border border-white/12 bg-white/5 shadow-md flex-shrink-0 flex items-center justify-center text-white/70 transition-transform duration-300 group-hover:scale-105">
+                        <PlatformIcon className="w-6 h-6" />
+                      </div>
                     )}
+
+                    {/* Badge and Stats Column */}
+                    <div className="flex flex-col items-end gap-2 text-right">
+                      {/* Platform Badge */}
+                      <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-[10px] font-bold tracking-wider uppercase transition-all duration-300 ${platform.badgeStyles}`}>
+                        <PlatformIcon className="w-3.5 h-3.5" />
+                        {platform.label}
+                      </span>
+
+                      {/* App Stats Status */}
+                      {app.stats && (
+                        <span className="text-[10px] font-semibold tracking-wider text-white/50 bg-white/5 border border-white/[0.05] px-2.5 py-0.5 rounded-md">
+                          {app.stats}
+                        </span>
+                      )}
+                    </div>
                   </div>
 
                   {/* App Name */}
-                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white mb-3">
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white mb-2.5 group-hover:text-[var(--hero-accent)] transition-colors duration-300">
                     {app.name}
                   </h3>
 
@@ -304,6 +342,7 @@ export default function AppsPage() {
                       href={app.ctaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => handleDownloadClick(app)}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       transition={{ type: "spring", stiffness: 400, damping: 25 }}
