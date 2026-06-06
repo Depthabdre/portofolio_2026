@@ -3,19 +3,42 @@
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 
-// Custom premium minimalist platform SVGs
-function PhoneIcon() {
+// ==========================================
+// 1. EXTENSIBLE INTERFACES & PLATFORMS
+// ==========================================
+
+export type PlatformKey = "android" | "macos" | "web" | "mobile";
+
+export interface PlatformConfig {
+  label: string;
+  icon: (props: { className?: string }) => React.ReactNode;
+  badgeStyles: string;
+}
+
+export interface AppModel {
+  id: string;
+  name: string;
+  platformKey: PlatformKey;
+  description: string;
+  ctaText: string;
+  ctaUrl?: string;
+  status: "active" | "coming_soon";
+  stats?: string;
+}
+
+// Minimalist, high-performance SVG icon builders
+function PhoneIcon({ className }: { className?: string }) {
   return (
-    <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg className={`${className} shrink-0`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
       <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
       <line x1="12" y1="18" x2="12.01" y2="18" />
     </svg>
   );
 }
 
-function MonitorIcon() {
+function MonitorIcon({ className }: { className?: string }) {
   return (
-    <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg className={`${className} shrink-0`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
       <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
       <line x1="8" y1="21" x2="16" y2="21" />
       <line x1="12" y1="17" x2="12" y2="21" />
@@ -23,12 +46,21 @@ function MonitorIcon() {
   );
 }
 
-function GlobeIcon() {
+function GlobeIcon({ className }: { className?: string }) {
   return (
-    <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg className={`${className} shrink-0`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10" />
       <line x1="2" y1="12" x2="22" y2="12" />
       <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  );
+}
+
+function SmartphoneIcon({ className }: { className?: string }) {
+  return (
+    <svg className={`${className} shrink-0`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="5" y="2" width="14" height="20" rx="3" />
+      <path d="M12 18h.01" />
     </svg>
   );
 }
@@ -42,65 +74,85 @@ function ArrowUpRight() {
   );
 }
 
-type AppItem = {
-  id: string;
-  name: string;
-  platform: "Android" | "macOS" | "Web";
-  badgeStyles: string;
-  description: string;
-  ctaText: string;
-  ctaUrl?: string;
-  status: "active" | "coming_soon";
-  stats?: string;
-  icon: () => React.ReactNode;
+// Closed for modification: Platform styles, tokens, and icons are mapped dynamically here
+const platformRegistry: Record<PlatformKey, PlatformConfig> = {
+  android: {
+    label: "Android",
+    icon: PhoneIcon,
+    badgeStyles: "bg-[#8cf0ff]/5 text-[#8cf0ff] border-[#8cf0ff]/20",
+  },
+  macos: {
+    label: "macOS",
+    icon: MonitorIcon,
+    badgeStyles: "bg-white/5 text-white/80 border-white/10",
+  },
+  web: {
+    label: "Web App",
+    icon: GlobeIcon,
+    badgeStyles: "bg-[#d9ff70]/5 text-[#d9ff70] border-[#d9ff70]/20",
+  },
+  mobile: {
+    label: "iOS / Android",
+    icon: SmartphoneIcon,
+    badgeStyles: "bg-purple-500/10 text-purple-300 border-purple-500/20",
+  },
 };
 
-const apps: AppItem[] = [
+// ==========================================
+// 2. EXTENSIBLE APP LIST (Add new apps here)
+// ==========================================
+
+const appsList: AppModel[] = [
   {
     id: "aplus",
     name: "A+ Tutorial Class",
-    platform: "Android",
-    badgeStyles: "bg-[#8cf0ff]/5 text-[#8cf0ff] border-[#8cf0ff]/20",
+    platformKey: "android",
     description: "Subscription-based e-learning platform serving 2,000+ active university students with offline DRM, screenshot prevention, and single-device access control.",
     ctaText: "Download on Play Store",
     ctaUrl: "https://play.google.com/store/apps/details?id=com.aplus.depthabdre.tutorial",
     status: "active",
     stats: "2,000+ active students",
-    icon: PhoneIcon,
   },
   {
     id: "focus-mac",
     name: "Focus Session for Mac",
-    platform: "macOS",
-    badgeStyles: "bg-white/5 text-white/80 border-white/10",
+    platformKey: "macos",
     description: "Native macOS focus timer built with Flutter. Lightweight and system-integrated with native notifications and custom audio alerts.",
     ctaText: "Get via Telegram",
     ctaUrl: "https://t.me/DepthAbdre",
     status: "active",
-    icon: MonitorIcon,
   },
   {
     id: "student-focus",
     name: "Student Focus App",
-    platform: "Web",
-    badgeStyles: "bg-[#d9ff70]/5 text-[#d9ff70] border-[#d9ff70]/20",
+    platformKey: "web",
     description: "Full-stack productivity web app with multiple focus modes, calendar progress tracking, and daily streaks.",
     ctaText: "Open Web App",
     ctaUrl: "https://focus-mode-xi.vercel.app/login",
     status: "active",
-    icon: GlobeIcon,
+  },
+  {
+    id: "pushups-counter",
+    name: "PushUps",
+    platformKey: "mobile",
+    description: "Hardware-accurate push-up counter using your device proximity sensor. Features custom debouncing logic, clean cyan glassmorphic UI, real-time audio coaching, and persistent high score tracking.",
+    ctaText: "View on GitHub",
+    ctaUrl: "https://github.com/depthabdre/pushups",
+    status: "active",
   },
   {
     id: "tapreply",
     name: "TapReply",
-    platform: "Android",
-    badgeStyles: "bg-[#8cf0ff]/5 text-[#8cf0ff]/70 border-[#8cf0ff]/10",
+    platformKey: "android",
     description: "Android overlay app that reads on-screen chat context using Accessibility Service and generates AI-powered reply options instantly across WhatsApp, Telegram, and LinkedIn.",
     ctaText: "Coming Soon",
     status: "coming_soon",
-    icon: PhoneIcon,
   },
 ];
+
+// ==========================================
+// 3. CORE ANIMATION SCHEMAS
+// ==========================================
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -124,12 +176,16 @@ const itemVariants: Variants = {
   },
 };
 
+// ==========================================
+// 4. MAIN RENDERING RUNTIME (Closed to changes)
+// ==========================================
+
 export default function AppsPage() {
   return (
     <main className="page-shell min-h-screen relative flex flex-col pt-32 pb-24 px-6 md:px-12 lg:px-20 overflow-hidden">
       <div className="relative mx-auto w-full max-w-5xl">
         
-        {/* Subtle top navigation back link */}
+        {/* Top Navigation Back Link */}
         <motion.div
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
@@ -148,7 +204,7 @@ export default function AppsPage() {
           </Link>
         </motion.div>
 
-        {/* Minimal Human Header */}
+        {/* Minimalist Human Header */}
         <div className="max-w-2xl mb-16 md:mb-20">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -185,9 +241,12 @@ export default function AppsPage() {
           animate="visible"
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          {apps.map((app) => {
+          {appsList.map((app) => {
             const isComingSoon = app.status === "coming_soon";
-            const PlatformIcon = app.icon;
+            
+            // Extract Platform configuration dynamically according to the registry map
+            const platform = platformRegistry[app.platformKey] || platformRegistry.web;
+            const PlatformIcon = platform.icon;
 
             return (
               <motion.div
@@ -199,19 +258,19 @@ export default function AppsPage() {
                     : "border-white/10 bg-[#0d1424]/20 hover:border-white/20 hover:bg-white/[0.03] shadow-lg shadow-black/10"
                 } p-6 sm:p-8 min-h-[300px] transition-all duration-300`}
               >
-                {/* Visual glassmorphic overlay inside card */}
+                {/* Visual glassmorphic overlay background glow */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none" />
 
                 {/* Card Header Area */}
                 <div>
                   <div className="flex items-center justify-between gap-4 mb-5">
                     {/* Platform Badge */}
-                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-semibold tracking-wide uppercase ${app.badgeStyles}`}>
+                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-semibold tracking-wide uppercase ${platform.badgeStyles}`}>
                       <PlatformIcon />
-                      {app.platform}
+                      {platform.label}
                     </span>
 
-                    {/* App Stats (if available) */}
+                    {/* App Stats Status */}
                     {app.stats && (
                       <span className="text-[11px] font-medium tracking-wide text-white/40 bg-white/5 border border-white/[0.03] px-2.5 py-0.5 rounded-md">
                         {app.stats}
@@ -230,7 +289,7 @@ export default function AppsPage() {
                   </p>
                 </div>
 
-                {/* Action CTA Button */}
+                {/* Action CTA Trigger Area */}
                 <div className="relative z-10 mt-auto">
                   {isComingSoon ? (
                     <div className="inline-flex items-center justify-center gap-2 px-5 py-3.5 text-xs font-bold tracking-wide uppercase rounded-xl border border-white/5 bg-white/[0.02] text-white/30 cursor-not-allowed w-full sm:w-auto">
