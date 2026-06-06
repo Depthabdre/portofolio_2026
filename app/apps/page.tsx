@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { track } from "@vercel/analytics";
 
@@ -285,12 +286,13 @@ export default function AppsPage() {
                     {app.localIconUrl ? (
                       <div className="relative w-14 h-14 rounded-2xl overflow-hidden border border-white/15 bg-white/5 shadow-xl flex-shrink-0 transition-transform duration-300 group-hover:scale-105 group-hover:border-white/30">
                         {/* subtle glass overlay inside icon */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-black/25 to-transparent pointer-events-none" />
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
+                        <div className="absolute inset-0 bg-gradient-to-tr from-black/25 to-transparent pointer-events-none z-10" />
+                        <Image
                           src={app.localIconUrl}
                           alt={`${app.name} Icon`}
-                          className="w-full h-full object-cover"
+                          fill
+                          sizes="56px"
+                          className="object-cover"
                         />
                       </div>
                     ) : (
