@@ -112,7 +112,7 @@ const appsList: AppModel[] = [
     platformKey: "android",
     description: "Subscription-based e-learning platform serving 2,000+ active university students with offline DRM, screenshot prevention, and single-device access control.",
     ctaText: "Download on Play Store",
-    ctaUrl: "/apps/aplus.apk",
+    ctaUrl: "https://play.google.com/store/apps/details?id=com.aplus.depthabdre.tutorial",
     status: "active",
     stats: "2,000+ active students",
     localIconUrl: "/icons/aplus.png",
