@@ -10,37 +10,44 @@ type TimelineItem = {
   description: ReactNode;
 };
 
-const items: TimelineItem[] = [ 
+const items: TimelineItem[] = [
   {
     id: "item-1",
     badge: "CURRENT",
+    title: "Frontend Engineering Intern @ Horan Technologies",
+    description:
+      "Building responsive, accessible web interfaces using modern frontend frameworks. Collaborating with UI/UX designers to implement pixel-accurate designs and integrating frontend components with backend APIs on live client products.",
+  },
+  {
+    id: "item-2",
+    badge: "MENTORSHIP",
     title: "GDG Flutter Mentor",
     description:
       "I mentor the 2026 batch of the Google Developer Group (GDG) in Flutter. I help peers debug state management issues, enforce clean architecture, and navigate technical blockers, accelerating their development velocity.",
   },
   {
-    id: "item-2",
+    id: "item-3",
     badge: "EDUCATION",
     title: "Software Engineering · AASTU",
     description:
       "I am currently completing my final year, balancing academic coursework with continuous real-world client engagements and personal application development.",
   },
   {
-    id: "item-3",
+    id: "item-4",
     badge: "INTERNSHIP",
     title: "Software Engineer Intern @ Eskalate",
     description:
       "I collaborated with a cross-functional team to engineer a production e-commerce application. I designed secure authentication flows, product management dashboards, and a real-time socket.io chat architecture using Flutter.",
   },
   {
-    id: "item-4",
+    id: "item-5",
     badge: "ACADEMY",
     title: "A2SV Graduate",
     description:
       "I completed an intensive software engineering program backed by Google, focusing on advanced data structures, algorithms, and system design alongside top-tier engineers.",
   },
   {
-    id: "item-5",
+    id: "item-6",
     badge: "COMMUNITY",
     title: "Teaching & Community",
     description:
@@ -110,11 +117,11 @@ export function ExperienceTimeline() {
                 }}
               >
                 {/* Glowing Dot on the Line */}
-                <div className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full border-[1.5px] border-white/20 bg-[#070b12] outline outline-4 outline-[#070b12] lg:-left-[6px]" />
+                <div className="absolute -left-1.25 top-1.5 h-2.5 w-2.5 rounded-full border-[1.5px] border-white/20 bg-[#070b12] outline outline-[#070b12] lg:-left-[6px]" />
 
                 <div className="flex flex-col gap-1.5">
                   <div className="flex items-center gap-3">
-                    <span className="shrink-0 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[13px] font-medium tracking-[0.1em] text-[#8be8f4] uppercase backdrop-blur-sm">
+                    <span className="shrink-0 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[13px] font-medium tracking-widest text-[#8be8f4] uppercase backdrop-blur-sm">
                       {item.badge}
                     </span>
                   </div>
