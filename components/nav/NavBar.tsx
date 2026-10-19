@@ -47,6 +47,16 @@ function AppsIcon({ className }: { className?: string }) {
   );
 }
 
+function JournalIcon({ className }: { className?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+      <path d="M6 6h10" />
+      <path d="M6 10h10" />
+    </svg>
+  );
+}
+
 function MenuIcon({ className }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -65,7 +75,13 @@ export function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Derive the active section status during render to prevent state duplication/cascading renders [2]
-  const currentActiveSection = isHomePage ? activeSection : "apps";
+  const currentActiveSection = isHomePage
+    ? activeSection
+    : pathname.startsWith("/journal")
+    ? "journal"
+    : pathname.startsWith("/apps")
+    ? "apps"
+    : "apps";
 
   // Scroll detection (Homepage-specific)
   useEffect(() => {
@@ -106,6 +122,7 @@ export function NavBar() {
     { name: "Projects", id: "projects", href: "/#projects" },
     { name: "Experience", id: "experience", href: "/#experience" },
     { name: "Apps", id: "apps", href: "/apps", isPage: true },
+    { name: "Journal", id: "journal", href: "/journal", isPage: true },
     { name: "Contact", id: "contact", href: "/#contact" },
   ];
 
@@ -113,7 +130,7 @@ export function NavBar() {
   const mobileNavItems = [
     { name: "Home", id: "hero", href: "/#hero", icon: HomeIcon },
     { name: "Projects", id: "projects", href: "/#projects", icon: ProjectsIcon },
-    { name: "Experience", id: "experience", href: "/#experience", icon: ExperienceIcon },
+    { name: "Journal", id: "journal", href: "/journal", isPage: true, icon: JournalIcon },
     { name: "Apps", id: "apps", href: "/apps", isPage: true, icon: AppsIcon },
   ];
 
@@ -126,6 +143,8 @@ export function NavBar() {
   };
 
   const isMoreActive = currentActiveSection === "contact" || isMenuOpen;
+
+  if (pathname.startsWith("/admin")) return null;
 
   return (
     <>
@@ -309,6 +328,33 @@ export function NavBar() {
                     <span className="mt-1 text-base font-semibold text-white">About Me</span>
                   </Link>
 
+                  {/* Experience Link */}
+                  <Link
+                    href={isHomePage ? "#experience" : "/#experience"}
+                    onClick={(e) => {
+                      setIsMenuOpen(false);
+                      if (isHomePage) {
+                        e.preventDefault();
+                        document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" });
+                        setActiveSection("experience");
+                      }
+                    }}
+                    className="flex flex-col justify-between rounded-2xl border border-white/5 bg-white/[0.03] p-4 hover:bg-white/[0.06] transition-all"
+                  >
+                    <span className="text-[10px] font-medium uppercase tracking-[0.05em] text-[var(--hero-accent)]/80">My Journey</span>
+                    <span className="mt-1 text-base font-semibold text-white">Experience</span>
+                  </Link>
+
+                  {/* Journal Link */}
+                  <Link
+                    href="/journal"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="flex flex-col justify-between rounded-2xl border border-white/5 bg-white/[0.03] p-4 hover:bg-white/[0.06] transition-all"
+                  >
+                    <span className="text-[10px] font-medium uppercase tracking-[0.05em] text-[var(--hero-contrast)]/80">Daily Logs & TIL</span>
+                    <span className="mt-1 text-base font-semibold text-white">Journal</span>
+                  </Link>
+
                   {/* Contact Link */}
                   <Link
                     href={isHomePage ? "#contact" : "/#contact"}
@@ -322,7 +368,7 @@ export function NavBar() {
                     }}
                     className="flex flex-col justify-between rounded-2xl border border-white/5 bg-white/[0.03] p-4 hover:bg-white/[0.06] transition-all"
                   >
-                    <span className="text-[10px] font-medium uppercase tracking-[0.05em] text-[var(--hero-contrast)]/80">Get In Touch</span>
+                    <span className="text-[10px] font-medium uppercase tracking-[0.05em] text-white/50">Get In Touch</span>
                     <span className="mt-1 text-base font-semibold text-white">Contact</span>
                   </Link>
                 </div>
