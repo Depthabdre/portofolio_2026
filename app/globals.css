@@ -69,10 +69,21 @@ body {
   backdrop-filter: blur(4px);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .cursor-shell {
-    cursor: none;
-  }
+.cursor-decoration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+  border: 1px solid rgba(140, 240, 255, 0.38);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 200;
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-decoration { display: none; }
 }
 
 @media (max-width: 768px) {
