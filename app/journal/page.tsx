@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { FiArrowUpRight } from "react-icons/fi";
 import { JournalTabsView } from "@/components/journal/JournalTabsView";
 import { JournalFooter } from "@/components/journal/JournalChrome";
 import { getJournalData } from "@/lib/supabase/queries";
@@ -23,8 +22,8 @@ export default async function JournalPage({
         <header className="journal-header">
           <div className="flex items-center justify-between gap-6">
             <p className="journal-eyebrow">The journal</p>
-            <span className="hidden items-center gap-2 text-xs text-[var(--j-muted)] sm:inline-flex">
-              Learning in public <FiArrowUpRight aria-hidden="true" />
+            <span className="hidden text-xs text-[var(--j-muted)] sm:inline">
+              Learning in public
             </span>
           </div>
           <h1 className="journal-title">

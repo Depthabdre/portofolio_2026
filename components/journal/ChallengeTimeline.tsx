@@ -75,10 +75,10 @@ export function ChallengeTimeline({
   if (!tracks.length)
     return (
       <EmptyState
-        title="A little consistency goes a long way."
+        title="No challenges published yet."
         icon={<FiTarget size={20} />}
       >
-        Learning challenges and the progress along the way will live here.
+        I’ll share my learning challenges and progress here as they get underway.
       </EmptyState>
     );
   return (

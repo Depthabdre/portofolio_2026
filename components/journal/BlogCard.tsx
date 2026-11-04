@@ -28,7 +28,6 @@ export function BlogCard({ post }: { post: BlogPost }) {
           {postDate(post) && (
             <time dateTime={postDate(post)!}>{formatDate(postDate(post))}</time>
           )}
-          <span aria-hidden="true">/</span>
           <span>{readingTime(post.content)}</span>
         </div>
         <h2>

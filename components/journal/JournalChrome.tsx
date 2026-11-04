@@ -43,7 +43,7 @@ export function EmptyState({
         {icon || <FiBookOpen size={20} />}
       </div>
       <h2>{title}</h2>
-      <p>{children}</p>
+      <div className="journal-empty-description">{children}</div>
     </div>
   );
 }

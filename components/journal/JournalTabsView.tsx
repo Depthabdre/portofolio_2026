@@ -58,7 +58,10 @@ export function JournalTabsView({
             className="journal-tab"
             aria-current={initialTab === "articles" ? "page" : undefined}
           >
-            Articles <span className="journal-tab-count">{posts.length}</span>
+            Articles
+            {posts.length > 0 && (
+              <span className="journal-tab-count">{posts.length}</span>
+            )}
           </Link>
           <Link
             href="/journal?view=challenges"
@@ -67,24 +70,34 @@ export function JournalTabsView({
             aria-current={initialTab === "challenges" ? "page" : undefined}
           >
             Challenges{" "}
-            <span className="journal-tab-count">{tracks.length}</span>
+            {tracks.length > 0 && (
+              <span className="journal-tab-count">{tracks.length}</span>
+            )}
           </Link>
         </nav>
         {hasContent && (
-          <label className="journal-search">
+          <div
+            className="journal-search"
+            role="search"
+            aria-label={`Search ${initialTab}`}
+          >
             <FiSearch aria-hidden="true" />
-            <span className="sr-only">Search {initialTab}</span>
+            <label htmlFor="journal-search" className="sr-only">
+              Search {initialTab}
+            </label>
             <input
+              id="journal-search"
+              type="search"
               value={search}
               onChange={(event) => setSearch(event.target.value)}
               placeholder={`Search ${initialTab}…`}
             />
             {search && (
               <button onClick={() => setSearch("")} aria-label="Clear search">
-                <FiX />
+                <FiX aria-hidden="true" />
               </button>
             )}
-          </label>
+          </div>
         )}
       </div>
       {topics.length > 0 && (
@@ -114,8 +127,18 @@ export function JournalTabsView({
             {error}
           </div>
         ) : hasContent && !hasResults ? (
-          <EmptyState title="Nothing matches just yet.">
-            Try another search or choose a different topic.
+          <EmptyState title={`No matching ${initialTab}.`}>
+            <p>Try another search or choose a different topic.</p>
+            <button
+              className="journal-reset"
+              onClick={() => {
+                setSearch("");
+                setTopic(null);
+                document.getElementById("journal-search")?.focus();
+              }}
+            >
+              Clear search and filters
+            </button>
           </EmptyState>
         ) : initialTab === "articles" ? (
           posts.length ? (
@@ -125,9 +148,9 @@ export function JournalTabsView({
               ))}
             </div>
           ) : (
-            <EmptyState title="Good ideas take a little time.">
-              Articles and notes from my work will appear here as they’re
-              published.
+            <EmptyState title="No articles published yet.">
+              Notes from my work and what I’m learning will appear here as I
+              publish them.
             </EmptyState>
           )
         ) : (
