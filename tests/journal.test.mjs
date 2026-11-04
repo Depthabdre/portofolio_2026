@@ -13,13 +13,13 @@ function loadTypeScript(path, mocks = {}) {
       target: ts.ScriptTarget.ES2022,
     },
   });
-  const module = { exports: {} };
+  const loadedModule = { exports: {} };
   new Function("require", "module", "exports", outputText)(
     (name) => (name in mocks ? mocks[name] : require(name)),
-    module,
-    module.exports,
+    loadedModule,
+    loadedModule.exports,
   );
-  return module.exports;
+  return loadedModule.exports;
 }
 
 const journal = loadTypeScript("lib/journal.ts");
