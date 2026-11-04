@@ -42,7 +42,7 @@ export function HeroSection() {
           </a>
         </div>
         <p className="hero-footnote">
-          React, Next.js & Flutter <span aria-hidden="true">/</span> A2SV graduate
+          React, Flutter & Node.js <span aria-hidden="true">/</span> A2SV graduate
         </p>
       </div>
       <figure className="hero-product">
@@ -52,10 +52,10 @@ export function HeroSection() {
         </div>
         <div className="hero-phone">
           <Image
-            src="/APlus/Screenshot_20260413-170625.jpg"
-            alt="A+ Tutorial Class app showing the course library I built"
+            src="/APlus/NewCoursePage.jpg"
+            alt="A+ Tutorial Class course library with psychology, physics, and other university subjects"
             width={1080}
-            height={2371}
+            height={2350}
             sizes="(max-width: 600px) 190px, 230px"
             loading="eager"
             fetchPriority="high"

@@ -1,0 +1,45 @@
+.gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  width: 100%;
+  aspect-ratio: 1.5;
+  gap: 18px;
+}
+
+.frame {
+  display: block;
+  position: relative;
+  flex: 1 1 0%;
+  min-width: 0;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--home-border-strong);
+  border-radius: 10px;
+  background: var(--home-surface);
+}
+
+.media {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.frame:first-child .media {
+  object-position: center top;
+}
+
+.frame:nth-child(2) .media {
+  object-position: right center;
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    gap: 12px;
+  }
+}

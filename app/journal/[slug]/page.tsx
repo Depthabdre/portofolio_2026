@@ -59,7 +59,7 @@ export default async function BlogPostPage({ params }: Props) {
               <div>
                 <p>Abdrehim Misbah</p>
                 <p className="mt-1 text-xs text-[var(--j-muted)]">
-                  Frontend & mobile developer
+                  {heroContent.subtitle}
                 </p>
               </div>
             </div>

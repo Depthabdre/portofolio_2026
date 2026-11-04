@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { projects, type PortfolioProject } from "@/lib/content/projects";
+import galleryStyles from "./ProjectGallery.module.css";
 
 function ProjectLinks({ project }: { project: PortfolioProject }) {
   return (
@@ -36,14 +37,18 @@ function ProjectDetails({ project }: { project: PortfolioProject }) {
 function Screen({
   screen,
   desktop = false,
+  gallery = false,
 }: {
   screen: PortfolioProject["images"][number];
   desktop?: boolean;
+  gallery?: boolean;
 }) {
   return (
     <a
       className={
-        desktop
+        gallery
+          ? galleryStyles.frame
+          : desktop
           ? "project-screen desktop-screen"
           : "project-screen phone-screen"
       }
@@ -57,8 +62,11 @@ function Screen({
         alt={screen.alt}
         width={screen.width}
         height={screen.height}
+        className={gallery ? galleryStyles.media : undefined}
         sizes={
-          desktop
+          gallery
+            ? "(max-width: 600px) 42vw, (max-width: 800px) 44vw, 300px"
+            : desktop
             ? "(max-width: 700px) 90vw, 550px"
             : "(max-width: 600px) 38vw, 230px"
         }
@@ -101,14 +109,14 @@ export function FeaturedProjects() {
           </p>
         </div>
         <div className="flagship-visual" data-portfolio-reveal>
-          <div className="screens-pair">
+          <div className={galleryStyles.gallery}>
             {projects.aplus.images.map((screen) => (
-              <Screen key={screen.src} screen={screen} />
+              <Screen key={screen.src} screen={screen} gallery />
             ))}
           </div>
           <p className="image-caption">
-            Course library & offline downloads{" "}
-            <span>Click a screen to explore</span>
+            Course library & app overview{" "}
+            <span>Click to view full size</span>
           </p>
         </div>
       </article>

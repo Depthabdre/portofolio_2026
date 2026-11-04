@@ -24,9 +24,9 @@ const jetBrainsMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Abdrehim | Frontend & Mobile Developer",
+  title: "Abdrehim | Full-stack & Mobile Developer",
   description:
-    "Abdrehim Misbah’s portfolio: websites and mobile apps built with React, Next.js, and Flutter, plus projects, experience, and a little about me.",
+    "Abdrehim Misbah’s portfolio: web and mobile apps built with React, Next.js, Flutter, and Node.js with Express, plus projects, experience, and a little about me.",
 };
 
 export default function RootLayout({
@@ -37,6 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
       className={`${inter.variable} ${jetBrainsMono.variable} ${portfolioFont.variable} h-full antialiased`}
     >

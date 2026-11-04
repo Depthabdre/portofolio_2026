@@ -5,7 +5,7 @@ const roles = [
     current: true,
     href: "https://experts.rustlabs.ai/#fields",
     description:
-      "Working on AI training projects, alongside my frontend and mobile development work.",
+      "Working on AI training projects, alongside my full-stack and mobile development work.",
   },
   {
     company: "Horan Technologies",
@@ -56,7 +56,10 @@ export function ExperienceTimeline() {
               key={item.company}
             >
               <span className="experience-marker" aria-hidden="true" />
-              <article className="experience-row">
+              <article
+                className="experience-row"
+                data-portfolio-reveal="experience"
+              >
                 <div className="experience-row-top">
                   <h3>
                     {item.href ? (

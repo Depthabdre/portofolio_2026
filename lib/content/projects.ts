@@ -8,18 +8,18 @@ export const projects = {
     stack: "Flutter / BLoC / Clean Architecture",
     images: [
       {
-        src: "/APlus/Screenshot_20260413-170625.jpg",
+        src: "/APlus/NewCoursePage.jpg",
         width: 1080,
-        height: 2371,
-        alt: "A+ course library with university subjects",
-        label: "Course library",
+        height: 2350,
+        alt: "A+ course library with psychology, physics, and other university subjects",
+        label: "The updated course library",
       },
       {
-        src: "/APlus/Screenshot_20260413-170650.jpg",
-        width: 1080,
-        height: 2374,
-        alt: "A+ offline library with a downloaded philosophy lesson",
-        label: "Saved for offline learning",
+        src: "/APlus/NewLook.jpg",
+        width: 1000,
+        height: 1000,
+        alt: "A+ Tutorial Class promotional image showing the updated freshman course app",
+        label: "A+ app overview",
       },
     ],
     links: [

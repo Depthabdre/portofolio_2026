@@ -25,16 +25,27 @@ export function PortfolioMotion() {
 
       observer = new IntersectionObserver(
         (entries) => {
+          let experienceIndex = 0;
           entries.forEach(({ target, isIntersecting }) => {
             if (!isIntersecting || played.has(target)) return;
             played.add(target);
             observer?.unobserve(target);
+            const isExperience =
+              target.getAttribute("data-portfolio-reveal") === "experience";
             const animation = target.animate(
               [
-                { transform: "translateY(18px)", opacity: 0.88 },
+                {
+                  transform: `translateY(${isExperience ? 24 : 18}px)`,
+                  opacity: isExperience ? 0 : 0.88,
+                },
                 { transform: "translateY(0)", opacity: 1 },
               ],
-              { duration: 620, easing: "cubic-bezier(0.22, 1, 0.36, 1)" },
+              {
+                duration: isExperience ? 700 : 620,
+                delay: isExperience ? experienceIndex++ * 110 : 0,
+                easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+                fill: "backwards",
+              },
             );
             running.add(animation);
             animation.onfinish = () => running.delete(animation);
