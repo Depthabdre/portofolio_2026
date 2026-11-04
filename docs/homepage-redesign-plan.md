@@ -255,3 +255,23 @@ Screenshots: [Journal](../output/playwright/journal-light.png), [admin overview]
 ### Journal layout correction
 
 The user asked to keep the previous Journal UI and limit the refresh to background, font, and theme colors. Restored the original “Ideas into practice. One entry at a time.” header, introductory wording, large two-line composition, original content width, card rounding, and dashed empty state. Existing tabs, filters, article/challenge grids and behavior retain their original structure. Public-only layout rules preserve the separate admin styling. Header spacing accounts for the shared navigation now being in normal document flow. Verified light/dark rendering, tab navigation and 320–1440 px reflow; scoped lint and whitespace checks passed.
+
+### Portfolio refinements — 4 November 2026
+
+Replaced the hero app screen with the supplied `NewCoursePage.jpg` (1080 × 2350). The A+ case study now pairs that course screen with `NewLook.jpg` (1000 × 1000). The square promotional artwork retains its full aspect ratio, with a side-by-side desktop arrangement and stacked mobile presentation. Captions describe the actual images.
+
+Replaced the public navigation monogram with a simple full-name link. Home, Journal, and Apps now share the same navigation and theme control. The Apps page uses the shared typography, light/dark palette, readable descriptions, and restrained card borders. Its five apps and existing destinations remain available; local APK/DMG links use download behavior. Download analytics remains in a small client component while page content renders on the server.
+
+Each experience row now has an independent, one-time reveal as it enters the viewport. Rows arriving together receive a short stagger. Native Web Animations provide a 700 ms fade and 24 px movement; reduced motion disables and cancels these animations, leaving the content visible.
+
+Deliberate section clicks use a shared eased scrolling helper with distance-based timing capped at 1.4 seconds. Same-page and cross-page navigation preserve real fragment URLs. Wheel, touch, pointer, keyboard, and history input can interrupt the animation; reduced motion moves immediately. Resize events do not cancel navigation, avoiding interruptions caused by mobile browser viewport changes.
+
+Validation: production build, full lint, all 17 Journal tests, and whitespace checks passed. Home, Apps, and Journal passed 24 automated accessibility checks across light/dark modes at 320, 390, 768, and 1440 px with no horizontal page overflow. Browser checks verified the requested image sources, actual download endpoints, independent experience reveals, reduced-motion cancellation, Contact navigation from all three pages, repeated clicks, user interruption, mobile menu dismissal, and Apps skip-link focus. Review artifacts remain local under ignored `output/playwright/`.
+
+Follow-up: simplified the A+ case study to one centered `NewCoursePage.jpg` screenshot at the user’s request. The hero continues to use the same course image. The supplied promotional image remains available in `public/APlus/`.
+
+Latest adjustment: restored both case-study images in the requested order, with equal-height frames side by side. `NewLook.jpg` occupies the wider second column. Images fill their frames with `object-fit: cover`, retaining their proportions. The pair remains side by side on narrow screens.
+
+Final gallery preference: use a non-wrapping flex row with `flex: 1` on both image frames. Both now take equal width and height across breakpoints; removed the old phone-width cap that could restrict the first frame. The gallery has a shared aspect ratio, with images filling their equal-sized frames.
+
+Gallery isolation: moved the A+ layout into `components/projects/ProjectGallery.module.css`, with an explicit row direction and independent frame classes. It no longer inherits shared phone/artwork layout rules. The local preview rendered equal-sized, adjacent frames at 320, 390, 768, 1024, 1440, and 1920 px, and the user confirmed the layout. The final requested crop uses `object-fit: cover`, with the first image positioned at the top and the second positioned at the right.
