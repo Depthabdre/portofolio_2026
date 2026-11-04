@@ -20,8 +20,8 @@ export function NowStatusCard({ status }: { status: NowStatus }) {
       </div>
       <p>{status.description}</p>
       <p className="!text-xs">
-        Current milestone <span className="px-2 text-white/20">/</span>{" "}
-        <span className="text-white/80">{status.current_milestone}</span>
+        Current milestone <span className="px-2 text-[var(--j-muted)]">/</span>{" "}
+        <span className="text-[var(--j-ink)]">{status.current_milestone}</span>
       </p>
       {status.project_url && (
         <a

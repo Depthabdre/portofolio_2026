@@ -19,7 +19,7 @@ export default async function JournalPage({
   const view = params.view === "challenges" ? "challenges" : "articles";
   return (
     <>
-      <main className="journal-wrap">
+      <main id="journal-content" tabIndex={-1} className="journal-wrap">
         <header className="journal-header">
           <div className="flex items-center justify-between gap-6">
             <p className="journal-eyebrow">The journal</p>

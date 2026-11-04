@@ -2,7 +2,7 @@ import { BackLink, EmptyState } from "@/components/journal/JournalChrome";
 
 export default function JournalNotFound() {
   return (
-    <main className="article-layout pb-32">
+    <main id="journal-content" tabIndex={-1} className="article-layout pb-32">
       <BackLink />
       <div className="mt-10">
         <EmptyState title="This page isn’t here.">

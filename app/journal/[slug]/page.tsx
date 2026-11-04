@@ -1,3 +1,4 @@
+import { heroContent } from "@/lib/content/hero";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -33,7 +34,7 @@ export default async function BlogPostPage({ params }: Props) {
   const track = data?.tracks.find((item) => item.slug === post.track_slug);
   return (
     <>
-      <main className="article-layout pb-20">
+      <main id="journal-content" tabIndex={-1} className="article-layout pb-20">
         <BackLink />
         <article>
           <header className="article-heading">
@@ -50,7 +51,7 @@ export default async function BlogPostPage({ params }: Props) {
             <p>{post.excerpt}</p>
             <div className="article-author">
               <Image
-                src="/profile.jpg"
+                src={heroContent.profileImage}
                 alt="Abdrehim Misbah"
                 width={36}
                 height={36}
@@ -58,7 +59,7 @@ export default async function BlogPostPage({ params }: Props) {
               <div>
                 <p>Abdrehim Misbah</p>
                 <p className="mt-1 text-xs text-[var(--j-muted)]">
-                  Software engineer
+                  Frontend & mobile developer
                 </p>
               </div>
             </div>
@@ -66,7 +67,7 @@ export default async function BlogPostPage({ params }: Props) {
           {track && (
             <Link
               href={`/journal/challenges/${track.slug}`}
-              className="journal-notice mb-8 flex items-center justify-between gap-3 !border-[var(--j-border)] !bg-white/[0.02] !text-[var(--j-accent)]"
+              className="journal-notice mb-8 flex items-center justify-between gap-3 !border-[var(--j-border)] !bg-[var(--j-panel)] !text-[var(--j-accent)]"
             >
               <span>Part of {track.title}</span>
               <FiArrowUpRight aria-hidden="true" />
@@ -78,7 +79,8 @@ export default async function BlogPostPage({ params }: Props) {
                 src={post.cover_image}
                 alt={post.title}
                 fill
-                priority
+                loading="eager"
+                fetchPriority="high"
                 unoptimized
                 sizes="(max-width: 800px) 100vw, 760px"
               />

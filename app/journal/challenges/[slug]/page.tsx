@@ -40,7 +40,7 @@ export default async function ChallengePage({ params }: Props) {
   const progress = trackProgress(track, entries);
   return (
     <>
-      <main className="article-layout pb-20">
+      <main id="journal-content" tabIndex={-1} className="article-layout pb-20">
         <BackLink href="/journal?view=challenges">All challenges</BackLink>
         <header className="article-heading">
           <div className="flex items-center gap-4">
@@ -69,7 +69,7 @@ export default async function ChallengePage({ params }: Props) {
           {track.start_date && track.end_date && (
             <p>
               {formatDate(track.start_date)} — {formatDate(track.end_date)}{" "}
-              <span className="text-white/25">
+              <span className="text-[var(--j-muted)]">
                 · {track.timezone || "Africa/Addis_Ababa"}
               </span>
             </p>
