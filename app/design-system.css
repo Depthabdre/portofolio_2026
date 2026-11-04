@@ -1,0 +1,68 @@
+/* Shared portfolio, journal and studio design tokens. */
+:root {
+  --home-canvas: #fcfcfd;
+  --home-ink: #171e25;
+  --home-muted: #4b5966;
+  --home-emphasis: #2c4353;
+  --home-accent: #14547c;
+  --home-line: #d4dee5;
+  --home-border-strong: #9fadb9;
+  --home-surface: #edf2f5;
+  --home-stage-feature: #e9ece5;
+  --home-stage-blue: #e6edf3;
+  --home-stage-neutral: #e8edf1;
+  --home-footer: #e3ebf1;
+  --home-button-bg: #173f5c;
+  --home-button-hover: #102e45;
+  --home-button-ink: #fff;
+  --home-focus: #2775a5;
+  --home-shadow: #172c3c1c;
+  --home-shadow-strong: #172c3c33;
+}
+:root[data-portfolio-theme="dark"] {
+  --home-canvas: #13191f;
+  --home-ink: #f0f4f7;
+  --home-muted: #b8c5d0;
+  --home-emphasis: #dce6ee;
+  --home-accent: #b4d8f0;
+  --home-line: #374653;
+  --home-border-strong: #708797;
+  --home-surface: #202c36;
+  --home-stage-feature: #29332f;
+  --home-stage-blue: #253543;
+  --home-stage-neutral: #26343e;
+  --home-footer: #1a2834;
+  --home-button-bg: #bedcf0;
+  --home-button-hover: #deedf7;
+  --home-button-ink: #12212c;
+  --home-focus: #b5dafa;
+  --home-shadow: #00000040;
+  --home-shadow-strong: #00000070;
+}
+:root:has(.portfolio-home, .journal-theme) {
+  color-scheme: light;
+}
+:root[data-portfolio-theme="dark"]:has(.portfolio-home, .journal-theme) {
+  color-scheme: dark;
+}
+
+:root {
+  --ui-success: #22643f;
+  --ui-success-bg: #e8f2ec;
+  --ui-warning: #795113;
+  --ui-warning-bg: #f8f0df;
+  --ui-danger: #a12c3c;
+  --ui-danger-bg: #fbedef;
+  --ui-purple: #674894;
+  --ui-purple-bg: #f0ebf7;
+}
+:root[data-portfolio-theme="dark"] {
+  --ui-success: #a5dcbb;
+  --ui-success-bg: #20392d;
+  --ui-warning: #edcf95;
+  --ui-warning-bg: #3b3020;
+  --ui-danger: #ffb6c1;
+  --ui-danger-bg: #3c2630;
+  --ui-purple: #d2bef5;
+  --ui-purple-bg: #342942;
+}

@@ -1,22 +1,32 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import { NavBar } from "@/components/nav/NavBar";
 import "./globals.css";
+import "./design-system.css";
+import "./home.css";
+import { portfolioFont } from "./typography";
+import { portfolioThemeScript } from "@/lib/portfolio-theme";
 
-const inter = Inter({
+const inter = localFont({
+  src: "./fonts/inter.woff2",
+  weight: "100 900",
   variable: "--font-inter",
-  subsets: ["latin"],
+  display: "swap",
+  preload: false,
 });
 
-const jetBrainsMono = JetBrains_Mono({
+const jetBrainsMono = localFont({
+  src: "./fonts/jetbrains-mono.woff2",
+  weight: "100 800",
   variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
-  title: "Abdrehim | Software Engineer",
+  title: "Abdrehim | Frontend & Mobile Developer",
   description:
-    "Portfolio of Abdrehim: Software engineer building secure, impactful mobile and web applications.",
+    "Abdrehim Misbah’s portfolio: websites and mobile apps built with React, Next.js, and Flutter, plus projects, experience, and a little about me.",
 };
 
 export default function RootLayout({
@@ -28,9 +38,15 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${jetBrainsMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${jetBrainsMono.variable} ${portfolioFont.variable} h-full antialiased`}
     >
-      <body suppressHydrationWarning className="min-h-full flex flex-col relative font-sans">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: portfolioThemeScript }} />
+      </head>
+      <body
+        suppressHydrationWarning
+        className="min-h-full flex flex-col relative font-sans"
+      >
         <NavBar />
         {children}
       </body>

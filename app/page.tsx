@@ -1,18 +1,23 @@
-import { CustomCursor } from "@/components/hero/CustomCursor";
+import { portfolioFont } from "./typography";
 import { HeroSection } from "@/components/hero/HeroSection";
+import { PortfolioMotion } from "@/components/hero/PortfolioMotion";
 import { FeaturedProjects } from "@/components/projects/FeaturedProjects";
-import { QuickStatsBento } from "@/components/stats/QuickStatsBento";
 import { ExperienceTimeline } from "@/components/experience/ExperienceTimeline";
+import { AboutSection } from "@/components/about/AboutSection";
 import { FooterSection } from "@/components/footer/FooterSection";
 
 export default function Home() {
   return (
-    <main className="page-shell cursor-shell relative isolate overflow-hidden"> 
-      <CustomCursor />
+    <main
+      id="main-content"
+      tabIndex={-1}
+      className={`portfolio-home ${portfolioFont.className}`}
+    >
+      <PortfolioMotion />
       <HeroSection />
-      <QuickStatsBento />
       <FeaturedProjects />
       <ExperienceTimeline />
+      <AboutSection />
       <FooterSection />
     </main>
   );
