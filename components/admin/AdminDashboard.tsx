@@ -54,6 +54,8 @@ import {
   TrackEditor,
 } from "./AdminEditors";
 import { Panel } from "./AdminUI";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { heroContent } from "@/lib/content/hero";
 
 type Tab = "overview" | "articles" | "challenges" | "focus";
 type Editor =
@@ -254,7 +256,9 @@ export function AdminDashboard({
     <div className="studio-layout" aria-busy={pending}>
       <aside className="studio-sidebar">
         <div className="studio-brand">
-          <div className="studio-brand-mark">a.</div>
+          <div className="studio-brand-mark" aria-hidden="true">
+            am.
+          </div>
           <div>
             <p>Journal Studio</p>
             <span>Your publishing workspace</span>
@@ -307,7 +311,12 @@ export function AdminDashboard({
             </button>
           </form>
           <div className="studio-account">
-            <Image src="/profile.jpg" width={30} height={30} alt="" />
+            <Image
+              src={heroContent.profileImage}
+              width={36}
+              height={36}
+              alt=""
+            />
             <div>
               <p>Abdrehim Misbah</p>
               <span>Owner</span>
@@ -329,16 +338,19 @@ export function AdminDashboard({
                 : tabNames[tab]}
             </span>
           </p>
-          <div
-            className="studio-connection"
-            data-connected={configured && !data.error}
-          >
-            <i aria-hidden="true" />
-            {dirty
-              ? "Unsaved changes"
-              : configured && !data.error
-                ? "Connected"
-                : "Setup needed"}
+          <div className="studio-topbar-actions">
+            <div
+              className="studio-connection"
+              data-connected={configured && !data.error}
+            >
+              <i aria-hidden="true" />
+              {dirty
+                ? "Unsaved changes"
+                : configured && !data.error
+                  ? "Connected"
+                  : "Setup needed"}
+            </div>
+            <ThemeToggle />
           </div>
         </header>
         <main className="studio-body" id="studio-content">
@@ -420,17 +432,13 @@ export function AdminDashboard({
             <>
               <div className="studio-page-header">
                 <div>
-                  <h1>
-                    {tab === "overview"
-                      ? "A space for your next idea."
-                      : tabNames[tab]}
-                  </h1>
+                  <h1>{tab === "overview" ? "Overview" : tabNames[tab]}</h1>
                   <p>
                     {tab === "overview"
-                      ? "Write, build a rhythm, and keep moving forward."
+                      ? "Your articles, challenges, and current work."
                       : tab === "articles"
-                        ? "Thoughtful writing, from first draft to published."
-                        : "Small commitments. Meaningful progress."}
+                        ? "Write, edit, and publish your articles."
+                        : "Manage your challenges and check-ins."}
                   </p>
                 </div>
                 <button

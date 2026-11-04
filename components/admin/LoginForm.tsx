@@ -14,7 +14,7 @@ function SignInButton() {
       disabled={pending}
       className="studio-button studio-button-primary mt-7 w-full"
     >
-      {pending ? "Signing in…" : "Enter your workspace"}
+      {pending ? "Signing in…" : "Sign in"}
       <FiArrowRight aria-hidden="true" />
     </button>
   );
@@ -38,7 +38,7 @@ export function LoginForm({ configured }: { configured: boolean }) {
           />
           <button
             type="button"
-            className="absolute inset-y-0 right-4 text-[var(--j-muted)]"
+            className="absolute inset-y-0 right-1 inline-flex w-11 items-center justify-center text-[var(--j-muted)]"
             aria-label={show ? "Hide password" : "Show password"}
             onClick={() => setShow(!show)}
           >

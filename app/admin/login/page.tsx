@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { FiArrowLeft, FiArrowUpRight, FiLock } from "react-icons/fi";
 import { isAdmin } from "@/lib/admin-auth";
 import { LoginForm } from "@/components/admin/LoginForm";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 export const metadata: Metadata = { title: "Sign in | Journal Studio" };
 
@@ -17,39 +18,40 @@ export default async function AdminLoginPage({
   return (
     <main className="studio-login">
       <section className="studio-login-story">
-        <div className="studio-brand !p-0">
-          <div className="studio-brand-mark">a.</div>
-          <div>
-            <p>Journal Studio</p>
-            <span>Abdrehim Misbah</span>
-          </div>
+        <div className="studio-login-brand-row">
+          <Link href="/" className="studio-brand">
+            <span className="studio-brand-mark" aria-hidden="true">
+              am.
+            </span>
+            <span>
+              <strong>Journal Studio</strong>
+              <small>Abdrehim Misbah</small>
+            </span>
+          </Link>
+          <ThemeToggle />
         </div>
         <div>
-          <p className="journal-eyebrow !mb-6 !text-[10px]">
-            Your ideas, in motion
-          </p>
           <h1>
-            A little thought.
-            <br />A little practice.
+            Manage your
             <br />
-            <span>Something worth sharing.</span>
+            journal.
           </h1>
           <p>
-            A quiet space to write, follow your curiosity, and turn small
-            commitments into meaningful progress.
+            Write articles, follow your challenges, and share what you’re
+            working on.
           </p>
         </div>
         <Link href="/journal" className="studio-text-button">
-          Explore the journal <FiArrowUpRight aria-hidden="true" />
+          View the journal <FiArrowUpRight aria-hidden="true" />
         </Link>
       </section>
-      <section className="studio-login-form">
+      <section className="studio-login-form" aria-labelledby="sign-in-title">
         <div>
-          <div className="inline-grid h-11 w-11 place-items-center rounded-xl border border-[var(--j-border)] text-[var(--j-accent)]">
-            <FiLock size={18} aria-hidden="true" />
+          <div className="studio-login-icon">
+            <FiLock size={20} aria-hidden="true" />
           </div>
-          <h2>Welcome back.</h2>
-          <p>Your next article, challenge, or idea is waiting.</p>
+          <h2 id="sign-in-title">Sign in</h2>
+          <p>Use your admin password to open the studio.</p>
           {error && (
             <div className="studio-notice" data-error="true" role="alert">
               {error}

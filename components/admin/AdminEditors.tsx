@@ -62,7 +62,7 @@ export function ArticleEditor({
         <input type="hidden" name="id" value={post?.id || ""} />
         <EditorHeader
           eyebrow="articles"
-          title={post ? "Edit article" : "A new thought starts here."}
+          title={post ? "Edit article" : "New article"}
           onBack={onBack}
         >
           {post?.published && !post.archived_at && (
@@ -108,7 +108,7 @@ export function ArticleEditor({
               className="studio-editor-input studio-title-input"
               value={title}
               onChange={(event) => setTitle(event.target.value)}
-              placeholder="Give your idea a title"
+              placeholder="Article title"
             />
             <label className="sr-only" htmlFor="excerpt">
               Excerpt
@@ -192,7 +192,8 @@ export function ArticleEditor({
             )}
             <div className="mt-6 border-t border-[var(--j-border)] pt-4 text-[11px] text-[var(--j-muted)]">
               {content.trim() ? content.trim().split(/\s+/).length : 0} words{" "}
-              <span className="px-2 text-white/20">/</span> Markdown supported
+              <span className="px-2 text-[var(--j-muted)]">/</span> Markdown
+              supported
             </div>
           </Panel>
           <aside className="studio-editor-aside">
@@ -312,7 +313,7 @@ export function TrackEditor({
         <input name="id" type="hidden" value={track?.id || ""} />
         <EditorHeader
           eyebrow="challenges"
-          title={track ? "Shape your challenge." : "Make room for consistency."}
+          title={track ? "Edit challenge" : "New challenge"}
           onBack={onBack}
         >
           <button
@@ -418,7 +419,7 @@ export function TrackEditor({
                   </select>
                 </Field>
                 <fieldset>
-                  <legend className="mb-3 text-xs text-[#c1ccda]">
+                  <legend className="mb-3 text-xs text-[var(--j-ink)]">
                     Preferred weekdays{" "}
                     <span className="ml-1 text-[var(--j-muted)]">
                       (optional)
@@ -589,7 +590,7 @@ export function CheckInEditor({
         <input type="hidden" name="track_slug" value={track.slug} />
         <EditorHeader
           eyebrow="challenges"
-          title={entry ? "Edit your check-in." : "Another step forward."}
+          title={entry ? "Edit check-in" : "New check-in"}
           onBack={onBack}
         >
           <button
@@ -632,7 +633,10 @@ export function CheckInEditor({
               </Field>
               <div>
                 <div className="mb-4 flex items-center justify-between">
-                  <label htmlFor="learnings" className="text-xs text-[#c1ccda]">
+                  <label
+                    htmlFor="learnings"
+                    className="text-xs text-[var(--j-ink)]"
+                  >
                     Notes & takeaways{" "}
                     <span className="text-[var(--j-muted)]">(optional)</span>
                   </label>
@@ -725,11 +729,7 @@ export function FocusEditor({
   return (
     <form onSubmit={(event) => submit(event, onSave)} onChange={onDirty}>
       <fieldset disabled={pending} className="contents">
-        <EditorHeader
-          eyebrow="overview"
-          title="What has your attention?"
-          onBack={onBack}
-        >
+        <EditorHeader eyebrow="overview" title="Current focus" onBack={onBack}>
           <button
             type="submit"
             className="studio-button studio-button-primary"
