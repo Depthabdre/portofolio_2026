@@ -31,7 +31,7 @@
   margin-inline: auto;
 }
 .home-header {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-portfolio), sans-serif;
   color: var(--home-ink);
   background: var(--home-canvas);
   position: relative;
@@ -85,18 +85,10 @@
   display: inline-flex;
   align-items: center;
   gap: 13px;
-  font-size: 14px;
+  font-size: 18px;
+  letter-spacing: -0.5px;
   font-weight: 600;
   white-space: nowrap;
-}
-.brand-symbol {
-  font-size: 29px;
-  letter-spacing: -3px;
-  font-weight: 700;
-  line-height: 1;
-}
-.brand-symbol span {
-  color: var(--home-accent);
 }
 .home-desktop-nav {
   display: flex;
@@ -442,9 +434,6 @@
   width: 100%;
   height: auto;
   display: block;
-}
-.flagship-visual .phone-screen:last-child {
-  margin-top: 30px;
 }
 .image-caption {
   display: flex;
@@ -808,7 +797,7 @@
     gap: 18px;
   }
   .home-brand {
-    font-size: 12px;
+    font-size: 16px;
   }
   .flagship-project {
     gap: 35px;
@@ -839,7 +828,7 @@
     min-height: 80px;
   }
   .home-brand {
-    font-size: 14px;
+    font-size: 16px;
   }
   .home-desktop-nav {
     display: none;
@@ -929,9 +918,6 @@
   .flagship-visual .screens-pair {
     gap: 35px;
   }
-  .flagship-visual .phone-screen {
-    max-width: 220px;
-  }
   .supporting-visual {
     height: 280px;
   }
@@ -975,12 +961,9 @@
   .home-header-inner {
     min-height: 74px;
   }
-  .brand-symbol {
-    font-size: 27px;
-  }
   .home-brand {
     gap: 10px;
-    font-size: 13px;
+    font-size: 15px;
   }
   .home-hero {
     grid-template-columns: 1fr;
@@ -1200,7 +1183,7 @@
   }
 }
 @media (prefers-reduced-motion: no-preference) {
-  html:has(.portfolio-home) {
+  html {
     scroll-behavior: smooth;
   }
   .hero-intro {
@@ -1279,7 +1262,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html:has(.portfolio-home) {
+  html {
     scroll-behavior: auto;
   }
   .home-desktop-nav a::after {

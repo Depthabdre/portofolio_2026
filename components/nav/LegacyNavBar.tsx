@@ -1,5 +1,7 @@
 "use client";
 
+import { HomeSectionLink } from "./HomeSectionLink";
+
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -56,6 +58,14 @@ function MenuIcon({ className }: { className?: string }) {
       <circle cx="5" cy="12" r="1" />
     </svg>
   );
+}
+
+function scrollToSection(id: string) {
+  document.getElementById(id)?.scrollIntoView({
+    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? "instant"
+      : "smooth",
+  });
 }
 
 export default function LegacyNavBar() {
@@ -149,11 +159,12 @@ export default function LegacyNavBar() {
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {navItems.map((item) => {
+            const NavLink = item.isPage ? Link : HomeSectionLink;
             const isActive = currentActiveSection === item.id;
             const href = item.isPage ? item.href : (isHomePage ? `#${item.id}` : item.href);
 
             return (
-              <Link
+              <NavLink
                 key={item.id}
                 href={href}
                 className="group relative shrink-0 px-2 min-[375px]:px-2.5 sm:px-4 py-1.5 sm:py-2 text-[10px] min-[375px]:text-[11px] sm:text-sm font-medium whitespace-nowrap transition-all"
@@ -161,7 +172,7 @@ export default function LegacyNavBar() {
                   if (item.isPage) return;
                   if (isHomePage) {
                     e.preventDefault();
-                    document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
+                    scrollToSection(item.id);
                     setActiveSection(item.id);
                   }
                 }}
@@ -180,7 +191,7 @@ export default function LegacyNavBar() {
                 >
                   {item.name}
                 </span>
-              </Link>
+              </NavLink>
             );
           })}
         </motion.div>
@@ -195,18 +206,19 @@ export default function LegacyNavBar() {
           className="flex items-center justify-around rounded-3xl border border-white/10 bg-[#070b12]/75 px-3 py-2 backdrop-blur-xl shadow-2xl shadow-black/90"
         >
           {mobileNavItems.map((item) => {
+            const NavLink = item.isPage ? Link : HomeSectionLink;
             const active = isMobileItemActive(item.id);
             const href = item.isPage ? item.href : (isHomePage ? `#${item.id}` : item.href);
 
             return (
-              <Link
+              <NavLink
                 key={item.id}
                 href={href}
                 onClick={(e) => {
                   if (item.isPage) return;
                   if (isHomePage) {
                     e.preventDefault();
-                    document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
+                    scrollToSection(item.id);
                     setActiveSection(item.id);
                   }
                 }}
@@ -230,7 +242,7 @@ export default function LegacyNavBar() {
                     {item.name}
                   </span>
                 </motion.div>
-              </Link>
+              </NavLink>
             );
           })}
 
@@ -303,13 +315,13 @@ export default function LegacyNavBar() {
                 {/* Staggered Grid Layout for Extra Pages/Sections */}
                 <div className="grid grid-cols-2 gap-3">
                   {/* About Link */}
-                  <Link
+                  <HomeSectionLink
                     href={isHomePage ? "#work" : "/#work"}
                     onClick={(e) => {
                       setIsMenuOpen(false);
                       if (isHomePage) {
                         e.preventDefault();
-                        document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
+                        scrollToSection("work");
                         setActiveSection("work");
                       }
                     }}
@@ -317,16 +329,16 @@ export default function LegacyNavBar() {
                   >
                     <span className="text-[10px] font-medium uppercase tracking-[0.05em] text-[#8be8f4]/80">Who I Am</span>
                     <span className="mt-1 text-base font-semibold text-white">About Me</span>
-                  </Link>
+                  </HomeSectionLink>
 
                   {/* Experience Link */}
-                  <Link
+                  <HomeSectionLink
                     href={isHomePage ? "#experience" : "/#experience"}
                     onClick={(e) => {
                       setIsMenuOpen(false);
                       if (isHomePage) {
                         e.preventDefault();
-                        document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" });
+                        scrollToSection("experience");
                         setActiveSection("experience");
                       }
                     }}
@@ -334,7 +346,7 @@ export default function LegacyNavBar() {
                   >
                     <span className="text-[10px] font-medium uppercase tracking-[0.05em] text-[var(--hero-accent)]/80">My Journey</span>
                     <span className="mt-1 text-base font-semibold text-white">Experience</span>
-                  </Link>
+                  </HomeSectionLink>
 
                   {/* Journal Link */}
                   <Link
@@ -347,13 +359,13 @@ export default function LegacyNavBar() {
                   </Link>
 
                   {/* Contact Link */}
-                  <Link
+                  <HomeSectionLink
                     href={isHomePage ? "#contact" : "/#contact"}
                     onClick={(e) => {
                       setIsMenuOpen(false);
                       if (isHomePage) {
                         e.preventDefault();
-                        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                        scrollToSection("contact");
                         setActiveSection("contact");
                       }
                     }}
@@ -361,7 +373,7 @@ export default function LegacyNavBar() {
                   >
                     <span className="text-[10px] font-medium uppercase tracking-[0.05em] text-white/50">Get In Touch</span>
                     <span className="mt-1 text-base font-semibold text-white">Contact</span>
-                  </Link>
+                  </HomeSectionLink>
                 </div>
 
                 {/* Direct CTA Connections & Brand Color Accents */}

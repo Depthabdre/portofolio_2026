@@ -4,6 +4,12 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import {
+  getQueuedHomeAnchor,
+  finishHomeAnchor,
+} from "@/lib/home-anchor-navigation";
+import { HomeSectionLink } from "./HomeSectionLink";
+import { scrollToSection } from "@/lib/scroll-to-section";
 
 const links = [
   { label: "Work", href: "#projects" },
@@ -20,6 +26,38 @@ export function HomeNav() {
   const isHome = pathname === "/";
   const hrefFor = (href: string) =>
     href.startsWith("#") && !isHome ? `/${href}` : href;
+
+  useEffect(() => {
+    if (!isHome) return;
+    const requestedAnchor = getQueuedHomeAnchor();
+    if (!requestedAnchor) return;
+
+    // Cross-page section links defer scrolling until the homepage is mounted.
+    // Same-page hash links keep native anchor behavior and browser history.
+    const scrollToDestination = () => {
+      let id: string;
+      try {
+        id = decodeURIComponent(requestedAnchor);
+      } catch {
+        finishHomeAnchor(requestedAnchor);
+        return true;
+      }
+      const target = document.getElementById(id);
+      if (!target) return false;
+      finishHomeAnchor(requestedAnchor);
+      window.history.replaceState(null, "", `/#${requestedAnchor}`);
+      scrollToSection(target);
+      return true;
+    };
+
+    if (scrollToDestination()) return;
+    const observer = new MutationObserver(() => {
+      if (scrollToDestination()) observer.disconnect();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [isHome]);
+
   useEffect(() => {
     const closeOutside = (event: PointerEvent) => {
       if (
@@ -45,7 +83,7 @@ export function HomeNav() {
   return (
     <header className="home-header">
       <a
-        href={isHome ? "#main-content" : "#journal-content"}
+        href={pathname?.startsWith("/journal") ? "#journal-content" : "#main-content"}
         className="home-skip-link"
       >
         Skip to content
@@ -54,27 +92,28 @@ export function HomeNav() {
         <Link
           href="/"
           className="home-brand"
-          aria-label="am. Abdrehim Misbah, home"
+          aria-label="Abdrehim Misbah, home"
         >
-          <span className="brand-symbol" aria-hidden="true">
-            am<span>.</span>
-          </span>
           <span>Abdrehim Misbah</span>
         </Link>
         <nav className="home-desktop-nav" aria-label="Main navigation">
-          {links.map((link) => (
-            <Link
-              key={link.label}
-              href={hrefFor(link.href)}
-              aria-current={
-                link.href === "/journal" && pathname?.startsWith("/journal")
-                  ? "page"
-                  : undefined
-              }
-            >
-              {link.label}
-            </Link>
-          ))}
+          {links.map((link) => {
+            const NavLink = link.href.startsWith("#") ? HomeSectionLink : Link;
+            return (
+              <NavLink
+                key={link.label}
+                href={hrefFor(link.href)}
+                aria-current={
+                  (link.href === "/journal" && pathname?.startsWith("/journal")) ||
+                  (link.href === "/apps" && pathname?.startsWith("/apps"))
+                    ? "page"
+                    : undefined
+                }
+              >
+                {link.label}
+              </NavLink>
+            );
+          })}
         </nav>
         <div className="home-header-controls">
           <ThemeToggle />
@@ -86,22 +125,26 @@ export function HomeNav() {
               </span>
             </summary>
             <nav aria-label="Mobile navigation">
-              {links.map((link) => (
-                <Link
-                  key={link.label}
-                  href={hrefFor(link.href)}
-                  aria-current={
-                    link.href === "/journal" && pathname?.startsWith("/journal")
-                      ? "page"
-                      : undefined
-                  }
-                  onClick={() => {
-                    if (menu.current) menu.current.open = false;
-                  }}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {links.map((link) => {
+                const NavLink = link.href.startsWith("#") ? HomeSectionLink : Link;
+                return (
+                  <NavLink
+                    key={link.label}
+                    href={hrefFor(link.href)}
+                    aria-current={
+                      (link.href === "/journal" && pathname?.startsWith("/journal")) ||
+                      (link.href === "/apps" && pathname?.startsWith("/apps"))
+                        ? "page"
+                        : undefined
+                    }
+                    onClick={() => {
+                      if (menu.current) menu.current.open = false;
+                    }}
+                  >
+                    {link.label}
+                  </NavLink>
+                );
+              })}
             </nav>
           </details>
         </div>
